@@ -9,6 +9,10 @@ package longpipes;
  *
  * @author up801685
  */
-public class typeOnePipe {
+public class TypeOnePipe extends Pipe{
+    
+    public TypeOnePipe(double inputLength, double inputDiameter) {
+        super(inputLength, inputDiameter);
+    }
     
 }
