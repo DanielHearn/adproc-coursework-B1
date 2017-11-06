@@ -22,6 +22,14 @@ public class Order {
         orderedPipes.add(orderPosition, inputPipe);
     }
     
+    public double totalCost() {
+        double totalCost = 0;
+        for (int pipe = 0; pipe < orderedPipes.size(); pipe ++) {
+            totalCost += orderedPipes.get(pipe).calculateCost();
+        }
+        return totalCost;
+    }
+    
     public void printInvoice() {
         for (int pipe = 0; pipe < orderedPipes.size(); pipe ++) {
             Pipe currentPipe = orderedPipes.get(pipe);
@@ -31,5 +39,6 @@ public class Order {
             System.out.println("Diameter: " + currentPipe.getDiameter());
             System.out.println("----------------------------------"); 
         }
+        System.out.println("Total Order Cost: " + totalCost());
     }
 }

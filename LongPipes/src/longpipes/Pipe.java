@@ -25,4 +25,9 @@ public class Pipe {
     public double getDiameter() {
         return diameter;
     }
+    
+    public double calculateCost() {
+        //placeholder
+        return length * diameter;
+    }
 }
