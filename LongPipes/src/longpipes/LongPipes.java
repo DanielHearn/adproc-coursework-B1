@@ -59,6 +59,7 @@ public class LongPipes {
         double pipeDiameter = retrieveDiameterInput();
         
         //get grade of plastic
+        
         //get colour (no colour, 1, or 2 colour plastic
         //get inner insulation
         //get outer reinforcement
@@ -88,7 +89,7 @@ public class LongPipes {
             System.out.println("Length of the pipe in meters (0.1cm to 100m valid) ?");
             String lengthTemp = console.nextLine();    
             double length = Double.parseDouble(lengthTemp);
-            if (length >= 0.1 && length <= 100) {
+            if (length >= 0.1 && length <= 6) {
                 return length;
             }
         }

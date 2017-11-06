@@ -33,11 +33,7 @@ public class Order {
     public void printInvoice() {
         for (int pipe = 0; pipe < orderedPipes.size(); pipe ++) {
             Pipe currentPipe = orderedPipes.get(pipe);
-            System.out.println("----------------------------------");         
-            System.out.println("Pipe: " + pipe);
-            System.out.println("Length: " + currentPipe.getLength());
-            System.out.println("Diameter: " + currentPipe.getDiameter());
-            System.out.println("----------------------------------"); 
+            currentPipe.printDetails();
         }
         System.out.println("Total Order Cost: " + totalCost());
     }
