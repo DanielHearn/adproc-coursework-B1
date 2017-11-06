@@ -70,14 +70,63 @@ public class Pipe {
         return pipeQuantity;
     }
     
+    public double getPercentageExtraCosts() {
+        int percentageExtra = 0;
+        
+        if(colours.length == 1)  {
+            percentageExtra += 12;
+        } else if(colours.length == 2) {
+            percentageExtra += 16;
+        }
+        
+        if(innerInsulation) {
+            percentageExtra += 13;
+        }
+        
+        if(outerReinforcement) {
+            percentageExtra = 17;
+        }
+        
+        if(chemicalResistance) {
+            percentageExtra = 14;   
+        }
+        
+        return percentageExtra;
+    } 
+    
+    public double calculatePipeVolume() {
+        double lengthInches = length * 39.37;
+        double fullPipeVolume = Math.PI * (outerDiameter*2) * lengthInches;
+        double interiorPipeVolume = Math.PI * (innerDiameter*2) * lengthInches;
+        
+        double pipeVolume = fullPipeVolume - interiorPipeVolume;
+        return pipeVolume;
+    }
+    
     public double calculateCost() {
-        //placeholder
-        //check colours
-        //check insulation
-        //check reinforcement
-        //check reistance
-        //convert length to inches for plastic volume calculation
-        return length * outerDiameter;
+        //overwrite within other pipes
+        //seperate into functions (keep other functions here, e.g additional costs and matrial costs)
+        double percentageExtra = getPercentageExtraCosts();
+        
+        double pipeVolume = calculatePipeVolume();
+        //based on grade calculate cost per inch3
+        double materialCost = 0;
+        
+        switch(grade) {
+            case 1:
+                materialCost = pipeVolume * 0.4;
+            case 2:
+                materialCost = pipeVolume * 0.6;
+            case 3:
+                materialCost = pipeVolume * 0.75;
+            case 4:
+                materialCost = pipeVolume * 0.8;
+            case 5:
+                materialCost = pipeVolume * 0.95;
+        }
+        
+        double pipeCost = materialCost * percentageExtra;
+        return pipeCost * pipeQuantity;
     }
    
     public void printDetails() {
