@@ -5,8 +5,10 @@
  */
 package longpipes;
 
+import java.util.Arrays;
+
 /**
- *
+ * Pipe class that is a super class of the pipe types with all pipe specifications
  * @author hearn
  */
 public class Pipe {
@@ -21,6 +23,9 @@ public class Pipe {
     private int pipeQuantity;
     
 
+    /**
+    * Construct a new pipe with all pipe specifications
+    */
     public Pipe(double inputLength, double inputOuterDiameter, int inputGrade, String[] inputColours, Boolean inputInnerInsulation, Boolean inputOuterReinforcement, Boolean inputChemicalResistance, int inputPipeQuantity) {
         length = inputLength;
         outerDiameter = inputOuterDiameter;
@@ -34,75 +39,113 @@ public class Pipe {
         
     }
     
+    /**
+    * @return The pipe length
+    */
     public double getLength() {
         return length;
     }
     
+    /**
+    * @return The pipe outer diameter
+    */
     public double getOuterDiameter() {
         return outerDiameter;
     }
     
+    /**
+    * @return The pipe inner diameter
+    */
     public double getInnerDiameter() {
         return innerDiameter;
     }
     
+    /**
+    * @return The pipe grade
+    */
     public int getGrade() {
         return grade;
     }
     
+    /**
+    * @return The pipe colours 
+    */
     public String[] getColours() {
         return colours;
     }
     
+    /**
+    * @return The inner insulation
+    */
     public Boolean getInnerInsulation() {
         return innerInsulation;
     }
     
+    /**
+    * @return The outer reinforcement
+    */
     public Boolean getOuterReinforcement() {
-        return innerInsulation;
+        return outerReinforcement;
     }
     
+    /**
+    * @return The chemical resistance
+    */
     public Boolean getChemicalResistance() {
         return chemicalResistance;
     }
     
+    /**
+    * @return The quantity of the pipes ordered
+    */
     public int getPipeQuantity() {
         return pipeQuantity;
     }
     
+    /**
+    * @return The percentage extra costs based on the pipe additional costs
+    */
     public double getPercentageExtraCosts() {
-        int percentageExtra = 0;
-        
+        double percentageExtra = 0;
+
         if(colours.length == 1)  {
-            percentageExtra += 12;
+            percentageExtra += 0.12;
         } else if(colours.length == 2) {
-            percentageExtra += 16;
+            percentageExtra += 0.16;
         }
         
         if(innerInsulation) {
-            percentageExtra += 13;
+            percentageExtra += 0.13;
         }
         
         if(outerReinforcement) {
-            percentageExtra = 17;
+            percentageExtra += 0.17;
         }
         
         if(chemicalResistance) {
-            percentageExtra = 14;   
+            percentageExtra += 0.14;   
         }
         
         return percentageExtra;
     } 
     
+    /**
+    * @return The pipe plastic material volume
+    */
     public double calculatePipeVolume() {
         double lengthInches = length * 39.37;
-        double fullPipeVolume = Math.PI * (outerDiameter*2) * lengthInches;
-        double interiorPipeVolume = Math.PI * (innerDiameter*2) * lengthInches;
-        
-        double pipeVolume = fullPipeVolume - interiorPipeVolume;
+   
+        double outerRadius = outerDiameter / 2;
+        double innerRadius = innerDiameter / 2;
+       
+        double pipeVolume = Math.PI * lengthInches * (Math.pow(outerRadius,2) - Math.pow(innerRadius, 2) );
+        System.out.println("VOLUME " + pipeVolume);
         return pipeVolume;
     }
     
+    /**
+    * @return The total cost of the pipe based on volume, additional costs and grade
+    */
     public double calculateCost() {
         //overwrite within other pipes
         //seperate into functions (keep other functions here, e.g additional costs and matrial costs)
@@ -112,27 +155,46 @@ public class Pipe {
         //based on grade calculate cost per inch3
         double materialCost = 0;
         
-        switch(grade) {
+        switch (grade) {
             case 1:
                 materialCost = pipeVolume * 0.4;
+                break;
             case 2:
                 materialCost = pipeVolume * 0.6;
+                break;
             case 3:
                 materialCost = pipeVolume * 0.75;
+                break;
             case 4:
                 materialCost = pipeVolume * 0.8;
+                break;
             case 5:
                 materialCost = pipeVolume * 0.95;
+                break;
+            default:
+                materialCost = pipeVolume;
+                break;
         }
-        
-        double pipeCost = materialCost * percentageExtra;
+        System.out.println("Extra: " + percentageExtra);
+        double pipeCost = materialCost + (materialCost * percentageExtra);
+        System.out.println("Pipe Cost: " + pipeCost);
         return pipeCost * pipeQuantity;
     }
    
+     /**
+    * Print out all of the pipe's details
+    */
     public void printDetails() {
         System.out.println("----------------------------------");         
-        System.out.println("Length: " + length);
-        System.out.println("Diameter: " + outerDiameter);
+        System.out.println("Length: " + length + "m");
+        System.out.println("Outer Diameter: " + outerDiameter + "in");
+        System.out.println("Inner Diameter: " + innerDiameter + "in");
+        System.out.println("Grade: " + grade);
+        System.out.println("Colours: " + Arrays.toString(colours));
+        System.out.println("Inner Insulation: " + innerInsulation);
+        System.out.println("Outer Reinforcement: " + outerReinforcement);
+        System.out.println("Chemical Reinforcement: " + chemicalResistance);
+        System.out.println("Pipe Quantity: " + pipeQuantity);
         System.out.println("----------------------------------"); 
     }
 }

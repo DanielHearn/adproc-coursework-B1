@@ -8,7 +8,7 @@ package longpipes;
 import java.util.*;
 /**
  *
- * @author hearn
+ * @author dan up801685
  */
 public class Order {
     ArrayList<Pipe> orderedPipes = new ArrayList<Pipe>();
@@ -17,19 +17,29 @@ public class Order {
         
     }
     
+    /**
+    * @param inputPipe The pipe being added to the order
+    */
     public void addPipe(Pipe inputPipe) {
         int orderPosition = orderedPipes.size();
         orderedPipes.add(orderPosition, inputPipe);
     }
     
+    /**
+    * @return The total cost of the order, generated from each pipes cost
+    */
     public double totalCost() {
         double totalCost = 0;
         for (int pipe = 0; pipe < orderedPipes.size(); pipe ++) {
+            System.out.println("Calculating pipe: " + pipe);
             totalCost += orderedPipes.get(pipe).calculateCost();
         }
         return totalCost;
     }
     
+    /**
+    * Prints out each of the pipe's details then the order's total cost
+    */
     public void printInvoice() {
         for (int pipe = 0; pipe < orderedPipes.size(); pipe ++) {
             Pipe currentPipe = orderedPipes.get(pipe);

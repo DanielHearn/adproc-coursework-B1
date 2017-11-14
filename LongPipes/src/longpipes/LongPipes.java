@@ -24,7 +24,9 @@ public class LongPipes {
         System.out.println("Thank you for using the LongPipes system.");
     }
 
-    // Gets a new order from the user
+    /**
+    * Retrieve the order from the user by retrieving pipe order information
+    */
     public static void getOrder() {
         boolean answer;
         String again;
@@ -35,7 +37,7 @@ public class LongPipes {
             again = console.nextLine();
             answer = false; // Boolean variable for the interactive input
             if (again.charAt(0) == 'y') {
-                answer = true; // if data for another student is going to be entered
+                answer = true; // if data for another pipe is going to be entered
             }
         } while (answer);
     }
@@ -46,6 +48,7 @@ public class LongPipes {
     public static Pipe getPipeInputs() {
         double pipeLength = getLengthInput();                              // gets pipe length in meters
         double pipeDiameter = getOuterDiameterInput();                     // gets diameter in inches
+        int pipeGrade = getGrade();
         String[] pipeColors = getPipeColors();                             // gets pipe colors
         // Boolean pipeInsulation = getInsulation();                       // gets pipe insulation
         // Boolean pipeReinforcement = getReinforcement();                 // gets pipe reinforcement
@@ -53,9 +56,10 @@ public class LongPipes {
         Boolean pipeInsulation = getBoolConditional("[TRUE/FALSE] Would you like insulation on your pipes");
         Boolean pipeReinforcement = getBoolConditional("[TRUE/FALSE] would you like reinforced pipes?");
         Boolean pipeChemicalResistance = getBoolConditional("[TRUE/FALSE] would you like chemical resitance pipes?");
-
+        int pipeQuantity = getPipeQuantity();
+        
         //get grade of plastic
-        //get quantity of pipes
+        
         // DEBUG OUTPUT --
         System.out.println("Length: " + pipeLength);
         System.out.println("Diameter: " + pipeDiameter);
@@ -72,16 +76,19 @@ public class LongPipes {
         //evaluate pipe type
         //create pipe with corresponding type
         //   Pipe pipe = new Pipe(pipeLength, pipeDiameter, );
-        Pipe pipe = new Pipe();
+        Pipe pipe = new Pipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeInsulation, pipeReinforcement, pipeChemicalResistance, pipeQuantity);
 
         return pipe;
     }
 
-    // Returns the lenght of the pipe
+    /**
+    * @return The validated length of the pipe as input by the user
+    * @author Dan 801685
+    */
     public static double getLengthInput() {
         boolean invalid = true;
         do {
-            System.out.println("Length of the pipe in meters (0.1cm to 100m valid) ?");
+            System.out.println("Length of the pipe in meters (0.1m to 6m valid) ?");
             String lengthTemp = console.nextLine();
             double length = Double.parseDouble(lengthTemp);
             if (length >= 0.1 && length <= 6) {
@@ -91,7 +98,10 @@ public class LongPipes {
         return 0;
     }
 
-    // Returns outer diameter of pipe
+    /**
+    * @return The validated outer diameter of the pipe as input by the user
+    * @author Dan 801685
+    */
     public static double getOuterDiameterInput() {
         boolean invalid = true;
         do {
@@ -104,21 +114,40 @@ public class LongPipes {
         } while (invalid);
         return 0;
     }
+    
+    /**
+    * @return The validated grade of the pipe as input by the user
+    * @author Dan 801685
+    */
+    public static int getGrade() {
+        boolean invalid = true;
+        do {
+            System.out.println("Plastic grade of the pipe (1 to 5)?");
+            String gradeTemp = console.nextLine();
+            int grade = Integer.parseInt(gradeTemp);
+            if (grade >= 1 && grade <= 5) {
+                return grade;
+            }
+        } while (invalid);
+        return 0;
+    }
 
-    // Returns an array of colors for the pipes
-    // Created by: Lee 750834
-    // Date: 06/11/2017
+    /** 
+    * @return array of pipe colours based on validated user input 
+    * @author Lee 750834
+    * Date: 06/11/2017
+    */ 
     public static String[] getPipeColors() {
         boolean invalid = true;
         do {
             List<String> colors = Arrays.asList("red", "orange", "yellow", "green", "blue", "violet", "pink", "cyan");
-            System.out.println("How many colors of pipe? (0..2)");
+            System.out.println("How many colors of pipe? (0, 1 or 2 colours)");
             String _tmpAmount = console.nextLine();
             int amount = Integer.parseInt(_tmpAmount);
 
             switch (amount) {
                 case 0: {
-                    return new String[]{"null"};
+                    return new String[]{};
                 }
                 case 1: {
                     System.out.println("Enter a color");
@@ -149,9 +178,11 @@ public class LongPipes {
         return new String[]{};
     }
 
-    // Returns: a bool condition for insulation
-    // Created by: Lee 750834
-    // Date: 06/11/2017
+    /** 
+    * @return a bool condition for insulation
+    * @author Lee 750834
+    * Date: 06/11/2017
+    */ 
     public static Boolean getInsulation() {
         boolean invalid = true;
         do {
@@ -162,9 +193,11 @@ public class LongPipes {
         } while (invalid);
     }
 
-    // Returns: a bool condition for reinforcement
-    // Created by: Lee 750834
-    // Date: 06/11/2017
+    /** 
+    * @return a bool condition for reinforcement
+    * @author Lee 750834
+    * Date: 06/11/2017
+    */ 
     public static Boolean getReinforcement() {
         boolean invalid = true;
         do {
@@ -175,9 +208,11 @@ public class LongPipes {
         } while (invalid);
     }
 
-    // Returns: a bool condition for chemical resistance
-    // Created by: Lee 750834
-    // Date: 06/11/2017
+    /** 
+    * @return a bool condition for chemical resistance
+    * @author Lee 750834
+    * Date: 06/11/2017
+    */ 
     public static Boolean getChemicalResistance() {
         boolean invalid = true;
         do {
@@ -187,12 +222,32 @@ public class LongPipes {
             return result;
         } while (invalid);
     }
+    
+    /**
+    * @author Dan 801685
+    * @return The quantity of pipes ordered
+    */
+    public static int getPipeQuantity() {
+        boolean invalid = true;
+        do {
+            System.out.println("Quantity of this pipe being ordered?");
+            String quantityTemp = console.nextLine();
+            int pipeQuantity = Integer.parseInt(quantityTemp);
+            if (pipeQuantity >= 1 && pipeQuantity <= 100) {
+                return pipeQuantity;
+            }
+        } while (invalid);
+        return 0;
+    }
 
-    // Returns: a bool condition
-    // Parameters: string output for console
-    // Notes: this just replaces the 3x bool functions above into one that can be re-used.
-    // Created by: Lee 750834
-    // Date: 06/11/2017
+
+    /**
+    * @returns Bool condition based on input string
+    * @param consoleOutput The string from the console as input by the user
+    * Notes: this just replaces the 3x bool functions above into one that can be re-used.
+    * @author Lee 750834
+    * Date: 06/11/2017
+    */ 
     public static Boolean getBoolConditional(String consoleOutput) {
         boolean invalid = true;
         do {
