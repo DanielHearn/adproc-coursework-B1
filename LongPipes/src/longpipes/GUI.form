@@ -50,9 +50,9 @@
                       <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                       <Component id="PipeQuantityTxtBox" max="32767" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="addOrder" min="-2" pref="96" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="removeOrder" min="-2" max="-2" attributes="0"/>
+                      <Component id="RemoveFromOrder" min="-2" pref="122" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="AddToOrder" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
@@ -86,8 +86,8 @@
                   <Group type="102" attributes="0">
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="removeOrder" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
-                          <Component id="addOrder" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                          <Component id="AddToOrder" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                          <Component id="RemoveFromOrder" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -549,17 +549,17 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="removeOrder">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Remove Order"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="removeOrderActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="addOrder">
+    <Component class="javax.swing.JButton" name="AddToOrder">
       <Properties>
         <Property name="text" type="java.lang.String" value="Add Order"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AddToOrderActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="RemoveFromOrder">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Remove Order"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">

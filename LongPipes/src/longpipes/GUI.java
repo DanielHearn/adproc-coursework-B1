@@ -18,6 +18,7 @@ public class GUI extends javax.swing.JFrame {
      */
     public GUI() {
         initComponents();
+        DefaultForm();
     }
 
     /**
@@ -59,8 +60,8 @@ public class GUI extends javax.swing.JFrame {
         ReinforcementNo = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
-        removeOrder = new javax.swing.JButton();
-        addOrder = new javax.swing.JButton();
+        AddToOrder = new javax.swing.JButton();
+        RemoveFromOrder = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         PipeQuantityTxtBox = new javax.swing.JTextField();
 
@@ -353,14 +354,14 @@ public class GUI extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(jList1);
 
-        removeOrder.setText("Remove Order");
-        removeOrder.addActionListener(new java.awt.event.ActionListener() {
+        AddToOrder.setText("Add Order");
+        AddToOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                removeOrderActionPerformed(evt);
+                AddToOrderActionPerformed(evt);
             }
         });
 
-        addOrder.setText("Add Order");
+        RemoveFromOrder.setText("Remove Order");
 
         jLabel1.setText("LongPipes Pipe Ordering System");
 
@@ -386,9 +387,9 @@ public class GUI extends javax.swing.JFrame {
                         .addGap(6, 6, 6)
                         .addComponent(PipeQuantityTxtBox)
                         .addGap(18, 18, 18)
-                        .addComponent(addOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(removeOrder)))
+                        .addComponent(RemoveFromOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(AddToOrder)))
                 .addGap(18, 18, 18))
             .addGroup(layout.createSequentialGroup()
                 .addGap(134, 134, 134)
@@ -417,8 +418,8 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(removeOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(addOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(AddToOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(RemoveFromOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -493,7 +494,7 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ChemicalResistanceNoActionPerformed
 
-    private void removeOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeOrderActionPerformed
+    private void AddToOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddToOrderActionPerformed
         // TODO add your handling code here:
         double _pipeLength = Double.parseDouble(PipeLengthTxtBox.getText());
         double _pipeDiameter = Double.parseDouble(PipeDiameterTxtBox.getText());
@@ -503,9 +504,14 @@ public class GUI extends javax.swing.JFrame {
         Boolean _pipeReinforcement = GetReinforcement();
         Boolean _pipeChemicalResistance = GetChemicalResistance();
         int _pipeQuantity = Integer.parseInt(PipeQuantityTxtBox.getText());
-    }//GEN-LAST:event_removeOrderActionPerformed
+        
+        Pipe _pipe = ValidateAndCreate(_pipeGrade, _pipeDiameter, _pipeColor, _pipeQuantity, _pipeLength, _pipeInsulation, _pipeReinforcement, _pipeChemicalResistance);
+    
+        System.out.println("ADDED NEW ORDER:" + _pipe);
+    }//GEN-LAST:event_AddToOrderActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AddToOrder;
     private javax.swing.JRadioButton ChemicalResistanceNo;
     private javax.swing.JRadioButton ChemicalResistanceYes;
     private javax.swing.JRadioButton Color0RadioBtn;
@@ -523,7 +529,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField PipeQuantityTxtBox;
     private javax.swing.JRadioButton ReinforcementNo;
     private javax.swing.JRadioButton ReinforcementYes;
-    private javax.swing.JButton addOrder;
+    private javax.swing.JButton RemoveFromOrder;
     private javax.swing.ButtonGroup colourGroup;
     private javax.swing.ButtonGroup gradeGroup;
     private javax.swing.ButtonGroup insulationGroup;
@@ -538,7 +544,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.ButtonGroup reinforcementGroup;
-    private javax.swing.JButton removeOrder;
     private javax.swing.ButtonGroup resistanceGroup;
     // End of variables declaration//GEN-END:variables
 
@@ -575,8 +580,6 @@ public class GUI extends javax.swing.JFrame {
                 new GUI().setVisible(true);
             }
         });
-       
-        
     }
     
     static Order order = new Order();
@@ -636,7 +639,11 @@ public class GUI extends javax.swing.JFrame {
         else return false;
     }
     
-    public void ValidateAndCreate(int _pipeGrade, int _pipeDiameter, int _pipeColor, int _pipeQuantity, int _pipeLength, Boolean _pipeInsulation, Boolean _pipeReinforcement, Boolean _pipeChemicalResistance)
+    /** 
+    * @return Check input and create new pipe of that type
+    * @author Lee 750834
+    */ 
+    public Pipe ValidateAndCreate(int _pipeGrade, double _pipeDiameter, int _pipeColor, int _pipeQuantity, double _pipeLength, Boolean _pipeInsulation, Boolean _pipeReinforcement, Boolean _pipeChemicalResistance)
     {
         Pipe pipe = new Pipe(_pipeLength, _pipeDiameter, _pipeGrade, pipeColor, _pipeInsulation, _pipeReinforcement, _pipeChemicalResistance, _pipeQuantity);
         
@@ -656,6 +663,22 @@ public class GUI extends javax.swing.JFrame {
             System.out.println("Pipe type 5");
             pipe = new TypeFivePipe(_pipeLength, _pipeDiameter, _pipeGrade, _pipeColor, _pipeChemicalResistance, _pipeQuantity);  
         }
+          return pipe;
+    }
+    
+    /** 
+    * @return Default the form and clear all the fields.
+    * @author Lee 750834
+    */ 
+    public void DefaultForm(){
+        PipeLengthTxtBox.setText("0");
+        PipeDiameterTxtBox.setText("0");
+        Grade1RadioBtn.setSelected(true);
+        Color0RadioBtn.setSelected(true);
+        InsulationYes.setSelected(true);
+        ReinforcementYes.setSelected(true);
+        ChemicalResistanceYes.setSelected(true);
+        PipeQuantityTxtBox.setText("0");
     }
 
 }
