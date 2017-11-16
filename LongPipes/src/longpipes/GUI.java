@@ -503,10 +503,6 @@ public class GUI extends javax.swing.JFrame {
         Boolean _pipeReinforcement = GetReinforcement();
         Boolean _pipeChemicalResistance = GetChemicalResistance();
         int _pipeQuantity = Integer.parseInt(PipeQuantityTxtBox.getText());
-        
-        Pipe pipe = new Pipe(_pipeLength, _pipeDiameter, _pipeGrade, _pipeColor, _pipeInsulation, _pipeReinforcement, _pipeChemicalResistance, _pipeQuantity);
-
-        
     }//GEN-LAST:event_removeOrderActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -579,11 +575,11 @@ public class GUI extends javax.swing.JFrame {
                 new GUI().setVisible(true);
             }
         });
-        
-        LongPipes pipe = new LongPipes();
+       
         
     }
     
+    static Order order = new Order();
            
     /** 
     * @return Get plastic radio button input.
@@ -638,6 +634,28 @@ public class GUI extends javax.swing.JFrame {
         if(ChemicalResistanceYes.isSelected()) return true;
         if(ChemicalResistanceNo.isSelected()) return false;
         else return false;
+    }
+    
+    public void ValidateAndCreate(int _pipeGrade, int _pipeDiameter, int _pipeColor, int _pipeQuantity, int _pipeLength, Boolean _pipeInsulation, Boolean _pipeReinforcement, Boolean _pipeChemicalResistance)
+    {
+        Pipe pipe = new Pipe(_pipeLength, _pipeDiameter, _pipeGrade, pipeColor, _pipeInsulation, _pipeReinforcement, _pipeChemicalResistance, _pipeQuantity);
+        
+          if((_pipeGrade >= 1 && _pipeGrade <= 3) && (_pipeColor == 0) && (_pipeInsulation == false) && (_pipeReinforcement == false)) {
+            System.out.println("Pipe type 1");
+            pipe = new TypeOnePipe(_pipeLength, _pipeDiameter, _pipeGrade, _pipeChemicalResistance, _pipeQuantity);
+        } else if ((_pipeGrade >= 2 && _pipeGrade <= 4) && (_pipeColor == 1) && (_pipeInsulation == false) && (_pipeReinforcement == false)) {
+            System.out.println("Pipe type 2");
+            pipe = new TypeTwoPipe(_pipeLength, _pipeDiameter, _pipeGrade, _pipeColor, _pipeChemicalResistance, _pipeQuantity);  
+        } else if ((_pipeGrade >= 2 && _pipeGrade <= 5) && (_pipeColor == 2) && (_pipeInsulation == false) && (_pipeReinforcement == false)) {
+            System.out.println("Pipe type 3");
+            pipe = new TypeThreePipe(_pipeLength, _pipeDiameter, _pipeGrade, _pipeColor, _pipeChemicalResistance, _pipeQuantity);  
+        } else if ((_pipeGrade >= 2 && _pipeGrade <= 5) && (_pipeColor == 2) && (_pipeInsulation == true) && (_pipeReinforcement == false)) {
+            System.out.println("Pipe type 4");
+            pipe = new TypeFourPipe(_pipeLength, _pipeDiameter, _pipeGrade, _pipeColor, _pipeChemicalResistance, _pipeQuantity);  
+        } else if ((_pipeGrade >= 3 && _pipeGrade <= 5) && (_pipeColor == 2) && (_pipeInsulation == true) && (_pipeReinforcement == true)) {
+            System.out.println("Pipe type 5");
+            pipe = new TypeFivePipe(_pipeLength, _pipeDiameter, _pipeGrade, _pipeColor, _pipeChemicalResistance, _pipeQuantity);  
+        }
     }
 
 }
