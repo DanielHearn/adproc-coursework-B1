@@ -13,21 +13,10 @@ public class LongPipes {
     static Scanner console = new Scanner(System.in);
     static Order order = new Order();
 
-    // Program entry point
-    public static void main(String[] args) {
-        // Main interface and handling of inputs
-
-        System.out.println("Welcome to the LongPipes ordering system");
-
-        getOrder();
-        order.printInvoice();
-        System.out.println("Thank you for using the LongPipes system.");
-    }
-
     /**
     * Retrieve the order from the user by retrieving pipe order information
     */
-    public static void getOrder() {
+    public  void getOrder() {
         boolean answer;
         String again;
         do {
@@ -47,7 +36,7 @@ public class LongPipes {
     // Returns the pipe inputs and returns pipe
     // Refactored: Lee 750834
     // Refactored: 06/11/2017
-    public static Pipe getPipeInputs() {
+    public Pipe getPipeInputs() {
         double pipeLength = getLengthInput();                              // gets pipe length in meters
         double pipeDiameter = getOuterDiameterInput();                     // gets diameter in inches
         int pipeGrade = getGrade();
@@ -107,7 +96,7 @@ public class LongPipes {
     * @return The validated length of the pipe as input by the user
     * @author Dan 801685
     */
-    public static double getLengthInput() {
+    public double getLengthInput() {
         boolean invalid = true;
         do {
             System.out.println("Length of the pipe in meters (0.1m to 6m valid) ?");
@@ -124,7 +113,7 @@ public class LongPipes {
     * @return The validated outer diameter of the pipe as input by the user
     * @author Dan 801685
     */
-    public static double getOuterDiameterInput() {
+    public  double getOuterDiameterInput() {
         boolean invalid = true;
         do {
             System.out.println("Outer Diameter of the pipe in inches (1 to 5)?");
@@ -141,7 +130,7 @@ public class LongPipes {
     * @return The validated grade of the pipe as input by the user
     * @author Dan 801685
     */
-    public static int getGrade() {
+    public  int getGrade() {
         boolean invalid = true;
         do {
             System.out.println("Plastic grade of the pipe (1 to 5)?");
@@ -159,7 +148,7 @@ public class LongPipes {
     * @author Lee 750834
     * Date: 06/11/2017
     */ 
-    public static String[] getPipeColors() {
+    public  String[] getPipeColors() {
         boolean invalid = true;
         do {
             List<String> colors = Arrays.asList("red", "orange", "yellow", "green", "blue", "violet", "pink", "cyan");
@@ -205,7 +194,7 @@ public class LongPipes {
     * @author Lee 750834
     * Date: 06/11/2017
     */ 
-    public static Boolean getInsulation() {
+    public  Boolean getInsulation() {
         boolean invalid = true;
         do {
             System.out.println("[TRUE/FALSE] Would you like insulation on your pipes");
@@ -220,7 +209,7 @@ public class LongPipes {
     * @author Lee 750834
     * Date: 06/11/2017
     */ 
-    public static Boolean getReinforcement() {
+    public Boolean getReinforcement() {
         boolean invalid = true;
         do {
             System.out.println("[TRUE/FALSE] would you like reinforced pipes?");
@@ -235,7 +224,7 @@ public class LongPipes {
     * @author Lee 750834
     * Date: 06/11/2017
     */ 
-    public static Boolean getChemicalResistance() {
+    public Boolean getChemicalResistance() {
         boolean invalid = true;
         do {
             System.out.println("[TRUE/FALSE] would you like chemical resitance pipes?");
@@ -249,7 +238,7 @@ public class LongPipes {
     * @author Dan 801685
     * @return The quantity of pipes ordered
     */
-    public static int getPipeQuantity() {
+    public int getPipeQuantity() {
         boolean invalid = true;
         do {
             System.out.println("Quantity of this pipe being ordered?");
@@ -270,7 +259,7 @@ public class LongPipes {
     * @author Lee 750834
     * Date: 06/11/2017
     */ 
-    public static Boolean getBoolConditional(String consoleOutput) {
+    public Boolean getBoolConditional(String consoleOutput) {
         boolean invalid = true;
         do {
             System.out.println(consoleOutput);

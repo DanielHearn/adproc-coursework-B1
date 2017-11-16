@@ -47,7 +47,9 @@
                   <Component id="jPanel7" alignment="0" max="32767" attributes="0"/>
                   <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                      <Component id="PipeQuantityTxtBox" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="addOrder" min="-2" pref="96" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="removeOrder" min="-2" max="-2" attributes="0"/>
@@ -80,14 +82,23 @@
               <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="removeOrder" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
-                  <Component id="addOrder" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="removeOrder" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                          <Component id="addOrder" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="PipeQuantityTxtBox" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
               <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -111,7 +122,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jTextField1" min="-2" pref="119" max="-2" attributes="0"/>
+                  <Component id="PipeLengthTxtBox" min="-2" pref="119" max="-2" attributes="0"/>
                   <EmptySpace pref="311" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -120,16 +131,16 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
+                  <Component id="PipeLengthTxtBox" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTextField" name="jTextField1">
+        <Component class="javax.swing.JTextField" name="PipeLengthTxtBox">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PipeLengthTxtBoxActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
@@ -148,7 +159,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="diameter" min="-2" pref="119" max="-2" attributes="0"/>
+                  <Component id="PipeDiameterTxtBox" min="-2" pref="119" max="-2" attributes="0"/>
                   <EmptySpace pref="311" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -157,16 +168,16 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="diameter" min="-2" max="-2" attributes="0"/>
+                  <Component id="PipeDiameterTxtBox" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTextField" name="diameter">
+        <Component class="javax.swing.JTextField" name="PipeDiameterTxtBox">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="diameterActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PipeDiameterTxtBoxActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
@@ -185,15 +196,15 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="grade1" min="-2" max="-2" attributes="0"/>
+                  <Component id="Grade1RadioBtn" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="grade2" min="-2" max="-2" attributes="0"/>
+                  <Component id="Grade2RadioBtn" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="grade3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Grade3RadioBtn" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="grade4" min="-2" max="-2" attributes="0"/>
+                  <Component id="Grade4RadioBtn" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="grade5" min="-2" max="-2" attributes="0"/>
+                  <Component id="Grade5RadioBtn" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -203,11 +214,11 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="grade5" min="-2" pref="15" max="-2" attributes="0"/>
-                      <Component id="grade4" min="-2" pref="15" max="-2" attributes="0"/>
-                      <Component id="grade3" min="-2" pref="15" max="-2" attributes="0"/>
-                      <Component id="grade2" min="-2" pref="15" max="-2" attributes="0"/>
-                      <Component id="grade1" min="-2" pref="15" max="-2" attributes="0"/>
+                      <Component id="Grade5RadioBtn" min="-2" pref="15" max="-2" attributes="0"/>
+                      <Component id="Grade4RadioBtn" min="-2" pref="15" max="-2" attributes="0"/>
+                      <Component id="Grade3RadioBtn" min="-2" pref="15" max="-2" attributes="0"/>
+                      <Component id="Grade2RadioBtn" min="-2" pref="15" max="-2" attributes="0"/>
+                      <Component id="Grade1RadioBtn" min="-2" pref="15" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="11" max="32767" attributes="0"/>
               </Group>
@@ -215,7 +226,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JRadioButton" name="grade1">
+        <Component class="javax.swing.JRadioButton" name="Grade1RadioBtn">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="gradeGroup"/>
@@ -223,10 +234,10 @@
             <Property name="text" type="java.lang.String" value="1"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="grade1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Grade1RadioBtnActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="grade2">
+        <Component class="javax.swing.JRadioButton" name="Grade2RadioBtn">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="gradeGroup"/>
@@ -234,10 +245,10 @@
             <Property name="text" type="java.lang.String" value="2"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="grade2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Grade2RadioBtnActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="grade3">
+        <Component class="javax.swing.JRadioButton" name="Grade3RadioBtn">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="gradeGroup"/>
@@ -245,10 +256,10 @@
             <Property name="text" type="java.lang.String" value="3"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="grade3ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Grade3RadioBtnActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="grade4">
+        <Component class="javax.swing.JRadioButton" name="Grade4RadioBtn">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="gradeGroup"/>
@@ -256,10 +267,10 @@
             <Property name="text" type="java.lang.String" value="4"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="grade4ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Grade4RadioBtnActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="grade5">
+        <Component class="javax.swing.JRadioButton" name="Grade5RadioBtn">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="gradeGroup"/>
@@ -267,7 +278,7 @@
             <Property name="text" type="java.lang.String" value="5"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="grade5ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Grade5RadioBtnActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
@@ -286,11 +297,11 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="colour0" min="-2" max="-2" attributes="0"/>
+                  <Component id="Color0RadioBtn" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="colour1" min="-2" max="-2" attributes="0"/>
+                  <Component id="Color1RadioBtn" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="colour2" min="-2" max="-2" attributes="0"/>
+                  <Component id="Color2RadioBtn" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -300,9 +311,9 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="colour0" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="colour1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="colour2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="Color0RadioBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="Color1RadioBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="Color2RadioBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="10" max="32767" attributes="0"/>
               </Group>
@@ -310,7 +321,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JRadioButton" name="colour0">
+        <Component class="javax.swing.JRadioButton" name="Color0RadioBtn">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="colourGroup"/>
@@ -318,7 +329,7 @@
             <Property name="text" type="java.lang.String" value="No Colour"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="colour1">
+        <Component class="javax.swing.JRadioButton" name="Color1RadioBtn">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="colourGroup"/>
@@ -326,10 +337,10 @@
             <Property name="text" type="java.lang.String" value="1 Colour"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="colour1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Color1RadioBtnActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="colour2">
+        <Component class="javax.swing.JRadioButton" name="Color2RadioBtn">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="colourGroup"/>
@@ -337,7 +348,7 @@
             <Property name="text" type="java.lang.String" value="2 Colours"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="colour2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Color2RadioBtnActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
@@ -356,7 +367,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="insulationYes" min="-2" max="-2" attributes="0"/>
+                  <Component id="InsulationYes" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   <Component id="InsulationNo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
@@ -368,7 +379,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="insulationYes" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="InsulationYes" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="InsulationNo" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="12" max="32767" attributes="0"/>
@@ -377,7 +388,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JRadioButton" name="insulationYes">
+        <Component class="javax.swing.JRadioButton" name="InsulationYes">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="insulationGroup"/>
@@ -385,7 +396,7 @@
             <Property name="text" type="java.lang.String" value="Yes"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="insulationYesActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="InsulationYesActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="InsulationNo">
@@ -415,9 +426,9 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="resistanceYes" min="-2" max="-2" attributes="0"/>
+                  <Component id="ChemicalResistanceYes" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                  <Component id="resistanceNo" min="-2" max="-2" attributes="0"/>
+                  <Component id="ChemicalResistanceNo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="314" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -427,8 +438,8 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="resistanceYes" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="resistanceNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="ChemicalResistanceYes" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="ChemicalResistanceNo" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -436,7 +447,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JRadioButton" name="resistanceYes">
+        <Component class="javax.swing.JRadioButton" name="ChemicalResistanceYes">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="resistanceGroup"/>
@@ -444,10 +455,10 @@
             <Property name="text" type="java.lang.String" value="Yes"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="resistanceYesActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ChemicalResistanceYesActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="resistanceNo">
+        <Component class="javax.swing.JRadioButton" name="ChemicalResistanceNo">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="resistanceGroup"/>
@@ -455,7 +466,7 @@
             <Property name="text" type="java.lang.String" value="No"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="resistanceNoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ChemicalResistanceNoActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
@@ -474,9 +485,9 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="reinforcementYes" min="-2" max="-2" attributes="0"/>
+                  <Component id="ReinforcementYes" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                  <Component id="reinforcementNo" min="-2" max="-2" attributes="0"/>
+                  <Component id="ReinforcementNo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -486,8 +497,8 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="reinforcementYes" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="reinforcementNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="ReinforcementYes" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="ReinforcementNo" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -495,7 +506,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JRadioButton" name="reinforcementYes">
+        <Component class="javax.swing.JRadioButton" name="ReinforcementYes">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="reinforcementGroup"/>
@@ -503,10 +514,10 @@
             <Property name="text" type="java.lang.String" value="Yes"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="reinforcementYesActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ReinforcementYesActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="reinforcementNo">
+        <Component class="javax.swing.JRadioButton" name="ReinforcementNo">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="reinforcementGroup"/>
@@ -514,7 +525,7 @@
             <Property name="text" type="java.lang.String" value="No"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="reinforcementNoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ReinforcementNoActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
@@ -554,6 +565,12 @@
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="text" type="java.lang.String" value="LongPipes Pipe Ordering System"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="PipeQuantityTxtBox">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="pip quant (1..100)"/>
       </Properties>
     </Component>
   </SubComponents>
