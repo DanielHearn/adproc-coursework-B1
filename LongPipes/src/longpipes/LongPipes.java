@@ -35,22 +35,16 @@ public class LongPipes {
 
     // Returns the pipe inputs and returns pipe
     // Refactored: Lee 750834
-    // Refactored: 06/11/2017
     public Pipe getPipeInputs() {
         double pipeLength = getLengthInput();                              // gets pipe length in meters
         double pipeDiameter = getOuterDiameterInput();                     // gets diameter in inches
         int pipeGrade = getGrade();
         String[] pipeColors = getPipeColors();                             // gets pipe colors
-        // Boolean pipeInsulation = getInsulation();                       // gets pipe insulation
-        // Boolean pipeReinforcement = getReinforcement();                 // gets pipe reinforcement
-        // Boolean pipeChemicalResistance = getChemicalResistance()        // gets pipe reinforcement
         Boolean pipeInsulation = getBoolConditional("[TRUE/FALSE] Would you like insulation on your pipes");
         Boolean pipeReinforcement = getBoolConditional("[TRUE/FALSE] would you like reinforced pipes?");
         Boolean pipeChemicalResistance = getBoolConditional("[TRUE/FALSE] would you like chemical resitance pipes?");
         int pipeQuantity = getPipeQuantity();
-        
-        //get grade of plastic
-        
+       
         // DEBUG OUTPUT --
         System.out.println("Length: " + pipeLength);
         System.out.println("Diameter: " + pipeDiameter);
@@ -146,7 +140,6 @@ public class LongPipes {
     /** 
     * @return array of pipe colours based on validated user input 
     * @author Lee 750834
-    * Date: 06/11/2017
     */ 
     public  String[] getPipeColors() {
         boolean invalid = true;
@@ -192,7 +185,6 @@ public class LongPipes {
     /** 
     * @return a bool condition for insulation
     * @author Lee 750834
-    * Date: 06/11/2017
     */ 
     public  Boolean getInsulation() {
         boolean invalid = true;
@@ -207,7 +199,6 @@ public class LongPipes {
     /** 
     * @return a bool condition for reinforcement
     * @author Lee 750834
-    * Date: 06/11/2017
     */ 
     public Boolean getReinforcement() {
         boolean invalid = true;
@@ -222,7 +213,6 @@ public class LongPipes {
     /** 
     * @return a bool condition for chemical resistance
     * @author Lee 750834
-    * Date: 06/11/2017
     */ 
     public Boolean getChemicalResistance() {
         boolean invalid = true;
@@ -257,7 +247,6 @@ public class LongPipes {
     * @param consoleOutput The string from the console as input by the user
     * Notes: this just replaces the 3x bool functions above into one that can be re-used.
     * @author Lee 750834
-    * Date: 06/11/2017
     */ 
     public Boolean getBoolConditional(String consoleOutput) {
         boolean invalid = true;
