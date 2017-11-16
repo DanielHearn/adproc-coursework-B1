@@ -32,7 +32,9 @@ public class LongPipes {
         String again;
         do {
             Pipe pipe = getPipeInputs();
-            order.addPipe(pipe);
+            if (pipe != null) {
+                order.addPipe(pipe);
+            }
             System.out.println("\n Do you want to order another pipe (y/n)?");
             again = console.nextLine();
             answer = false; // Boolean variable for the interactive input
@@ -78,6 +80,26 @@ public class LongPipes {
         //   Pipe pipe = new Pipe(pipeLength, pipeDiameter, );
         Pipe pipe = new Pipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeInsulation, pipeReinforcement, pipeChemicalResistance, pipeQuantity);
 
+        if((pipeGrade >= 1 && pipeGrade <= 3) && (pipeColors.length == 0) && (pipeInsulation == false) && (pipeReinforcement == false)) {
+            System.out.println("Pipe type 1");
+            pipe = new Pipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeInsulation, pipeReinforcement, pipeChemicalResistance, pipeQuantity);
+        } else if ((pipeGrade >= 2 && pipeGrade <= 4) && (pipeColors.length == 1) && (pipeInsulation == false) && (pipeReinforcement == false)) {
+            System.out.println("Pipe type 2");
+            pipe = new Pipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeInsulation, pipeReinforcement, pipeChemicalResistance, pipeQuantity);  
+        } else if ((pipeGrade >= 2 && pipeGrade <= 5) && (pipeColors.length == 2) && (pipeInsulation == false) && (pipeReinforcement == false)) {
+            System.out.println("Pipe type 3");
+            pipe = new Pipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeInsulation, pipeReinforcement, pipeChemicalResistance, pipeQuantity);  
+        } else if ((pipeGrade >= 2 && pipeGrade <= 5) && (pipeColors.length == 2) && (pipeInsulation == true) && (pipeReinforcement == false)) {
+            System.out.println("Pipe type 4");
+            pipe = new Pipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeInsulation, pipeReinforcement, pipeChemicalResistance, pipeQuantity);  
+        } else if ((pipeGrade >= 3 && pipeGrade <= 5) && (pipeColors.length == 2) && (pipeInsulation == true) && (pipeReinforcement == true)) {
+            System.out.println("Pipe type 5");
+            pipe = new Pipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeInsulation, pipeReinforcement, pipeChemicalResistance, pipeQuantity);  
+        } else {
+            System.out.println("INVALID PIPE");
+        }
+         
+        
         return pipe;
     }
 
