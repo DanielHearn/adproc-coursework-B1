@@ -21,8 +21,7 @@ public class Pipe {
     private Boolean outerReinforcement;
     private Boolean chemicalResistance;
     private int pipeQuantity;
-    
-
+   
     /**
     * Construct a new pipe with all pipe specifications
     */
@@ -182,7 +181,7 @@ public class Pipe {
     }
    
      /**
-    * Print out all of the pipe's details
+    * Print out all of the pipe details
     */
     public void printDetails() {
         System.out.println("----------------------------------");         

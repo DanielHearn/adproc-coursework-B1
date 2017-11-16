@@ -11,8 +11,8 @@ package longpipes;
  */
 public class TypeOnePipe extends Pipe{
     
-    public TypeOnePipe(double inputLength, double inputDiameter) {
-        super(inputLength, inputDiameter);
+    public TypeOnePipe(double inputLength, double inputDiameter, int pipeGrade, boolean pipeChemicalResistance, int pipeQuantity) {
+        super(inputLength, inputDiameter, pipeGrade, new String[0], false, false, pipeChemicalResistance, pipeQuantity);
     }
     
 }

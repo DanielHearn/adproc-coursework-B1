@@ -82,24 +82,24 @@ public class LongPipes {
 
         if((pipeGrade >= 1 && pipeGrade <= 3) && (pipeColors.length == 0) && (pipeInsulation == false) && (pipeReinforcement == false)) {
             System.out.println("Pipe type 1");
-            pipe = new Pipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeInsulation, pipeReinforcement, pipeChemicalResistance, pipeQuantity);
+            pipe = new TypeOnePipe(pipeLength, pipeDiameter, pipeGrade, pipeChemicalResistance, pipeQuantity);
         } else if ((pipeGrade >= 2 && pipeGrade <= 4) && (pipeColors.length == 1) && (pipeInsulation == false) && (pipeReinforcement == false)) {
             System.out.println("Pipe type 2");
-            pipe = new Pipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeInsulation, pipeReinforcement, pipeChemicalResistance, pipeQuantity);  
+            pipe = new TypeTwoPipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeChemicalResistance, pipeQuantity);  
         } else if ((pipeGrade >= 2 && pipeGrade <= 5) && (pipeColors.length == 2) && (pipeInsulation == false) && (pipeReinforcement == false)) {
             System.out.println("Pipe type 3");
-            pipe = new Pipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeInsulation, pipeReinforcement, pipeChemicalResistance, pipeQuantity);  
+            pipe = new TypeThreePipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeChemicalResistance, pipeQuantity);  
         } else if ((pipeGrade >= 2 && pipeGrade <= 5) && (pipeColors.length == 2) && (pipeInsulation == true) && (pipeReinforcement == false)) {
             System.out.println("Pipe type 4");
-            pipe = new Pipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeInsulation, pipeReinforcement, pipeChemicalResistance, pipeQuantity);  
+            pipe = new TypeFourPipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeChemicalResistance, pipeQuantity);  
         } else if ((pipeGrade >= 3 && pipeGrade <= 5) && (pipeColors.length == 2) && (pipeInsulation == true) && (pipeReinforcement == true)) {
             System.out.println("Pipe type 5");
-            pipe = new Pipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeInsulation, pipeReinforcement, pipeChemicalResistance, pipeQuantity);  
+            pipe = new TypeFivePipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeChemicalResistance, pipeQuantity);  
         } else {
             System.out.println("INVALID PIPE");
+            return null;
         }
          
-        
         return pipe;
     }
 
