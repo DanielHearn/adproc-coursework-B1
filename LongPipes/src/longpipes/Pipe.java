@@ -16,7 +16,7 @@ public class Pipe {
     private double outerDiameter;
     private double innerDiameter;
     private int grade;
-    private String[] colours;
+    private int colours;
     private Boolean innerInsulation;
     private Boolean outerReinforcement;
     private Boolean chemicalResistance;
@@ -25,7 +25,7 @@ public class Pipe {
     /**
     * Construct a new pipe with all pipe specifications
     */
-    public Pipe(double inputLength, double inputOuterDiameter, int inputGrade, String[] inputColours, Boolean inputInnerInsulation, Boolean inputOuterReinforcement, Boolean inputChemicalResistance, int inputPipeQuantity) {
+    public Pipe(double inputLength, double inputOuterDiameter, int inputGrade, int inputColours, Boolean inputInnerInsulation, Boolean inputOuterReinforcement, Boolean inputChemicalResistance, int inputPipeQuantity) {
         length = inputLength;
         outerDiameter = inputOuterDiameter;
         innerDiameter = outerDiameter*0.9;
@@ -69,7 +69,7 @@ public class Pipe {
     /**
     * @return The pipe colours 
     */
-    public String[] getColours() {
+    public int getColours() {
         return colours;
     }
     
@@ -107,9 +107,9 @@ public class Pipe {
     public double getPercentageExtraCosts() {
         double percentageExtra = 0;
 
-        if(colours.length == 1)  {
+        if(colours == 1)  {
             percentageExtra += 0.12;
-        } else if(colours.length == 2) {
+        } else if(colours == 2) {
             percentageExtra += 0.16;
         }
         
@@ -189,7 +189,7 @@ public class Pipe {
         System.out.println("Outer Diameter: " + outerDiameter + "in");
         System.out.println("Inner Diameter: " + innerDiameter + "in");
         System.out.println("Grade: " + grade);
-        System.out.println("Colours: " + Arrays.toString(colours));
+        System.out.println("Colours: " + colours);
         System.out.println("Inner Insulation: " + innerInsulation);
         System.out.println("Outer Reinforcement: " + outerReinforcement);
         System.out.println("Chemical Reinforcement: " + chemicalResistance);

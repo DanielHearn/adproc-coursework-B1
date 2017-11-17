@@ -11,7 +11,7 @@ package longpipes;
  */
 public class TypeFourPipe extends Pipe{
     
-    public TypeFourPipe(double inputLength, double inputDiameter, int pipeGrade, String[] pipeColors, boolean pipeChemicalResistance, int pipeQuantity) {
+    public TypeFourPipe(double inputLength, double inputDiameter, int pipeGrade, int pipeColors, boolean pipeChemicalResistance, int pipeQuantity) {
         super(inputLength, inputDiameter, pipeGrade, pipeColors, true, false, pipeChemicalResistance, pipeQuantity);
     }
     

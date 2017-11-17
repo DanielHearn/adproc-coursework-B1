@@ -28,8 +28,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
 
     // 750834 Setup objects
     DefaultListModel basketModel = new DefaultListModel();
-    LongPipesGUILink pipe = new LongPipesGUILink();
-    
+    LongPipesGUILink pipeSystem = new LongPipesGUILink();
     
     
     /**
@@ -85,7 +84,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jListBasketList = new javax.swing.JList<>();
         jButtonClearBasket = new javax.swing.JButton();
-        jButtonRemoveBasket = new javax.swing.JButton();
+        jButtonRemoveSelected = new javax.swing.JButton();
         jPanelFinalCost = new javax.swing.JPanel();
         jLabelTotalCost = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -507,10 +506,10 @@ public class LongPipesSystem extends javax.swing.JFrame {
             }
         });
 
-        jButtonRemoveBasket.setText("Remove Selected");
-        jButtonRemoveBasket.addActionListener(new java.awt.event.ActionListener() {
+        jButtonRemoveSelected.setText("Remove Selected");
+        jButtonRemoveSelected.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonRemoveBasketActionPerformed(evt);
+                jButtonRemoveSelectedActionPerformed(evt);
             }
         });
 
@@ -525,7 +524,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
                     .addGroup(jPanelBasketControlLayout.createSequentialGroup()
                         .addComponent(jButtonClearBasket, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonRemoveBasket, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButtonRemoveSelected, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanelBasketControlLayout.setVerticalGroup(
@@ -536,7 +535,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelBasketControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonClearBasket)
-                    .addComponent(jButtonRemoveBasket)))
+                    .addComponent(jButtonRemoveSelected)))
         );
 
         jPanelFinalCost.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -708,15 +707,50 @@ public class LongPipesSystem extends javax.swing.JFrame {
         basketModel.clear();
     }//GEN-LAST:event_jButtonClearBasketActionPerformed
 
+    /**
+     * Run once add order button clicked, takes pipe inputs and validates them
+     */
     private void jButtonAddOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddOrderActionPerformed
         // TEST
-        basketModel.addElement("xx");
+        // Send to GUI link which will validate pipe type and add new pipe to order
+        double pipeLength = (Integer) jSpinnerLength.getValue();     
+        double pipeDiameter = (Integer) jSpinnerDiameter.getValue();                     
+        int pipeGrade = 1;
+        if(jRadioButtonGrade1.isSelected() == true) {
+            pipeGrade = 1;
+        } else if(jRadioButtonGrade2.isSelected() == true) {
+            pipeGrade = 2;
+        } else if(jRadioButtonGrade3.isSelected() == true) {
+            pipeGrade = 3;
+        } else if(jRadioButtonGrade4.isSelected() == true) {
+            pipeGrade = 4;
+        } else if(jRadioButtonGrade5.isSelected() == true) {
+            pipeGrade = 5;
+        } 
+        int pipeColors = 0;
+        if(jRadioButtonColor0.isSelected() == true) {
+            pipeColors = 0;
+        } else if(jRadioButtonColor1.isSelected() == true) {
+            pipeColors = 1;
+        } else if(jRadioButtonColor2.isSelected() == true) {
+            pipeColors = 2;
+        }
+ 
+        Boolean pipeInsulation = jToggleButtonInnerInsulation.isSelected();
+        Boolean pipeReinforcement = jToggleButtonOuterReinforcement.isSelected();
+        Boolean pipeChemicalResistance = jToggleButtonChemicalResistance.isSelected();
+        int pipeQuantity = (Integer) jSpinnerQuantity.getValue();       
+        
+        String pipeStatusText = pipeSystem.ValidatePipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeInsulation, pipeReinforcement, pipeChemicalResistance, pipeQuantity);
+        jLabelStatus.setText(pipeStatusText);
+        //Need to get pipe string and find way of returning pipe type
+        basketModel.addElement("Valid Pipe :)");
     }//GEN-LAST:event_jButtonAddOrderActionPerformed
 
-    private void jButtonRemoveBasketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoveBasketActionPerformed
+    private void jButtonRemoveSelectedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoveSelectedActionPerformed
         // Remove item X at list index
         basketModel.remove(jListBasketList.getSelectedIndex());
-    }//GEN-LAST:event_jButtonRemoveBasketActionPerformed
+    }//GEN-LAST:event_jButtonRemoveSelectedActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
@@ -773,7 +807,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAddOrder;
     private javax.swing.JButton jButtonClearBasket;
     private javax.swing.JButton jButtonClearFeatures;
-    private javax.swing.JButton jButtonRemoveBasket;
+    private javax.swing.JButton jButtonRemoveSelected;
     private javax.swing.JButton jButtonResetOrder;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelDiameter;
@@ -852,9 +886,9 @@ public class LongPipesSystem extends javax.swing.JFrame {
     * @author Lee 750834
     */ 
     public void UpdateFormDateTime(){
-       Date date = new Date( );
-      SimpleDateFormat _time = new SimpleDateFormat ("kk:mm");
-       SimpleDateFormat _date = new SimpleDateFormat ("dd/MM//yyy");
+        Date date = new Date( );
+        SimpleDateFormat _time = new SimpleDateFormat ("kk:mm");
+        SimpleDateFormat _date = new SimpleDateFormat ("dd/MM//yyy");
         jLabelStatusTime.setText(_time.format(date));
         jLabelOrderTime.setText("Order Time: " + _time.format(date));
         jLabelOrderDate.setText("Order Date: " + _date.format(date));
