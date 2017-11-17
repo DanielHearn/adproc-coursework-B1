@@ -27,7 +27,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
         GenerateOrderNumber();
     }
 
-    // 750834 Setup objects
+    // Setup objects
     DefaultListModel basketModel = new DefaultListModel();
     LongPipesGUILink pipeSystem = new LongPipesGUILink();
 
@@ -715,11 +715,6 @@ public class LongPipesSystem extends javax.swing.JFrame {
         clearBasket();
     }//GEN-LAST:event_jButtonClearBasketActionPerformed
 
-    /**
-     * Run once add order button clicked, takes pipe inputs and validates them
-     *
-     * @author Dan 801685
-     */
     private void jButtonAddOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddOrderActionPerformed
         addNewPipeOrder();
     }//GEN-LAST:event_jButtonAddOrderActionPerformed
@@ -743,6 +738,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
     private void jButtonBuyOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuyOrderActionPerformed
         // TODO add your handling code here:
         //ADD INVOICE LIST INFORMATION GENERATION HERE
+        // LEE WILL DO
     }//GEN-LAST:event_jButtonBuyOrderActionPerformed
 
     /**
@@ -885,7 +881,6 @@ public class LongPipesSystem extends javax.swing.JFrame {
 
     /**
      * Update the invoice UI new order information
-     *
      * @author Dan 801685
      */
     public void updateInvoiceUI() {
@@ -895,7 +890,6 @@ public class LongPipesSystem extends javax.swing.JFrame {
 
     /**
      * Update the total cost label with the total order cost
-     *
      * @author Dan 801685
      */
     public void updateTotalCost() {
@@ -905,7 +899,6 @@ public class LongPipesSystem extends javax.swing.JFrame {
 
     /**
      * Update the total order label with the total order number
-     *
      * @author Dan 801685
      */
     public void updateTotalOrders() {
