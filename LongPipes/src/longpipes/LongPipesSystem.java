@@ -744,7 +744,10 @@ public class LongPipesSystem extends javax.swing.JFrame {
         String pipeStatusText = pipeSystem.ValidatePipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeInsulation, pipeReinforcement, pipeChemicalResistance, pipeQuantity);
         jLabelStatus.setText(pipeStatusText);
         //Need to get pipe string and find way of returning pipe type
-        basketModel.addElement("Valid Pipe :)");
+        if (pipeStatusText == "Pipe is valid") {
+            basketModel.addElement("Valid Pipe :)");
+            DefaultForm();
+        }
     }//GEN-LAST:event_jButtonAddOrderActionPerformed
 
     private void jButtonRemoveSelectedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoveSelectedActionPerformed
