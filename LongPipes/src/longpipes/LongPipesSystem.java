@@ -705,6 +705,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
     private void jButtonClearBasketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearBasketActionPerformed
         // Clear basket.
         basketModel.clear();
+        pipeSystem.order.orderedPipes.clear();
     }//GEN-LAST:event_jButtonClearBasketActionPerformed
 
     /**
@@ -744,7 +745,11 @@ public class LongPipesSystem extends javax.swing.JFrame {
         String pipeStatusText = pipeSystem.ValidatePipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeInsulation, pipeReinforcement, pipeChemicalResistance, pipeQuantity);
         jLabelStatus.setText(pipeStatusText);
         //Need to get pipe string and find way of returning pipe type
-        if (pipeStatusText == "Pipe is valid") {
+        if (pipeStatusText == "Pipe is valid") {           
+            basketModel.clear();
+            for (int i = 0; i < pipeSystem.order.orderedPipes.size(); i++) {
+                basketModel.addElement(pipeSystem.order.orderedPipes.get(i));
+            }
             basketModel.addElement("Valid Pipe :)");
             DefaultForm();
         }
@@ -753,6 +758,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
     private void jButtonRemoveSelectedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoveSelectedActionPerformed
         // Remove item X at list index
         basketModel.remove(jListBasketList.getSelectedIndex());
+        pipeSystem.order.orderedPipes.remove((jListBasketList.getSelectedIndex()));
     }//GEN-LAST:event_jButtonRemoveSelectedActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed

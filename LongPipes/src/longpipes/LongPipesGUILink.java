@@ -11,7 +11,7 @@ package longpipes;
  */
 public class LongPipesGUILink {
     
-    static Order order = new Order();
+    public Order order = new Order();
     
     // Variables to pull from GUI
     public double PipeLength;
