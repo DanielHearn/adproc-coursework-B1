@@ -7,8 +7,8 @@ package longpipes;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
 import javax.swing.DefaultListModel;
-
 
 /**
  *
@@ -24,13 +24,13 @@ public class LongPipesSystem extends javax.swing.JFrame {
         DefaultForm();
         SetupBasketList();
         UpdateFormDateTime();
+        GenerateOrderNumber();
     }
 
-    // 750834 Setup objects
+    // Setup objects
     DefaultListModel basketModel = new DefaultListModel();
     LongPipesGUILink pipeSystem = new LongPipesGUILink();
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -548,11 +548,6 @@ public class LongPipesSystem extends javax.swing.JFrame {
         jTextFieldOrderTotalCost.setEditable(false);
         jTextFieldOrderTotalCost.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         jTextFieldOrderTotalCost.setText("£0");
-        jTextFieldOrderTotalCost.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldOrderTotalCostActionPerformed(evt);
-            }
-        });
 
         jLabelTotalOrders.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelTotalOrders.setText("TOTAL ORDERS:");
@@ -560,11 +555,6 @@ public class LongPipesSystem extends javax.swing.JFrame {
         jTextFieldTotalOrders.setEditable(false);
         jTextFieldTotalOrders.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         jTextFieldTotalOrders.setText("0");
-        jTextFieldTotalOrders.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldTotalOrdersActionPerformed(evt);
-            }
-        });
 
         jLabelOrderRef.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelOrderRef.setText("ORDER REF:");
@@ -722,73 +712,16 @@ public class LongPipesSystem extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonResetOrderActionPerformed
 
     private void jButtonClearBasketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearBasketActionPerformed
-        // Clear basket.
-        basketModel.clear();
-        pipeSystem.order.orderedPipes.clear();
+        clearBasket();
     }//GEN-LAST:event_jButtonClearBasketActionPerformed
 
-    /**
-     * Run once add order button clicked, takes pipe inputs and validates them
-     * @author Dan 801685
-     */
     private void jButtonAddOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddOrderActionPerformed
-        // TEST
-        // Send to GUI link which will validate pipe type and add new pipe to order
-        double pipeLength = (Integer) jSpinnerLength.getValue();     
-        double pipeDiameter = (Integer) jSpinnerDiameter.getValue();                     
-        int pipeGrade = 1;
-        if(jRadioButtonGrade1.isSelected() == true) {
-            pipeGrade = 1;
-        } else if(jRadioButtonGrade2.isSelected() == true) {
-            pipeGrade = 2;
-        } else if(jRadioButtonGrade3.isSelected() == true) {
-            pipeGrade = 3;
-        } else if(jRadioButtonGrade4.isSelected() == true) {
-            pipeGrade = 4;
-        } else if(jRadioButtonGrade5.isSelected() == true) {
-            pipeGrade = 5;
-        } 
-        int pipeColors = 0;
-        if(jRadioButtonColor0.isSelected() == true) {
-            pipeColors = 0;
-        } else if(jRadioButtonColor1.isSelected() == true) {
-            pipeColors = 1;
-        } else if(jRadioButtonColor2.isSelected() == true) {
-            pipeColors = 2;
-        }
- 
-        Boolean pipeInsulation = jToggleButtonInnerInsulation.isSelected();
-        Boolean pipeReinforcement = jToggleButtonOuterReinforcement.isSelected();
-        Boolean pipeChemicalResistance = jToggleButtonChemicalResistance.isSelected();
-        int pipeQuantity = (Integer) jSpinnerQuantity.getValue();       
-        
-        String pipeStatusText = pipeSystem.ValidatePipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeInsulation, pipeReinforcement, pipeChemicalResistance, pipeQuantity);
-        jLabelStatus.setText(pipeStatusText);
-        //Need to get pipe string and find way of returning pipe type
-        if (pipeStatusText == "Pipe is valid") {           
-            basketModel.clear();
-            for (int i = 0; i < pipeSystem.order.orderedPipes.size(); i++) {
-                basketModel.addElement(pipeSystem.order.orderedPipes.get(i));
-            }
-            DefaultForm();
-            updateInvoiceUI();
-        }
+        addNewPipeOrder();
     }//GEN-LAST:event_jButtonAddOrderActionPerformed
 
     private void jButtonRemoveSelectedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoveSelectedActionPerformed
-        // Remove item X at list index
-        int listIndex = jListBasketList.getSelectedIndex();
-        System.out.println(listIndex);
-        if (listIndex >= 0) {
-            basketModel.remove(listIndex);
-            pipeSystem.order.orderedPipes.remove((listIndex));
-            updateInvoiceUI();
-        }
+        removeSelectedPipe();
     }//GEN-LAST:event_jButtonRemoveSelectedActionPerformed
-
-    private void jTextFieldTotalOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTotalOrdersActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldTotalOrdersActionPerformed
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         // TODO add your handling code here:
@@ -802,13 +735,10 @@ public class LongPipesSystem extends javax.swing.JFrame {
         jToggleButtonChemicalResistance.setSelected(false);
     }//GEN-LAST:event_jButtonClearFeaturesActionPerformed
 
-    private void jTextFieldOrderTotalCostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldOrderTotalCostActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldOrderTotalCostActionPerformed
-
     private void jButtonBuyOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuyOrderActionPerformed
         // TODO add your handling code here:
         //ADD INVOICE LIST INFORMATION GENERATION HERE
+        // LEE WILL DO
     }//GEN-LAST:event_jButtonBuyOrderActionPerformed
 
     /**
@@ -910,11 +840,21 @@ public class LongPipesSystem extends javax.swing.JFrame {
     private javax.swing.ButtonGroup pipeGradeGroup;
     // End of variables declaration//GEN-END:variables
 
-    /** 
-    * @return Default the form and clear all the fields.
-    * @author Lee 750834
-    */ 
-    public void DefaultForm(){
+    /**
+     * @return Generates a random order number. This is just cosmetic.
+     * @author Lee 750834
+     */
+    public void GenerateOrderNumber() {
+        Random rand = new Random();
+        int orderNo = rand.nextInt(9999) + 1;
+        jTextFieldOrderRef.setText("00" + Integer.toString(orderNo));
+    }
+
+    /**
+     * @return Default the form and clear all the fields.
+     * @author Lee 750834
+     */
+    public void DefaultForm() {
         jSpinnerLength.setValue(0);
         jSpinnerDiameter.setValue(0);
         jSpinnerQuantity.setValue(0);
@@ -924,53 +864,124 @@ public class LongPipesSystem extends javax.swing.JFrame {
         jToggleButtonOuterReinforcement.setSelected(false);
         jToggleButtonChemicalResistance.setSelected(false);
     }
-    
-    /** 
-    * @return Update the date and time within the form every mouseclick. (cant find timers)
-    * @author Lee 750834
-    */ 
-    public void UpdateFormDateTime(){
-        Date date = new Date( );
-        SimpleDateFormat _time = new SimpleDateFormat ("kk:mm");
-        SimpleDateFormat _date = new SimpleDateFormat ("dd/MM//yyy");
+
+    /**
+     * @return Update the date and time within the form every mouseclick. (cant
+     * find timers)
+     * @author Lee 750834
+     */
+    public void UpdateFormDateTime() {
+        Date date = new Date();
+        SimpleDateFormat _time = new SimpleDateFormat("kk:mm");
+        SimpleDateFormat _date = new SimpleDateFormat("dd/MM//yyy");
         jLabelStatusTime.setText(_time.format(date));
         jLabelOrderTime.setText("Order Time: " + _time.format(date));
         jLabelOrderDate.setText("Order Date: " + _date.format(date));
     }
-    
-    /** 
-    * Update the invoice UI new order information
-    * @author Dan 801685
-    */ 
+
+    /**
+     * Update the invoice UI new order information
+     * @author Dan 801685
+     */
     public void updateInvoiceUI() {
         updateTotalCost();
         updateTotalOrders();
     }
-    
-    /** 
-    * Update the total cost label with the total order cost
-    * @author Dan 801685
-    */ 
+
+    /**
+     * Update the total cost label with the total order cost
+     * @author Dan 801685
+     */
     public void updateTotalCost() {
         String orderTotalCost = Double.toString(pipeSystem.orderTotalCost());
         jTextFieldOrderTotalCost.setText(orderTotalCost);
     }
-    
-    /** 
-    * Update the total order label with the total order number
-    * @author Dan 801685
-    */ 
+
+    /**
+     * Update the total order label with the total order number
+     * @author Dan 801685
+     */
     public void updateTotalOrders() {
         String totalOrders = Integer.toString(pipeSystem.orderTotalOrders());
         jTextFieldTotalOrders.setText(totalOrders);
     }
-    
-    /** 
-    * @return Create a new basket list model.
-    * @author Lee 750834
-    */ 
-    public void SetupBasketList(){
+
+    /**
+     * @return Create a new basket list model.
+     * @author Lee 750834
+     */
+    public void SetupBasketList() {
         jListBasketList.setModel(basketModel);
     }
 
+    /**
+     * @return Removes a selected pipe.
+     * @author Lee 750834
+     */
+    public void removeSelectedPipe() {
+        int listIndex = jListBasketList.getSelectedIndex();
+        System.out.println(listIndex);
+        if (listIndex >= 0) {
+            basketModel.remove(listIndex);
+            pipeSystem.order.orderedPipes.remove((listIndex));
+            updateInvoiceUI();
+        }
+    }
+
+    /**
+     * @return Clear the basket and update the UI.
+     * @author Lee 750834
+     */
+    public void clearBasket() {
+        basketModel.clear();
+        pipeSystem.order.orderedPipes.clear();
+        updateInvoiceUI();
+    }
+
+    /**
+     * @return Send to link to validate pipe type and add to order.
+     * @author Lee 750834
+     * @author Dan 801685
+     */
+    public void addNewPipeOrder() {
+        double pipeLength = (Integer) jSpinnerLength.getValue();
+        double pipeDiameter = (Integer) jSpinnerDiameter.getValue();
+        int pipeGrade = 1;
+        if (jRadioButtonGrade1.isSelected() == true) {
+            pipeGrade = 1;
+        } else if (jRadioButtonGrade2.isSelected() == true) {
+            pipeGrade = 2;
+        } else if (jRadioButtonGrade3.isSelected() == true) {
+            pipeGrade = 3;
+        } else if (jRadioButtonGrade4.isSelected() == true) {
+            pipeGrade = 4;
+        } else if (jRadioButtonGrade5.isSelected() == true) {
+            pipeGrade = 5;
+        }
+        int pipeColors = 0;
+        if (jRadioButtonColor0.isSelected() == true) {
+            pipeColors = 0;
+        } else if (jRadioButtonColor1.isSelected() == true) {
+            pipeColors = 1;
+        } else if (jRadioButtonColor2.isSelected() == true) {
+            pipeColors = 2;
+        }
+
+        Boolean pipeInsulation = jToggleButtonInnerInsulation.isSelected();
+        Boolean pipeReinforcement = jToggleButtonOuterReinforcement.isSelected();
+        Boolean pipeChemicalResistance = jToggleButtonChemicalResistance.isSelected();
+        int pipeQuantity = (Integer) jSpinnerQuantity.getValue();
+
+        String pipeStatusText = pipeSystem.ValidatePipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeInsulation, pipeReinforcement, pipeChemicalResistance, pipeQuantity);
+        jLabelStatus.setText(pipeStatusText);
+        //Need to get pipe string and find way of returning pipe type
+        if (pipeStatusText == "Pipe is valid") {
+            basketModel.clear();
+            for (int i = 0; i < pipeSystem.order.orderedPipes.size(); i++) {
+                basketModel.addElement(pipeSystem.order.orderedPipes.get(i));
+            }
+            DefaultForm();
+            updateInvoiceUI();
+        }
+    }
 }
