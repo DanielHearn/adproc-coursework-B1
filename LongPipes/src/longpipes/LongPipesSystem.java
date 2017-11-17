@@ -92,6 +92,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
         jTextFieldTotalOrders = new javax.swing.JTextField();
         jLabelOrderRef = new javax.swing.JLabel();
         jTextFieldOrderRef = new javax.swing.JTextField();
+        jButtonBuyOrder = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jPanelTopInfo = new javax.swing.JPanel();
@@ -572,6 +573,13 @@ public class LongPipesSystem extends javax.swing.JFrame {
         jTextFieldOrderRef.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         jTextFieldOrderRef.setText("003421");
 
+        jButtonBuyOrder.setText("Buy Order");
+        jButtonBuyOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBuyOrderActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelFinalCostLayout = new javax.swing.GroupLayout(jPanelFinalCost);
         jPanelFinalCost.setLayout(jPanelFinalCostLayout);
         jPanelFinalCostLayout.setHorizontalGroup(
@@ -579,14 +587,19 @@ public class LongPipesSystem extends javax.swing.JFrame {
             .addGroup(jPanelFinalCostLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelFinalCostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelOrderRef, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelTotalOrders, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelTotalCost, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanelFinalCostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextFieldTotalOrders, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextFieldOrderTotalCost, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
-                    .addComponent(jTextFieldOrderRef))
+                    .addGroup(jPanelFinalCostLayout.createSequentialGroup()
+                        .addGroup(jPanelFinalCostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelOrderRef, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelTotalOrders, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelTotalCost, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelFinalCostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextFieldTotalOrders, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextFieldOrderTotalCost, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+                            .addComponent(jTextFieldOrderRef)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFinalCostLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonBuyOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanelFinalCostLayout.setVerticalGroup(
@@ -604,7 +617,8 @@ public class LongPipesSystem extends javax.swing.JFrame {
                 .addGroup(jPanelFinalCostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelTotalCost)
                     .addComponent(jTextFieldOrderTotalCost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonBuyOrder))
         );
 
         jTextArea1.setEditable(false);
@@ -632,7 +646,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
                 .addComponent(jPanelBasketControl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanelFinalCost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane4)
                 .addContainerGap())
         );
@@ -792,6 +806,11 @@ public class LongPipesSystem extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldOrderTotalCostActionPerformed
 
+    private void jButtonBuyOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuyOrderActionPerformed
+        // TODO add your handling code here:
+        //ADD INVOICE LIST INFORMATION GENERATION HERE
+    }//GEN-LAST:event_jButtonBuyOrderActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -829,6 +848,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAddOrder;
+    private javax.swing.JButton jButtonBuyOrder;
     private javax.swing.JButton jButtonClearBasket;
     private javax.swing.JButton jButtonClearFeatures;
     private javax.swing.JButton jButtonRemoveSelected;
