@@ -756,7 +756,6 @@ public class LongPipesSystem extends javax.swing.JFrame {
             for (int i = 0; i < pipeSystem.order.orderedPipes.size(); i++) {
                 basketModel.addElement(pipeSystem.order.orderedPipes.get(i));
             }
-            basketModel.addElement("Valid Pipe :)");
             DefaultForm();
             updateInvoiceUI();
         }
@@ -764,8 +763,13 @@ public class LongPipesSystem extends javax.swing.JFrame {
 
     private void jButtonRemoveSelectedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoveSelectedActionPerformed
         // Remove item X at list index
-        basketModel.remove(jListBasketList.getSelectedIndex());
-        pipeSystem.order.orderedPipes.remove((jListBasketList.getSelectedIndex()));
+        int listIndex = jListBasketList.getSelectedIndex();
+        System.out.println(listIndex);
+        if (listIndex >= 0) {
+            basketModel.remove(listIndex);
+            pipeSystem.order.orderedPipes.remove((listIndex));
+            updateInvoiceUI();
+        }
     }//GEN-LAST:event_jButtonRemoveSelectedActionPerformed
 
     private void jTextFieldTotalOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTotalOrdersActionPerformed

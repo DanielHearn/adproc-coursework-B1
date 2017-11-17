@@ -48,7 +48,7 @@ public class Order {
     }
     
     /**
-    * Prints out each of the pipe's details then the order's total cost
+    * Prints out each of the pipe details then the order total cost
     * @author Dan 801685
     */
     public void printInvoice() {
