@@ -853,7 +853,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
     */ 
     public void UpdateFormDateTime(){
        Date date = new Date( );
-      SimpleDateFormat _time = new SimpleDateFormat ("hh:mm");
+      SimpleDateFormat _time = new SimpleDateFormat ("kk:mm");
        SimpleDateFormat _date = new SimpleDateFormat ("dd/MM//yyy");
         jLabelStatusTime.setText(_time.format(date));
         jLabelOrderTime.setText("Order Time: " + _time.format(date));
