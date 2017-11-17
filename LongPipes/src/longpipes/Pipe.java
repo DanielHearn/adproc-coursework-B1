@@ -180,7 +180,7 @@ public class Pipe {
         return pipeCost * pipeQuantity;
     }
    
-     /**
+    /**
     * Print out all of the pipe details
     */
     public void printDetails() {
@@ -195,5 +195,36 @@ public class Pipe {
         System.out.println("Chemical Reinforcement: " + chemicalResistance);
         System.out.println("Pipe Quantity: " + pipeQuantity);
         System.out.println("----------------------------------"); 
+    }
+    
+    /**
+    * @return String containing all the pipe details
+    */
+    public String getDetails() {
+        String classNameString = this.getClass().getSimpleName();
+        String className = "Type ";
+        switch (classNameString) {
+            case "TypeOnePipe":  
+                className += "1";
+                break;
+            case "TypeTwoPipe":  
+                className += "2";
+                break;
+            case "TypeThreePipe":  
+                className += "3";
+                break;
+            case "TypeFourPipe":  
+                className += "4";
+                break;
+            case "TypeFivePipe":  
+                className += "5";
+                break;
+            default:  
+                className += "1";
+                break;
+        }        
+        
+        String pipeDetailString = className + " - [Length: " + length + ", Diameter: " + outerDiameter + ", Colours: " + colours + ", Quantity: " + pipeQuantity;
+        return pipeDetailString;
     }
 }

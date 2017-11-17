@@ -117,7 +117,7 @@ public class LongPipesGUILink {
     * @author Dan 801685
     */ 
     public int orderTotalOrders() {
-        return order.totalOrders();
+        return order.getOrderedPipesLength();
     }
 }
     

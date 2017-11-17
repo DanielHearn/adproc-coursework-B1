@@ -43,7 +43,7 @@ public class Order {
     * @return The number of individual orders within the order.
     * @author Dan 801685
     */ 
-    public int totalOrders() {
+    public int getOrderedPipesLength() {
         return orderedPipes.size();
     }
     
@@ -57,5 +57,9 @@ public class Order {
             currentPipe.printDetails();
         }
         System.out.println("Total Order Cost: " + totalCost());
+    }
+    
+    public ArrayList<Pipe> getOrderedPipes() {
+        return orderedPipes;
     }
 }

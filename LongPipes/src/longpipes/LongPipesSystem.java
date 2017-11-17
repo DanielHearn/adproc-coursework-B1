@@ -920,10 +920,9 @@ public class LongPipesSystem extends javax.swing.JFrame {
      */
     public void removeSelectedPipe() {
         int listIndex = jListBasketList.getSelectedIndex();
-        System.out.println(listIndex);
         if (listIndex >= 0) {
             basketModel.remove(listIndex);
-            pipeSystem.order.orderedPipes.remove((listIndex));
+            pipeSystem.order.orderedPipes.remove((listIndex)); //NEW FUNCTION
             updateInvoiceUI();
         }
     }
@@ -934,7 +933,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
      */
     public void clearBasket() {
         basketModel.clear();
-        pipeSystem.order.orderedPipes.clear();
+        pipeSystem.order.orderedPipes.clear(); //NEW FUNCTION
         updateInvoiceUI();
     }
 
@@ -977,8 +976,9 @@ public class LongPipesSystem extends javax.swing.JFrame {
         //Need to get pipe string and find way of returning pipe type
         if (pipeStatusText == "Pipe is valid") {
             basketModel.clear();
-            for (int i = 0; i < pipeSystem.order.orderedPipes.size(); i++) {
-                basketModel.addElement(pipeSystem.order.orderedPipes.get(i));
+            
+            for (int i = 0; i < pipeSystem.order.orderedPipes.size(); i++) {  //NEW FUNCTION
+                basketModel.addElement(pipeSystem.order.orderedPipes.get(i).getDetails());  //NEW FUNCTION
             }
             DefaultForm();
             updateInvoiceUI();
