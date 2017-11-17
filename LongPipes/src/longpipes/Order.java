@@ -19,6 +19,7 @@ public class Order {
     
     /**
     * @param inputPipe The pipe being added to the order
+    * @author Dan 801685
     */
     public void addPipe(Pipe inputPipe) {
         int orderPosition = orderedPipes.size();
@@ -27,6 +28,7 @@ public class Order {
     
     /**
     * @return The total cost of the order, generated from each pipes cost
+    * @author Dan 801685
     */
     public double totalCost() {
         double totalCost = 0;
@@ -36,9 +38,18 @@ public class Order {
         }
         return totalCost;
     }
+        
+    /** 
+    * @return The number of individual orders within the order.
+    * @author Dan 801685
+    */ 
+    public int totalOrders() {
+        return orderedPipes.size();
+    }
     
     /**
     * Prints out each of the pipe's details then the order's total cost
+    * @author Dan 801685
     */
     public void printInvoice() {
         for (int pipe = 0; pipe < orderedPipes.size(); pipe ++) {

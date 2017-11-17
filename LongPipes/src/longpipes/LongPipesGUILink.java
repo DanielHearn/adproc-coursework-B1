@@ -102,5 +102,22 @@ public class LongPipesGUILink {
         }
 
     }
+    
+    /** 
+    * @return The total cost of the order
+    * @author Dan 801685
+    */ 
+    public double orderTotalCost() {
+        return order.totalCost();
+    }
+    
+    
+    /** 
+    * @return The number of individual orders within the order.
+    * @author Dan 801685
+    */ 
+    public int orderTotalOrders() {
+        return order.totalOrders();
+    }
 }
     

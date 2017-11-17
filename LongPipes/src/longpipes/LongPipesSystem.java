@@ -87,11 +87,11 @@ public class LongPipesSystem extends javax.swing.JFrame {
         jButtonRemoveSelected = new javax.swing.JButton();
         jPanelFinalCost = new javax.swing.JPanel();
         jLabelTotalCost = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextFieldOrderTotalCost = new javax.swing.JTextField();
         jLabelTotalOrders = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jTextFieldTotalOrders = new javax.swing.JTextField();
         jLabelOrderRef = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jTextFieldOrderRef = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jPanelTopInfo = new javax.swing.JPanel();
@@ -544,28 +544,33 @@ public class LongPipesSystem extends javax.swing.JFrame {
         jLabelTotalCost.setForeground(new java.awt.Color(51, 204, 0));
         jLabelTotalCost.setText("ORDER TOTAL:");
 
-        jTextField1.setEditable(false);
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        jTextField1.setText("£140.40");
+        jTextFieldOrderTotalCost.setEditable(false);
+        jTextFieldOrderTotalCost.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
+        jTextFieldOrderTotalCost.setText("£0");
+        jTextFieldOrderTotalCost.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldOrderTotalCostActionPerformed(evt);
+            }
+        });
 
         jLabelTotalOrders.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelTotalOrders.setText("TOTAL ORDERS:");
 
-        jTextField2.setEditable(false);
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        jTextField2.setText("4");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldTotalOrders.setEditable(false);
+        jTextFieldTotalOrders.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
+        jTextFieldTotalOrders.setText("0");
+        jTextFieldTotalOrders.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                jTextFieldTotalOrdersActionPerformed(evt);
             }
         });
 
         jLabelOrderRef.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelOrderRef.setText("ORDER REF:");
 
-        jTextField3.setEditable(false);
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        jTextField3.setText("003421");
+        jTextFieldOrderRef.setEditable(false);
+        jTextFieldOrderRef.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
+        jTextFieldOrderRef.setText("003421");
 
         javax.swing.GroupLayout jPanelFinalCostLayout = new javax.swing.GroupLayout(jPanelFinalCost);
         jPanelFinalCost.setLayout(jPanelFinalCostLayout);
@@ -579,9 +584,9 @@ public class LongPipesSystem extends javax.swing.JFrame {
                     .addComponent(jLabelTotalCost, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelFinalCostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
-                    .addComponent(jTextField3))
+                    .addComponent(jTextFieldTotalOrders, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTextFieldOrderTotalCost, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+                    .addComponent(jTextFieldOrderRef))
                 .addContainerGap())
         );
         jPanelFinalCostLayout.setVerticalGroup(
@@ -589,16 +594,16 @@ public class LongPipesSystem extends javax.swing.JFrame {
             .addGroup(jPanelFinalCostLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelFinalCostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldOrderRef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelOrderRef))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelFinalCostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelTotalOrders)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldTotalOrders, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelFinalCostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelTotalCost)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldOrderTotalCost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -709,6 +714,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
 
     /**
      * Run once add order button clicked, takes pipe inputs and validates them
+     * @author Dan 801685
      */
     private void jButtonAddOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddOrderActionPerformed
         // TEST
@@ -747,6 +753,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
         if (pipeStatusText == "Pipe is valid") {
             basketModel.addElement("Valid Pipe :)");
             DefaultForm();
+            updateInvoiceUI();
         }
     }//GEN-LAST:event_jButtonAddOrderActionPerformed
 
@@ -755,9 +762,9 @@ public class LongPipesSystem extends javax.swing.JFrame {
         basketModel.remove(jListBasketList.getSelectedIndex());
     }//GEN-LAST:event_jButtonRemoveSelectedActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void jTextFieldTotalOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTotalOrdersActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_jTextFieldTotalOrdersActionPerformed
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         // TODO add your handling code here:
@@ -770,6 +777,10 @@ public class LongPipesSystem extends javax.swing.JFrame {
         jToggleButtonOuterReinforcement.setSelected(false);
         jToggleButtonChemicalResistance.setSelected(false);
     }//GEN-LAST:event_jButtonClearFeaturesActionPerformed
+
+    private void jTextFieldOrderTotalCostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldOrderTotalCostActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldOrderTotalCostActionPerformed
 
     /**
      * @param args the command line arguments
@@ -858,9 +869,9 @@ public class LongPipesSystem extends javax.swing.JFrame {
     private javax.swing.JSpinner jSpinnerQuantity;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextFieldOrderRef;
+    private javax.swing.JTextField jTextFieldOrderTotalCost;
+    private javax.swing.JTextField jTextFieldTotalOrders;
     private javax.swing.JToggleButton jToggleButtonChemicalResistance;
     private javax.swing.JToggleButton jToggleButtonInnerInsulation;
     private javax.swing.JToggleButton jToggleButtonOuterReinforcement;
@@ -895,6 +906,33 @@ public class LongPipesSystem extends javax.swing.JFrame {
         jLabelStatusTime.setText(_time.format(date));
         jLabelOrderTime.setText("Order Time: " + _time.format(date));
         jLabelOrderDate.setText("Order Date: " + _date.format(date));
+    }
+    
+    /** 
+    * Update the invoice UI new order information
+    * @author Dan 801685
+    */ 
+    public void updateInvoiceUI() {
+        updateTotalCost();
+        updateTotalOrders();
+    }
+    
+    /** 
+    * Update the total cost label with the total order cost
+    * @author Dan 801685
+    */ 
+    public void updateTotalCost() {
+        String orderTotalCost = Double.toString(pipeSystem.orderTotalCost());
+        jTextFieldOrderTotalCost.setText(orderTotalCost);
+    }
+    
+    /** 
+    * Update the total order label with the total order number
+    * @author Dan 801685
+    */ 
+    public void updateTotalOrders() {
+        String totalOrders = Integer.toString(pipeSystem.orderTotalOrders());
+        jTextFieldTotalOrders.setText(totalOrders);
     }
     
     /** 
