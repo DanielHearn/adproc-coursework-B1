@@ -5,6 +5,8 @@
  */
 package longpipes;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author up750834
@@ -13,7 +15,6 @@ public class LongPipesGUILink {
     
     public Order order = new Order();
     
-    // Variables to pull from GUI
     public double PipeLength;
     public double PipeDiameter;
     public int PipeGrade;
@@ -36,7 +37,7 @@ public class LongPipesGUILink {
     public String ValidatePipe(double pipeLength, double pipeDiameter, int pipeGrade, int pipeColors, Boolean pipeInsulation, Boolean pipeReinforcement, Boolean pipeChemicalResistance, int pipeQuantity) {
        
         boolean areInputsValid = true;
-        String invalidText = "Pipe is not valid due to: ";
+        String invalidText = "Pipe input is not valid due to: ";
         
         if (!(pipeLength >= 0.1 && pipeLength <= 6)) {
             areInputsValid = false;
@@ -59,10 +60,10 @@ public class LongPipesGUILink {
         System.out.println("Diameter: " + pipeDiameter);
         System.out.println("Grade: " + pipeGrade);
         System.out.println("Color: " + pipeColors);
-        System.out.println("pipe insulation:  " + pipeInsulation);
-        System.out.println("pipe reinforcement: " + pipeReinforcement);
-        System.out.println("pipe chemical resistance: " + pipeChemicalResistance);
-        System.out.println("pipe quantity: " + pipeQuantity);
+        System.out.println("Pipe insulation:  " + pipeInsulation);
+        System.out.println("Pipe reinforcement: " + pipeReinforcement);
+        System.out.println("Pipe chemical resistance: " + pipeChemicalResistance);
+        System.out.println("Pipe quantity: " + pipeQuantity);
 
         Pipe pipe = new Pipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeInsulation, pipeReinforcement, pipeChemicalResistance, pipeQuantity);
 
@@ -71,28 +72,22 @@ public class LongPipesGUILink {
             
             
             if((pipeGrade >= 1 && pipeGrade <= 3) && (pipeColors == 0) && (pipeInsulation == false) && (pipeReinforcement == false)) {
-                System.out.println("Pipe type 1");
                 pipe = new TypeOnePipe(pipeLength, pipeDiameter, pipeGrade, pipeChemicalResistance, pipeQuantity);
             } else if ((pipeGrade >= 2 && pipeGrade <= 4) && (pipeColors == 1) && (pipeInsulation == false) && (pipeReinforcement == false)) {
-                System.out.println("Pipe type 2");
                 pipe = new TypeTwoPipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeChemicalResistance, pipeQuantity);  
             } else if ((pipeGrade >= 2 && pipeGrade <= 5) && (pipeColors == 2) && (pipeInsulation == false) && (pipeReinforcement == false)) {
-                System.out.println("Pipe type 3");
                 pipe = new TypeThreePipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeChemicalResistance, pipeQuantity);  
             } else if ((pipeGrade >= 2 && pipeGrade <= 5) && (pipeColors == 2) && (pipeInsulation == true) && (pipeReinforcement == false)) {
-                System.out.println("Pipe type 4");
                 pipe = new TypeFourPipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeChemicalResistance, pipeQuantity);  
             } else if ((pipeGrade >= 3 && pipeGrade <= 5) && (pipeColors == 2) && (pipeInsulation == true) && (pipeReinforcement == true)) {
-                System.out.println("Pipe type 5");
                 pipe = new TypeFivePipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeChemicalResistance, pipeQuantity);  
             } else {
-                System.out.println("INVALID PIPE");
                 isPipeTypeValid = false;
             }
             
             if (isPipeTypeValid) {
                 order.addPipe(pipe);  
-                return "Pipe is valid"; 
+                return "Pipe added to basket"; 
             } else {
                 return "Pipe specifications do meet any of our available pipe types"; 
             }
@@ -118,6 +113,22 @@ public class LongPipesGUILink {
     */ 
     public int orderTotalOrders() {
         return order.getOrderedPipesLength();
+    }
+    
+    /**
+    * 
+    * @return The invoice
+    */
+    public String generateOrderInvoice() {
+        return order.getInvoice();
+    }
+    
+    /**
+    * 
+    * @return The pipes within the ordered pipes arraylist
+    */
+    public ArrayList<Pipe> getOrderedPipes() {
+        return order.orderedPipes;
     }
 }
     

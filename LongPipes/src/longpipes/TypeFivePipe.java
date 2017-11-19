@@ -15,4 +15,21 @@ public class TypeFivePipe extends Pipe{
         super(inputLength, inputDiameter, pipeGrade, pipeColors, true, true, pipeChemicalResistance, pipeQuantity);
     }
     
+    /**
+    * @return The total cost of the pipe based on volume, additional costs and grade
+    */
+    @Override
+    public double calculateCost() {
+        double percentageExtra = getPercentageExtraCosts();
+        
+        double pipeVolume = calculatePipeVolume();
+        
+        double materialCost = pipeVolume * 0.95;
+
+        System.out.println("Extra: " + percentageExtra);
+        double pipeCost = materialCost + (materialCost * percentageExtra);
+        System.out.println("Pipe Cost: " + pipeCost);
+        double orderCost = pipeCost * getPipeQuantity();
+        return orderCost;
+    }
 }

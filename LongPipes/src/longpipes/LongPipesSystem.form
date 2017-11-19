@@ -6,25 +6,6 @@
     </Component>
     <Component class="javax.swing.ButtonGroup" name="pipeColorGroup">
     </Component>
-    <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
-      <SubComponents>
-        <Menu class="javax.swing.JMenu" name="jMenu1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="File"/>
-          </Properties>
-        </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Edit"/>
-          </Properties>
-        </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu3">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="About"/>
-          </Properties>
-        </Menu>
-      </SubComponents>
-    </Menu>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -32,7 +13,6 @@
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
-    <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
@@ -54,34 +34,33 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="jPanelStatus" alignment="0" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jPanelTopInfo" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="jPanelOrder" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jPanelBasket" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="jPanelTopInfo" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
-          <Component id="jPanelStatus" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="jPanelTopInfo" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanelTopInfo" max="32767" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jPanelOrder" max="32767" attributes="0"/>
-                  <Component id="jPanelBasket" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jPanelOrder" min="-2" max="-2" attributes="0"/>
+                  <Component id="jPanelBasket" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanelStatus" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -103,9 +82,11 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabelStatus" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="jLabelStatusTime" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -130,7 +111,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="READY"/>
+            <Property name="text" type="java.lang.String" value="Enter your first pipe order"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelStatusTime">
@@ -167,13 +148,15 @@
                       <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
                       <Component id="jPanelAdditionalFeatures" max="32767" attributes="0"/>
                       <Component id="jPanelQuantity" max="32767" attributes="0"/>
-                      <Component id="jPanelDiameter" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jPanelLength" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jPanelInfo" max="32767" attributes="0"/>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="jButtonResetOrder" min="-2" pref="145" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jButtonAddOrder" min="-2" pref="207" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jButtonResetOrder" min="-2" pref="134" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="144" max="-2" attributes="0"/>
+                          <Component id="jButtonAddOrder" min="-2" pref="135" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="jPanelDiameter" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jPanelLength" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jPanelInfo" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -225,15 +208,12 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="jLabelLength" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
                               <Component id="jSpinnerLength" min="-2" pref="250" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabelLengthInfo" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="jLabelLengthInfo" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -263,7 +243,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="2"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Length to be set in meters"/>
+                <Property name="text" type="java.lang.String" value="Length to be set in meters (1m to 6m)"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JSpinner" name="jSpinnerLength">
@@ -287,15 +267,12 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabelDiameter" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
                               <Component id="jSpinnerDiameter" min="-2" pref="250" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabelDiameterInfo" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="jLabelDiameterInfo" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -325,7 +302,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="2"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Diameter to be set in inches"/>
+                <Property name="text" type="java.lang.String" value="Diameter to be set in inches (1&quot; to 6&quot;)"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JSpinner" name="jSpinnerDiameter">
@@ -500,13 +477,13 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jToggleButtonInnerInsulation" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jToggleButtonOuterReinforcement" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jToggleButtonChemicalResistance" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jButtonClearFeatures" alignment="0" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jCheckBoxChemicalResistance" min="-2" max="-2" attributes="0"/>
+                          <Component id="jCheckBoxOuterReinforcement" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jCheckBoxInnerInsulation" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonClearFeatures" alignment="0" min="-2" pref="133" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                       <Component id="jScrollPane2" min="-2" pref="233" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -519,12 +496,12 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jScrollPane2" min="-2" pref="108" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <Component id="jToggleButtonInnerInsulation" min="-2" max="-2" attributes="0"/>
+                              <Component id="jCheckBoxInnerInsulation" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jCheckBoxOuterReinforcement" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                              <Component id="jCheckBoxChemicalResistance" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jToggleButtonOuterReinforcement" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jToggleButtonChemicalResistance" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Component id="jButtonClearFeatures" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -534,21 +511,6 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JToggleButton" name="jToggleButtonInnerInsulation">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Inner Insulation"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JToggleButton" name="jToggleButtonOuterReinforcement">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Outer Reinforcement"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JToggleButton" name="jToggleButtonChemicalResistance">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Chemical Resistance"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JButton" name="jButtonClearFeatures">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Clear Features"/>
@@ -606,6 +568,21 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JCheckBox" name="jCheckBoxOuterReinforcement">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Outer Reinforcement"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="jCheckBoxInnerInsulation">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Inner Insulation"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="jCheckBoxChemicalResistance">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Chemical Resistance"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanelQuantity">
@@ -624,8 +601,8 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabelQuantity" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jSpinnerQuantity" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jSpinnerQuantity" min="-2" pref="251" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -654,7 +631,7 @@
         </Container>
         <Component class="javax.swing.JButton" name="jButtonResetOrder">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Reset Order"/>
+            <Property name="text" type="java.lang.String" value="Reset Pipe Order"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonResetOrderActionPerformed"/>
@@ -675,9 +652,9 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabelOrderDate" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="163" max="-2" attributes="0"/>
                       <Component id="jLabelOrderTime" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -709,7 +686,7 @@
         </Container>
         <Component class="javax.swing.JButton" name="jButtonAddOrder">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Add Order"/>
+            <Property name="text" type="java.lang.String" value="Add Pipe Order"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAddOrderActionPerformed"/>
@@ -750,7 +727,7 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jPanelFinalCost" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jScrollPane4" max="32767" attributes="0"/>
+                  <Component id="jScrollPane4" pref="244" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -772,7 +749,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane3" max="32767" attributes="0"/>
+                          <Component id="jScrollPane3" pref="460" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="jButtonClearBasket" min="-2" pref="118" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
@@ -808,13 +785,7 @@
                 <Component class="javax.swing.JList" name="jListBasketList">
                   <Properties>
                     <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                      <StringArray count="5">
-                        <StringItem index="0" value="Type I - [Length 15m, Diameter 10&quot;, Quantity 12]"/>
-                        <StringItem index="1" value="Type II - [Length 43m, Diameter 3&quot;, Quantity 25]"/>
-                        <StringItem index="2" value="Type III - [Length 18m, Diameter 2&quot;, Quantity 33]"/>
-                        <StringItem index="3" value="Type IV - [Length 23m, Diameter 6.4&quot;, Quantity 80]"/>
-                        <StringItem index="4" value="Type V - [Length 11m, Diameter 3.2&quot;, Quantity 45]"/>
-                      </StringArray>
+                      <StringArray count="0"/>
                     </Property>
                   </Properties>
                   <AuxValues>
@@ -865,8 +836,8 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="jTextFieldTotalOrders" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="jTextFieldOrderTotalCost" alignment="1" pref="184" max="32767" attributes="0"/>
-                                  <Component id="jTextFieldOrderRef" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldOrderTotalCost" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jTextFieldOrderRef" pref="184" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -948,12 +919,12 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="horizontalAlignment" type="int" value="11"/>
-                <Property name="text" type="java.lang.String" value="003421"/>
+                <Property name="text" type="java.lang.String" value="000000"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="jButtonBuyOrder">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Buy Order"/>
+                <Property name="text" type="java.lang.String" value="Complete Order"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonBuyOrderActionPerformed"/>
@@ -968,7 +939,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTextArea" name="jTextArea1">
+            <Component class="javax.swing.JTextArea" name="jTextAreaInvoice">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="20"/>
@@ -994,19 +965,24 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="313" max="-2" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="254" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="316" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="19" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -1018,6 +994,14 @@
               <Font name="Lucida Grande" size="18" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="LongPipes Ordering System"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel2">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lucida Grande" size="18" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="GrB-1"/>
           </Properties>
         </Component>
       </SubComponents>

@@ -6,6 +6,7 @@
 package longpipes;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
 import javax.swing.DefaultListModel;
@@ -21,10 +22,10 @@ public class LongPipesSystem extends javax.swing.JFrame {
      */
     public LongPipesSystem() {
         initComponents();
-        DefaultForm();
-        SetupBasketList();
-        UpdateFormDateTime();
-        GenerateOrderNumber();
+        defaultForm();
+        setupBasketList();
+        updateFormDateTime();
+        generateOrderNumber();
     }
 
     // Setup objects
@@ -65,12 +66,12 @@ public class LongPipesSystem extends javax.swing.JFrame {
         jRadioButtonColor1 = new javax.swing.JRadioButton();
         jRadioButtonColor2 = new javax.swing.JRadioButton();
         jPanelAdditionalFeatures = new javax.swing.JPanel();
-        jToggleButtonInnerInsulation = new javax.swing.JToggleButton();
-        jToggleButtonOuterReinforcement = new javax.swing.JToggleButton();
-        jToggleButtonChemicalResistance = new javax.swing.JToggleButton();
         jButtonClearFeatures = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jCheckBoxOuterReinforcement = new javax.swing.JCheckBox();
+        jCheckBoxInnerInsulation = new javax.swing.JCheckBox();
+        jCheckBoxChemicalResistance = new javax.swing.JCheckBox();
         jPanelQuantity = new javax.swing.JPanel();
         jLabelQuantity = new javax.swing.JLabel();
         jSpinnerQuantity = new javax.swing.JSpinner();
@@ -94,13 +95,10 @@ public class LongPipesSystem extends javax.swing.JFrame {
         jTextFieldOrderRef = new javax.swing.JTextField();
         jButtonBuyOrder = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jTextAreaInvoice = new javax.swing.JTextArea();
         jPanelTopInfo = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Long Pipes Ordering System");
@@ -116,7 +114,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
 
         jLabelStatus.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabelStatus.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelStatus.setText("READY");
+        jLabelStatus.setText("Enter your first pipe order");
 
         jLabelStatusTime.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabelStatusTime.setForeground(new java.awt.Color(255, 255, 255));
@@ -127,9 +125,11 @@ public class LongPipesSystem extends javax.swing.JFrame {
         jPanelStatusLayout.setHorizontalGroup(
             jPanelStatusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelStatusLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabelStatus)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelStatusTime))
+                .addComponent(jLabelStatusTime)
+                .addContainerGap())
         );
         jPanelStatusLayout.setVerticalGroup(
             jPanelStatusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,7 +147,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
         jLabelLength.setText("Length of pipe:");
 
         jLabelLengthInfo.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
-        jLabelLengthInfo.setText("Length to be set in meters");
+        jLabelLengthInfo.setText("Length to be set in meters (1m to 6m)");
 
         javax.swing.GroupLayout jPanelLengthLayout = new javax.swing.GroupLayout(jPanelLength);
         jPanelLength.setLayout(jPanelLengthLayout);
@@ -158,12 +158,10 @@ public class LongPipesSystem extends javax.swing.JFrame {
                 .addGroup(jPanelLengthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelLengthLayout.createSequentialGroup()
                         .addComponent(jLabelLength)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(82, 82, 82)
                         .addComponent(jSpinnerLength, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelLengthLayout.createSequentialGroup()
-                        .addComponent(jLabelLengthInfo)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addComponent(jLabelLengthInfo))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelLengthLayout.setVerticalGroup(
             jPanelLengthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,7 +180,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
         jLabelDiameter.setText("Outer diameter:");
 
         jLabelDiameterInfo.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
-        jLabelDiameterInfo.setText("Diameter to be set in inches");
+        jLabelDiameterInfo.setText("Diameter to be set in inches (1\" to 6\")");
 
         javax.swing.GroupLayout jPanelDiameterLayout = new javax.swing.GroupLayout(jPanelDiameter);
         jPanelDiameter.setLayout(jPanelDiameterLayout);
@@ -193,12 +191,10 @@ public class LongPipesSystem extends javax.swing.JFrame {
                 .addGroup(jPanelDiameterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelDiameterLayout.createSequentialGroup()
                         .addComponent(jLabelDiameter)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(78, 78, 78)
                         .addComponent(jSpinnerDiameter, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelDiameterLayout.createSequentialGroup()
-                        .addComponent(jLabelDiameterInfo)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addComponent(jLabelDiameterInfo))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelDiameterLayout.setVerticalGroup(
             jPanelDiameterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -297,12 +293,6 @@ public class LongPipesSystem extends javax.swing.JFrame {
 
         jPanelAdditionalFeatures.setBorder(javax.swing.BorderFactory.createTitledBorder("Additional Features"));
 
-        jToggleButtonInnerInsulation.setText("Inner Insulation");
-
-        jToggleButtonOuterReinforcement.setText("Outer Reinforcement");
-
-        jToggleButtonChemicalResistance.setText("Chemical Resistance");
-
         jButtonClearFeatures.setText("Clear Features");
         jButtonClearFeatures.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -345,18 +335,24 @@ public class LongPipesSystem extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(1).setResizable(false);
         }
 
+        jCheckBoxOuterReinforcement.setText("Outer Reinforcement");
+
+        jCheckBoxInnerInsulation.setText("Inner Insulation");
+
+        jCheckBoxChemicalResistance.setText("Chemical Resistance");
+
         javax.swing.GroupLayout jPanelAdditionalFeaturesLayout = new javax.swing.GroupLayout(jPanelAdditionalFeatures);
         jPanelAdditionalFeatures.setLayout(jPanelAdditionalFeaturesLayout);
         jPanelAdditionalFeaturesLayout.setHorizontalGroup(
             jPanelAdditionalFeaturesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAdditionalFeaturesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelAdditionalFeaturesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jToggleButtonInnerInsulation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jToggleButtonOuterReinforcement, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jToggleButtonChemicalResistance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonClearFeatures, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelAdditionalFeaturesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBoxChemicalResistance)
+                    .addComponent(jCheckBoxOuterReinforcement)
+                    .addComponent(jCheckBoxInnerInsulation)
+                    .addComponent(jButtonClearFeatures, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -367,11 +363,11 @@ public class LongPipesSystem extends javax.swing.JFrame {
                 .addGroup(jPanelAdditionalFeaturesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanelAdditionalFeaturesLayout.createSequentialGroup()
-                        .addComponent(jToggleButtonInnerInsulation)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jToggleButtonOuterReinforcement)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jToggleButtonChemicalResistance)
+                        .addComponent(jCheckBoxInnerInsulation)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jCheckBoxOuterReinforcement)
+                        .addGap(5, 5, 5)
+                        .addComponent(jCheckBoxChemicalResistance)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonClearFeatures)))
                 .addGap(26, 26, 26))
@@ -389,8 +385,8 @@ public class LongPipesSystem extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabelQuantity)
                 .addGap(18, 18, 18)
-                .addComponent(jSpinnerQuantity)
-                .addContainerGap())
+                .addComponent(jSpinnerQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelQuantityLayout.setVerticalGroup(
             jPanelQuantityLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -402,7 +398,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButtonResetOrder.setText("Reset Order");
+        jButtonResetOrder.setText("Reset Pipe Order");
         jButtonResetOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonResetOrderActionPerformed(evt);
@@ -422,9 +418,9 @@ public class LongPipesSystem extends javax.swing.JFrame {
             .addGroup(jPanelInfoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelOrderDate)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(163, 163, 163)
                 .addComponent(jLabelOrderTime)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelInfoLayout.setVerticalGroup(
             jPanelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -436,7 +432,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButtonAddOrder.setText("Add Order");
+        jButtonAddOrder.setText("Add Pipe Order");
         jButtonAddOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAddOrderActionPerformed(evt);
@@ -454,13 +450,14 @@ public class LongPipesSystem extends javax.swing.JFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanelAdditionalFeatures, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanelQuantity, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelDiameter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelLength, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelOrderLayout.createSequentialGroup()
-                        .addComponent(jButtonResetOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonAddOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanelOrderLayout.createSequentialGroup()
+                        .addComponent(jButtonResetOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(144, 144, 144)
+                        .addComponent(jButtonAddOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jPanelDiameter, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanelLength, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanelInfo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelOrderLayout.setVerticalGroup(
@@ -493,11 +490,6 @@ public class LongPipesSystem extends javax.swing.JFrame {
 
         jPanelBasketControl.setBorder(javax.swing.BorderFactory.createTitledBorder("Basket"));
 
-        jListBasketList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Type I - [Length 15m, Diameter 10\", Quantity 12]", "Type II - [Length 43m, Diameter 3\", Quantity 25]", "Type III - [Length 18m, Diameter 2\", Quantity 33]", "Type IV - [Length 23m, Diameter 6.4\", Quantity 80]", "Type V - [Length 11m, Diameter 3.2\", Quantity 45]" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane3.setViewportView(jListBasketList);
 
         jButtonClearBasket.setText("Clear Basket");
@@ -521,7 +513,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
             .addGroup(jPanelBasketControlLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelBasketControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
                     .addGroup(jPanelBasketControlLayout.createSequentialGroup()
                         .addComponent(jButtonClearBasket, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -561,9 +553,9 @@ public class LongPipesSystem extends javax.swing.JFrame {
 
         jTextFieldOrderRef.setEditable(false);
         jTextFieldOrderRef.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        jTextFieldOrderRef.setText("003421");
+        jTextFieldOrderRef.setText("000000");
 
-        jButtonBuyOrder.setText("Buy Order");
+        jButtonBuyOrder.setText("Complete Order");
         jButtonBuyOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonBuyOrderActionPerformed(evt);
@@ -585,8 +577,8 @@ public class LongPipesSystem extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanelFinalCostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextFieldTotalOrders, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextFieldOrderTotalCost, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
-                            .addComponent(jTextFieldOrderRef)))
+                            .addComponent(jTextFieldOrderTotalCost, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextFieldOrderRef, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFinalCostLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButtonBuyOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -611,11 +603,11 @@ public class LongPipesSystem extends javax.swing.JFrame {
                 .addComponent(jButtonBuyOrder))
         );
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Total of pipe x:\t\t\t£10.00\nTotal of pipe y:\t\t\t£9.33\nTotal of pipe z:\t\t\t£23.45\nInner Insulation:\t\t\t£13.44\nOuter Reinforcement:\t\t\t£11.48\nChemical Resistance:\t\t\t£63.21\nTotal Cost of pipe:\t\t\t£55.99\nTotal Cost of extra:\t\t\t£33.94\nOrder Total:\t\t\t\t£140.40\n\nOrder Ref No:\t\t\t\t003421\nDate:\t\t\t\t\t17/11/2017\nTime:\t\t\t\t\t05:32:29\n\tThanks for shopping with LongPipes");
-        jScrollPane4.setViewportView(jTextArea1);
+        jTextAreaInvoice.setEditable(false);
+        jTextAreaInvoice.setColumns(20);
+        jTextAreaInvoice.setRows(5);
+        jTextAreaInvoice.setText("Total of pipe x:\t\t\t£10.00\nTotal of pipe y:\t\t\t£9.33\nTotal of pipe z:\t\t\t£23.45\nInner Insulation:\t\t\t£13.44\nOuter Reinforcement:\t\t\t£11.48\nChemical Resistance:\t\t\t£63.21\nTotal Cost of pipe:\t\t\t£55.99\nTotal Cost of extra:\t\t\t£33.94\nOrder Total:\t\t\t\t£140.40\n\nOrder Ref No:\t\t\t\t003421\nDate:\t\t\t\t\t17/11/2017\nTime:\t\t\t\t\t05:32:29\n\tThanks for shopping with LongPipes");
+        jScrollPane4.setViewportView(jTextAreaInvoice);
 
         javax.swing.GroupLayout jPanelBasketLayout = new javax.swing.GroupLayout(jPanelBasket);
         jPanelBasket.setLayout(jPanelBasketLayout);
@@ -637,7 +629,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanelFinalCost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane4)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -646,69 +638,63 @@ public class LongPipesSystem extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel1.setText("LongPipes Ordering System");
 
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        jLabel2.setText("GrB-1");
+
         javax.swing.GroupLayout jPanelTopInfoLayout = new javax.swing.GroupLayout(jPanelTopInfo);
         jPanelTopInfo.setLayout(jPanelTopInfoLayout);
         jPanelTopInfoLayout.setHorizontalGroup(
             jPanelTopInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelTopInfoLayout.createSequentialGroup()
-                .addGap(313, 313, 313)
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addGap(254, 254, 254)
                 .addComponent(jLabel1)
-                .addContainerGap(316, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelTopInfoLayout.setVerticalGroup(
             jPanelTopInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTopInfoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addContainerGap())
+                .addContainerGap()
+                .addGroup(jPanelTopInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
-
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
-
-        jMenu3.setText("About");
-        jMenuBar1.add(jMenu3);
-
-        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanelStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanelTopInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanelOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jPanelBasket, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jPanelTopInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jPanelStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanelBasket, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanelTopInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanelOrder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelBasket, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanelTopInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanelOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanelBasket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanelStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonResetOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonResetOrderActionPerformed
-        // Reset order form.
-        DefaultForm();
+        defaultForm();
     }//GEN-LAST:event_jButtonResetOrderActionPerformed
 
     private void jButtonClearBasketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearBasketActionPerformed
@@ -724,21 +710,20 @@ public class LongPipesSystem extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonRemoveSelectedActionPerformed
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-        // TODO add your handling code here:
-        UpdateFormDateTime();
+        updateFormDateTime();
     }//GEN-LAST:event_formMouseClicked
 
     private void jButtonClearFeaturesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearFeaturesActionPerformed
         // Reset the feature toggles.
-        jToggleButtonInnerInsulation.setSelected(false);
-        jToggleButtonOuterReinforcement.setSelected(false);
-        jToggleButtonChemicalResistance.setSelected(false);
+        jCheckBoxInnerInsulation.setSelected(false);
+        jCheckBoxOuterReinforcement.setSelected(false);
+        jCheckBoxChemicalResistance.setSelected(false);
     }//GEN-LAST:event_jButtonClearFeaturesActionPerformed
 
     private void jButtonBuyOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuyOrderActionPerformed
-        // TODO add your handling code here:
-        //ADD INVOICE LIST INFORMATION GENERATION HERE
+        // ADD INVOICE LIST INFORMATION GENERATION HERE
         // LEE WILL DO
+        updateInvoiceTextArea();
     }//GEN-LAST:event_jButtonBuyOrderActionPerformed
 
     /**
@@ -783,7 +768,11 @@ public class LongPipesSystem extends javax.swing.JFrame {
     private javax.swing.JButton jButtonClearFeatures;
     private javax.swing.JButton jButtonRemoveSelected;
     private javax.swing.JButton jButtonResetOrder;
+    private javax.swing.JCheckBox jCheckBoxChemicalResistance;
+    private javax.swing.JCheckBox jCheckBoxInnerInsulation;
+    private javax.swing.JCheckBox jCheckBoxOuterReinforcement;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelDiameter;
     private javax.swing.JLabel jLabelDiameterInfo;
     private javax.swing.JLabel jLabelLength;
@@ -797,10 +786,6 @@ public class LongPipesSystem extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelTotalCost;
     private javax.swing.JLabel jLabelTotalOrders;
     private javax.swing.JList<String> jListBasketList;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelAdditionalFeatures;
     private javax.swing.JPanel jPanelBasket;
@@ -828,13 +813,10 @@ public class LongPipesSystem extends javax.swing.JFrame {
     private javax.swing.JSpinner jSpinnerLength;
     private javax.swing.JSpinner jSpinnerQuantity;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextAreaInvoice;
     private javax.swing.JTextField jTextFieldOrderRef;
     private javax.swing.JTextField jTextFieldOrderTotalCost;
     private javax.swing.JTextField jTextFieldTotalOrders;
-    private javax.swing.JToggleButton jToggleButtonChemicalResistance;
-    private javax.swing.JToggleButton jToggleButtonInnerInsulation;
-    private javax.swing.JToggleButton jToggleButtonOuterReinforcement;
     private javax.swing.JPanel panelPlasticGrade;
     private javax.swing.ButtonGroup pipeColorGroup;
     private javax.swing.ButtonGroup pipeGradeGroup;
@@ -844,7 +826,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
      * @return Generates a random order number. This is just cosmetic.
      * @author Lee 750834
      */
-    public void GenerateOrderNumber() {
+    public void generateOrderNumber() {
         Random rand = new Random();
         int orderNo = rand.nextInt(9999) + 1;
         jTextFieldOrderRef.setText("00" + Integer.toString(orderNo));
@@ -854,15 +836,15 @@ public class LongPipesSystem extends javax.swing.JFrame {
      * @return Default the form and clear all the fields.
      * @author Lee 750834
      */
-    public void DefaultForm() {
+    public void defaultForm() {
         jSpinnerLength.setValue(0);
         jSpinnerDiameter.setValue(0);
         jSpinnerQuantity.setValue(0);
         jRadioButtonGrade1.setSelected(true);
         jRadioButtonColor0.setSelected(true);
-        jToggleButtonInnerInsulation.setSelected(false);
-        jToggleButtonOuterReinforcement.setSelected(false);
-        jToggleButtonChemicalResistance.setSelected(false);
+        jCheckBoxInnerInsulation.setSelected(false);
+        jCheckBoxOuterReinforcement.setSelected(false);
+        jCheckBoxChemicalResistance.setSelected(false);
     }
 
     /**
@@ -870,7 +852,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
      * find timers)
      * @author Lee 750834
      */
-    public void UpdateFormDateTime() {
+    public void updateFormDateTime() {
         Date date = new Date();
         SimpleDateFormat _time = new SimpleDateFormat("kk:mm");
         SimpleDateFormat _date = new SimpleDateFormat("dd/MM//yyy");
@@ -887,14 +869,23 @@ public class LongPipesSystem extends javax.swing.JFrame {
         updateTotalCost();
         updateTotalOrders();
     }
+            
+    /**
+     * Update the invoice UI new order information
+     * @author Dan 801685
+     */
+    public void updateInvoiceTextArea() {
+        jTextAreaInvoice.setText("Total Cost: " + pipeSystem.generateOrderInvoice());
+    }
 
     /**
      * Update the total cost label with the total order cost
      * @author Dan 801685
      */
     public void updateTotalCost() {
-        String orderTotalCost = Double.toString(pipeSystem.orderTotalCost());
-        jTextFieldOrderTotalCost.setText(orderTotalCost);
+        Double orderTotalCost = pipeSystem.orderTotalCost();
+        String orderTotalCostString = String.format("£%.2f", orderTotalCost);
+        jTextFieldOrderTotalCost.setText(orderTotalCostString);
     }
 
     /**
@@ -910,7 +901,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
      * @return Create a new basket list model.
      * @author Lee 750834
      */
-    public void SetupBasketList() {
+    public void setupBasketList() {
         jListBasketList.setModel(basketModel);
     }
 
@@ -922,7 +913,8 @@ public class LongPipesSystem extends javax.swing.JFrame {
         int listIndex = jListBasketList.getSelectedIndex();
         if (listIndex >= 0) {
             basketModel.remove(listIndex);
-            pipeSystem.order.orderedPipes.remove((listIndex)); //NEW FUNCTION
+            ArrayList<Pipe> orderedPipes = pipeSystem.getOrderedPipes();
+            orderedPipes.remove((listIndex)); 
             updateInvoiceUI();
         }
     }
@@ -933,7 +925,8 @@ public class LongPipesSystem extends javax.swing.JFrame {
      */
     public void clearBasket() {
         basketModel.clear();
-        pipeSystem.order.orderedPipes.clear(); //NEW FUNCTION
+        ArrayList<Pipe> orderedPipes = pipeSystem.getOrderedPipes();
+        orderedPipes.clear();
         updateInvoiceUI();
     }
 
@@ -945,6 +938,35 @@ public class LongPipesSystem extends javax.swing.JFrame {
     public void addNewPipeOrder() {
         double pipeLength = (Integer) jSpinnerLength.getValue();
         double pipeDiameter = (Integer) jSpinnerDiameter.getValue();
+        int pipeGrade = getPipeGrade();
+        int pipeColors = getColours();
+
+        Boolean pipeInsulation = jCheckBoxInnerInsulation.isSelected();
+        Boolean pipeReinforcement = jCheckBoxOuterReinforcement.isSelected();
+        Boolean pipeChemicalResistance = jCheckBoxChemicalResistance.isSelected();
+        int pipeQuantity = (Integer) jSpinnerQuantity.getValue();
+
+        //Get better way of handling valid/invalid ui without direct string checking
+        String pipeStatusText = pipeSystem.ValidatePipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeInsulation, pipeReinforcement, pipeChemicalResistance, pipeQuantity);
+        jLabelStatus.setText(pipeStatusText);
+        //Replace with get methods for order
+        if ("Pipe added to basket".equals(pipeStatusText)) {
+            basketModel.clear();
+            ArrayList<Pipe> orderedPipes = pipeSystem.getOrderedPipes();
+            
+            for (int i = 0; i < orderedPipes.size(); i++) {  //NEW FUNCTION
+                basketModel.addElement(orderedPipes.get(i).getDetails());  //NEW FUNCTION
+            }
+            defaultForm();
+            updateInvoiceUI();
+        }
+    }
+    
+    /*
+     * @return Grade of input pipe from the user interface input
+     * @author Dan 801685
+    */
+    public int getPipeGrade() {
         int pipeGrade = 1;
         if (jRadioButtonGrade1.isSelected() == true) {
             pipeGrade = 1;
@@ -956,7 +978,15 @@ public class LongPipesSystem extends javax.swing.JFrame {
             pipeGrade = 4;
         } else if (jRadioButtonGrade5.isSelected() == true) {
             pipeGrade = 5;
-        }
+        } 
+        return pipeGrade;
+    }
+    
+    /*
+     * @return Number of colours of input pipe from the user interface input
+     * @author Dan 801685
+    */
+    public int getColours() {
         int pipeColors = 0;
         if (jRadioButtonColor0.isSelected() == true) {
             pipeColors = 0;
@@ -965,23 +995,6 @@ public class LongPipesSystem extends javax.swing.JFrame {
         } else if (jRadioButtonColor2.isSelected() == true) {
             pipeColors = 2;
         }
-
-        Boolean pipeInsulation = jToggleButtonInnerInsulation.isSelected();
-        Boolean pipeReinforcement = jToggleButtonOuterReinforcement.isSelected();
-        Boolean pipeChemicalResistance = jToggleButtonChemicalResistance.isSelected();
-        int pipeQuantity = (Integer) jSpinnerQuantity.getValue();
-
-        String pipeStatusText = pipeSystem.ValidatePipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeInsulation, pipeReinforcement, pipeChemicalResistance, pipeQuantity);
-        jLabelStatus.setText(pipeStatusText);
-        //Need to get pipe string and find way of returning pipe type
-        if (pipeStatusText == "Pipe is valid") {
-            basketModel.clear();
-            
-            for (int i = 0; i < pipeSystem.order.orderedPipes.size(); i++) {  //NEW FUNCTION
-                basketModel.addElement(pipeSystem.order.orderedPipes.get(i).getDetails());  //NEW FUNCTION
-            }
-            DefaultForm();
-            updateInvoiceUI();
-        }
+        return pipeColors;
     }
 }

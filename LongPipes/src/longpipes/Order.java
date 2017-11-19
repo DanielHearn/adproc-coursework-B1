@@ -11,7 +11,7 @@ import java.util.*;
  * @author dan up801685
  */
 public class Order {
-    ArrayList<Pipe> orderedPipes = new ArrayList<Pipe>();
+    ArrayList<Pipe> orderedPipes = new ArrayList<>();
     
     public Order() {
         
@@ -50,15 +50,17 @@ public class Order {
     /**
     * Prints out each of the pipe details then the order total cost
     * @author Dan 801685
+    * @return Return invoice details
     */
-    public void printInvoice() {
-        for (int pipe = 0; pipe < orderedPipes.size(); pipe ++) {
-            Pipe currentPipe = orderedPipes.get(pipe);
-            currentPipe.printDetails();
-        }
-        System.out.println("Total Order Cost: " + totalCost());
+    public String getInvoice() {
+        String totalCost = String.format("£%.2f", totalCost());
+        return totalCost;
     }
     
+    /**
+    * 
+    * @return The pipes within the ordered pipes arraylist
+    */
     public ArrayList<Pipe> getOrderedPipes() {
         return orderedPipes;
     }

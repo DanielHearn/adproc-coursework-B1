@@ -5,25 +5,31 @@
  */
 package longpipes;
 
-import java.util.Arrays;
-
 /**
  * Pipe class that is a super class of the pipe types with all pipe specifications
  * @author hearn
  */
 public class Pipe {
-    private double length;
-    private double outerDiameter;
-    private double innerDiameter;
-    private int grade;
-    private int colours;
-    private Boolean innerInsulation;
-    private Boolean outerReinforcement;
-    private Boolean chemicalResistance;
-    private int pipeQuantity;
+    private final double length;
+    private final double outerDiameter;
+    private final double innerDiameter;
+    private final int grade;
+    private final int colours;
+    private final Boolean innerInsulation;
+    private final Boolean outerReinforcement;
+    private final Boolean chemicalResistance;
+    private final int pipeQuantity;
    
     /**
     * Construct a new pipe with all pipe specifications
+     * @param inputLength
+     * @param inputOuterDiameter
+     * @param inputGrade
+     * @param inputColours
+     * @param inputInnerInsulation
+     * @param inputOuterReinforcement
+     * @param inputChemicalResistance
+     * @param inputPipeQuantity
     */
     public Pipe(double inputLength, double inputOuterDiameter, int inputGrade, int inputColours, Boolean inputInnerInsulation, Boolean inputOuterReinforcement, Boolean inputChemicalResistance, int inputPipeQuantity) {
         length = inputLength;
@@ -177,26 +183,10 @@ public class Pipe {
         System.out.println("Extra: " + percentageExtra);
         double pipeCost = materialCost + (materialCost * percentageExtra);
         System.out.println("Pipe Cost: " + pipeCost);
-        return pipeCost * pipeQuantity;
+        double orderCost = pipeCost * pipeQuantity;
+        return orderCost;
     }
    
-    /**
-    * Print out all of the pipe details
-    */
-    public void printDetails() {
-        System.out.println("----------------------------------");         
-        System.out.println("Length: " + length + "m");
-        System.out.println("Outer Diameter: " + outerDiameter + "in");
-        System.out.println("Inner Diameter: " + innerDiameter + "in");
-        System.out.println("Grade: " + grade);
-        System.out.println("Colours: " + colours);
-        System.out.println("Inner Insulation: " + innerInsulation);
-        System.out.println("Outer Reinforcement: " + outerReinforcement);
-        System.out.println("Chemical Reinforcement: " + chemicalResistance);
-        System.out.println("Pipe Quantity: " + pipeQuantity);
-        System.out.println("----------------------------------"); 
-    }
-    
     /**
     * @return String containing all the pipe details
     */
@@ -224,7 +214,7 @@ public class Pipe {
                 break;
         }        
         
-        String pipeDetailString = className + " - [Length: " + length + ", Diameter: " + outerDiameter + ", Colours: " + colours + ", Quantity: " + pipeQuantity;
+        String pipeDetailString = className + " - [Length: " + length + ", Diameter: " + outerDiameter + ", Colours: " + colours + ", Quantity: " + pipeQuantity + "]";
         return pipeDetailString;
     }
 }
