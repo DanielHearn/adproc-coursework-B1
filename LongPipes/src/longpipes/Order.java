@@ -57,12 +57,18 @@ public class Order {
     public String getInvoice(int orderNo) {
         String invoice = "";
         
+        String _totalPipeTypeI = formatInvoice("Total Pipe Type I:", 40) + "£12.23";
+        String _totalPipeTypeII = formatInvoice("Total Pipe Type II:", 40) + "£21.11";
+        String _totalPipeTypeIII = formatInvoice("Total Pipe Type III", 40) + "£11.11";
+        String _totalPipeTypeIV = formatInvoice("Total Pipe Type IV", 40) + "£11.99";
+        String _totalPipeTypeV = formatInvoice("Total Pipe Type V:",40) + "£99.99";
+        // Total ost of all the pipe types (get from array list)
+        String _totalCostOfPipe = formatInvoice("Total Cost of Pipe:", 40) + "£12.34";
+        
         String _innerInsulation = formatInvoice("Inner Insulation:", 40) + "£34.56";
         String _outerReinforcement = formatInvoice("Outter Reinforcement:", 40) + "£23.34";
         String _chemicalResistance = formatInvoice("Chemical Resistance:", 40) + "£11:33";
-        
-        String _totalCostOfPipe = formatInvoice("Total Cost of Pipe:", 40) + "£12.34";
-        String _additionalFeatures = formatInvoice("Additional Features:", 40) + "£23.45";
+        String _totalCostAdditionalFeatures = formatInvoice("Additional Features:", 40) + "£23.45";
         String _orderTotal = String.format("£%.2f", totalCost());
         _orderTotal = formatInvoice("Total Cost:", 40) + _orderTotal;
         
@@ -73,7 +79,9 @@ public class Order {
         String _time = formatInvoice("Time:", 40) + _dateTime[1];
         String _thankyou = "             Thanks for shopping with LongPipes";
         
-        String[] lines = {_totalCostOfPipe, _additionalFeatures, _orderTotal, _LINEBREAK, _orderRef, _date, _time, _thankyou};
+        String[] lines = {_totalPipeTypeI, _totalPipeTypeII, _totalPipeTypeIII, _totalPipeTypeIV, _totalPipeTypeV, _totalCostOfPipe,
+            _innerInsulation, _outerReinforcement, _chemicalResistance, _totalCostAdditionalFeatures,_orderTotal,
+            _LINEBREAK, _orderRef, _date, _time, _thankyou};
         for (int i = 0; i < lines.length; i++) {
             invoice +=  lines[i] + "\n";
         }
