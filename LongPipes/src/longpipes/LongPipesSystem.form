@@ -56,15 +56,10 @@
               <Component id="jPanelTopInfo" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-<<<<<<< HEAD
                   <Component id="jPanelOrder" max="32767" attributes="0"/>
                   <Component id="jPanelBasket" max="32767" attributes="0"/>
-=======
-                  <Component id="jPanelBasket" max="32767" attributes="0"/>
-                  <Component id="jPanelOrder" max="32767" attributes="0"/>
->>>>>>> b3bc99bc4a2a3734fb29a79edff072c97f66c163
               </Group>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanelStatus" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -148,26 +143,21 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jPanelAdditionalFeatures" max="32767" attributes="0"/>
-                              <Component id="jPanelQuantity" max="32767" attributes="0"/>
-                              <Component id="jPanelInfo" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="panelPlasticGrade" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jPanelDiameter" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jPanelLength" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="panelPlasticGrade" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jPanelAdditionalFeatures" max="32767" attributes="0"/>
+                      <Component id="jPanelQuantity" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jButtonResetOrder" min="-2" pref="134" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="144" max="-2" attributes="0"/>
                           <Component id="jButtonAddOrder" min="-2" pref="135" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="jPanelDiameter" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jPanelLength" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jPanelInfo" alignment="0" max="32767" attributes="0"/>
                   </Group>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -179,8 +169,8 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanelLength" min="-2" pref="62" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jPanelDiameter" min="-2" pref="59" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="jPanelDiameter" min="-2" pref="61" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="panelPlasticGrade" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
@@ -216,7 +206,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="jLabelLength" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
                               <Component id="jSpinnerLength" min="-2" pref="250" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jLabelLengthInfo" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -235,7 +225,7 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabelLengthInfo" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -254,14 +244,7 @@
                 <Property name="text" type="java.lang.String" value="Length to be set in meters (1m to 6m)"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jSpinnerLength">
-              <Properties>
-                <Property name="horizontalAlignment" type="int" value="11"/>
-                <Property name="text" type="java.lang.String" value="0"/>
-              </Properties>
-              <Events>
-                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jSpinnerLengthKeyTyped"/>
-              </Events>
+            <Component class="javax.swing.JSpinner" name="jSpinnerLength">
             </Component>
           </SubComponents>
         </Container>
@@ -282,12 +265,12 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabelDiameter" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jSpinnerDiameter" min="-2" pref="246" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+                              <Component id="jSpinnerDiameter" min="-2" pref="250" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jLabelDiameterInfo" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -320,14 +303,7 @@
                 <Property name="text" type="java.lang.String" value="Diameter to be set in inches (1&quot; to 6&quot;)"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jSpinnerDiameter">
-              <Properties>
-                <Property name="horizontalAlignment" type="int" value="11"/>
-                <Property name="text" type="java.lang.String" value="0"/>
-              </Properties>
-              <Events>
-                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jSpinnerDiameterKeyTyped"/>
-              </Events>
+            <Component class="javax.swing.JSpinner" name="jSpinnerDiameter">
             </Component>
           </SubComponents>
         </Container>
@@ -622,8 +598,8 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabelQuantity" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jSpinnerQuantity" min="-2" pref="253" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jSpinnerQuantity" min="-2" pref="251" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -636,7 +612,7 @@
                           <Component id="jSpinnerQuantity" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelQuantity" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="11" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -647,14 +623,7 @@
                 <Property name="text" type="java.lang.String" value="Quantity of pipes for order:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jSpinnerQuantity">
-              <Properties>
-                <Property name="horizontalAlignment" type="int" value="11"/>
-                <Property name="text" type="java.lang.String" value="0"/>
-              </Properties>
-              <Events>
-                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jSpinnerQuantityKeyTyped"/>
-              </Events>
+            <Component class="javax.swing.JSpinner" name="jSpinnerQuantity">
             </Component>
           </SubComponents>
         </Container>
