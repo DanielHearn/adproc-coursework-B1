@@ -39,7 +39,7 @@ public class LongPipesGUILink {
         boolean areInputsValid = true;
         String invalidText = "Pipe input is not valid due to: ";
         
-        if (!(pipeLength >= 0.1 && pipeLength <= 6)) {
+        if (!(pipeLength >= 0.5 && pipeLength <= 6)) {
             areInputsValid = false;
             invalidText += "pipe length, ";
         }

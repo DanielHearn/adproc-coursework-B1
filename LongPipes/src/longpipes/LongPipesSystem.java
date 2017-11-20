@@ -33,10 +33,10 @@ public class LongPipesSystem extends javax.swing.JFrame {
     // Setup objects
     DefaultListModel basketModel = new DefaultListModel();
     LongPipesGUILink pipeSystem = new LongPipesGUILink();
-    private int _orderNumber;
-    private static String _theDate;
-    private static String _theTime;
-    private Character[] _charList = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'};
+    private int orderNumber;
+    private static String theDate;
+    private static String theTime;
+    private Character[] charList = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'};
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -56,11 +56,11 @@ public class LongPipesSystem extends javax.swing.JFrame {
         jPanelLength = new javax.swing.JPanel();
         jLabelLength = new javax.swing.JLabel();
         jLabelLengthInfo = new javax.swing.JLabel();
-        jSpinnerLength = new javax.swing.JTextField();
+        jTextFieldLength = new javax.swing.JTextField();
         jPanelDiameter = new javax.swing.JPanel();
         jLabelDiameter = new javax.swing.JLabel();
         jLabelDiameterInfo = new javax.swing.JLabel();
-        jSpinnerDiameter = new javax.swing.JTextField();
+        jTextFieldDiameter = new javax.swing.JTextField();
         panelPlasticGrade = new javax.swing.JPanel();
         jRadioButtonGrade1 = new javax.swing.JRadioButton();
         jRadioButtonGrade2 = new javax.swing.JRadioButton();
@@ -153,13 +153,13 @@ public class LongPipesSystem extends javax.swing.JFrame {
         jLabelLength.setText("Length of pipe:");
 
         jLabelLengthInfo.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
-        jLabelLengthInfo.setText("Length to be set in meters (1m to 6m)");
+        jLabelLengthInfo.setText("Length to be set in meters (0.5m to 6m)");
 
-        jSpinnerLength.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        jSpinnerLength.setText("0");
-        jSpinnerLength.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTextFieldLength.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
+        jTextFieldLength.setText("0");
+        jTextFieldLength.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jSpinnerLengthKeyTyped(evt);
+                jTextFieldLengthKeyTyped(evt);
             }
         });
 
@@ -173,7 +173,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
                     .addGroup(jPanelLengthLayout.createSequentialGroup()
                         .addComponent(jLabelLength)
                         .addGap(95, 95, 95)
-                        .addComponent(jSpinnerLength, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextFieldLength, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabelLengthInfo))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -183,7 +183,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelLengthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelLength)
-                    .addComponent(jSpinnerLength, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldLength, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelLengthInfo)
                 .addGap(39, 39, 39))
@@ -196,11 +196,11 @@ public class LongPipesSystem extends javax.swing.JFrame {
         jLabelDiameterInfo.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
         jLabelDiameterInfo.setText("Diameter to be set in inches (1\" to 6\")");
 
-        jSpinnerDiameter.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        jSpinnerDiameter.setText("0");
-        jSpinnerDiameter.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTextFieldDiameter.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
+        jTextFieldDiameter.setText("0");
+        jTextFieldDiameter.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jSpinnerDiameterKeyTyped(evt);
+                jTextFieldDiameterKeyTyped(evt);
             }
         });
 
@@ -214,7 +214,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
                     .addGroup(jPanelDiameterLayout.createSequentialGroup()
                         .addComponent(jLabelDiameter)
                         .addGap(92, 92, 92)
-                        .addComponent(jSpinnerDiameter, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextFieldDiameter, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabelDiameterInfo))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -224,11 +224,13 @@ public class LongPipesSystem extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelDiameterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelDiameter)
-                    .addComponent(jSpinnerDiameter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldDiameter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelDiameterInfo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jTextFieldDiameter.getAccessibleContext().setAccessibleDescription("");
 
         panelPlasticGrade.setBorder(javax.swing.BorderFactory.createTitledBorder("Plastic Grade"));
         panelPlasticGrade.setName(""); // NOI18N
@@ -752,25 +754,25 @@ public class LongPipesSystem extends javax.swing.JFrame {
         updateInvoiceTextArea();
     }//GEN-LAST:event_jButtonBuyOrderActionPerformed
 
-    private void jSpinnerLengthKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jSpinnerLengthKeyTyped
+    private void jTextFieldLengthKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldLengthKeyTyped
         char c = evt.getKeyChar();
-        List<Character> list = Arrays.asList(_charList);
+        List<Character> list = Arrays.asList(charList);
         if (!list.contains(c)) {
             evt.consume();
         }
-    }//GEN-LAST:event_jSpinnerLengthKeyTyped
+    }//GEN-LAST:event_jTextFieldLengthKeyTyped
 
-    private void jSpinnerDiameterKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jSpinnerDiameterKeyTyped
+    private void jTextFieldDiameterKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDiameterKeyTyped
         char c = evt.getKeyChar();
-        List<Character> list = Arrays.asList(_charList);
+        List<Character> list = Arrays.asList(charList);
         if (!list.contains(c)) {
             evt.consume();
         }
-    }//GEN-LAST:event_jSpinnerDiameterKeyTyped
+    }//GEN-LAST:event_jTextFieldDiameterKeyTyped
 
     private void jSpinnerQuantityKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jSpinnerQuantityKeyTyped
         char c = evt.getKeyChar();
-        List<Character> list = Arrays.asList(_charList);
+        List<Character> list = Arrays.asList(charList);
         if (!list.contains(c)) {
             evt.consume();
         }
@@ -854,11 +856,11 @@ public class LongPipesSystem extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextField jSpinnerDiameter;
-    private javax.swing.JTextField jSpinnerLength;
     private javax.swing.JTextField jSpinnerQuantity;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextAreaInvoice;
+    private javax.swing.JTextField jTextFieldDiameter;
+    private javax.swing.JTextField jTextFieldLength;
     private javax.swing.JTextField jTextFieldOrderRef;
     private javax.swing.JTextField jTextFieldOrderTotalCost;
     private javax.swing.JTextField jTextFieldTotalOrders;
@@ -873,8 +875,8 @@ public class LongPipesSystem extends javax.swing.JFrame {
      */
     public void generateOrderNumber() {
         Random rand = new Random();
-        _orderNumber = rand.nextInt(9999) + 1;
-        jTextFieldOrderRef.setText("00" + Integer.toString(_orderNumber));
+        orderNumber = rand.nextInt(9999) + 1;
+        jTextFieldOrderRef.setText("00" + Integer.toString(orderNumber));
     }
 
     /**
@@ -882,8 +884,8 @@ public class LongPipesSystem extends javax.swing.JFrame {
      * @author Lee 750834
      */
     public void defaultForm() {
-        jSpinnerLength.setText("0");
-        jSpinnerDiameter.setText("0");
+        jTextFieldLength.setText("0");
+        jTextFieldDiameter.setText("0");
         jSpinnerQuantity.setText("0");
         jRadioButtonGrade1.setSelected(true);
         jRadioButtonColor0.setSelected(true);
@@ -899,13 +901,13 @@ public class LongPipesSystem extends javax.swing.JFrame {
      */
     public void updateFormDateTime() {
         Date date = new Date();
-        SimpleDateFormat _time = new SimpleDateFormat("kk:mm");
-        SimpleDateFormat _date = new SimpleDateFormat("dd/MM//yyy");
-        jLabelStatusTime.setText(_time.format(date));
-        jLabelOrderTime.setText("Order Time: " + _time.format(date));
-        jLabelOrderDate.setText("Order Date: " + _date.format(date));
-        _theDate = _date.format(date);
-        _theTime = _time.format(date);
+        SimpleDateFormat simpleTime = new SimpleDateFormat("kk:mm");
+        SimpleDateFormat simpleDate = new SimpleDateFormat("dd/MM//yyy");
+        jLabelStatusTime.setText(simpleTime.format(date));
+        jLabelOrderTime.setText("Order Time: " + simpleTime.format(date));
+        jLabelOrderDate.setText("Order Date: " + simpleDate.format(date));
+        theDate = simpleDate.format(date);
+        theTime = simpleTime.format(date);
     }
 
     /**
@@ -924,7 +926,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
      * @author Dan 801685
      */
     public void updateInvoiceTextArea() {
-        jTextAreaInvoice.setText(pipeSystem.generateOrderInvoice(_orderNumber));
+        jTextAreaInvoice.setText(pipeSystem.generateOrderInvoice(orderNumber));
     }
 
     /**
@@ -987,8 +989,8 @@ public class LongPipesSystem extends javax.swing.JFrame {
      * @author Dan 801685
      */
     public void addNewPipeOrder() {
-        double pipeLength = (double) Integer.parseInt(jSpinnerLength.getText());
-        double pipeDiameter = (double) Integer.parseInt(jSpinnerDiameter.getText());
+        double pipeLength = Double.parseDouble(jTextFieldLength.getText());
+        double pipeDiameter = Double.parseDouble(jTextFieldDiameter.getText());
         int pipeGrade = getPipeGrade();
         int pipeColors = getColours();
 
@@ -1005,8 +1007,8 @@ public class LongPipesSystem extends javax.swing.JFrame {
             basketModel.clear();
             ArrayList<Pipe> orderedPipes = pipeSystem.getOrderedPipes();
 
-            for (int i = 0; i < orderedPipes.size(); i++) {  //NEW FUNCTION
-                basketModel.addElement(orderedPipes.get(i).getDetails());  //NEW FUNCTION
+            for (int i = 0; i < orderedPipes.size(); i++) {  
+                basketModel.addElement(orderedPipes.get(i).getDetails());
             }
             defaultForm();
             updateInvoiceUI();
@@ -1050,6 +1052,6 @@ public class LongPipesSystem extends javax.swing.JFrame {
     }
 
     public static String[] getDateTime() {
-        return new String[]{_theDate, _theTime};
+        return new String[]{theDate, theTime};
     }
 }
