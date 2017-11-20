@@ -119,8 +119,8 @@ public class LongPipesGUILink {
     * 
     * @return The invoice
     */
-    public String generateOrderInvoice() {
-        return order.getInvoice();
+    public String generateOrderInvoice(int orderNo) {
+        return order.getInvoice(orderNo);
     }
     
     /**

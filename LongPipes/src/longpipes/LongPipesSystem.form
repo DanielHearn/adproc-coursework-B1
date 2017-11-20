@@ -153,11 +153,9 @@
                           <EmptySpace min="-2" pref="144" max="-2" attributes="0"/>
                           <Component id="jButtonAddOrder" min="-2" pref="135" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="jPanelDiameter" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jPanelLength" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jPanelInfo" alignment="0" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="jPanelDiameter" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jPanelLength" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jPanelInfo" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>

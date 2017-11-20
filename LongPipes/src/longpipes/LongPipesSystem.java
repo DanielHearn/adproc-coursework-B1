@@ -31,6 +31,9 @@ public class LongPipesSystem extends javax.swing.JFrame {
     // Setup objects
     DefaultListModel basketModel = new DefaultListModel();
     LongPipesGUILink pipeSystem = new LongPipesGUILink();
+    private int _orderNumber;
+    private static String _theDate;
+    private static String _theTime;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -454,10 +457,9 @@ public class LongPipesSystem extends javax.swing.JFrame {
                         .addComponent(jButtonResetOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(144, 144, 144)
                         .addComponent(jButtonAddOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jPanelDiameter, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanelLength, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanelInfo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jPanelDiameter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelLength, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelOrderLayout.setVerticalGroup(
@@ -828,8 +830,8 @@ public class LongPipesSystem extends javax.swing.JFrame {
      */
     public void generateOrderNumber() {
         Random rand = new Random();
-        int orderNo = rand.nextInt(9999) + 1;
-        jTextFieldOrderRef.setText("00" + Integer.toString(orderNo));
+        _orderNumber = rand.nextInt(9999) + 1;
+        jTextFieldOrderRef.setText("00" + Integer.toString(_orderNumber));
     }
 
     /**
@@ -859,6 +861,8 @@ public class LongPipesSystem extends javax.swing.JFrame {
         jLabelStatusTime.setText(_time.format(date));
         jLabelOrderTime.setText("Order Time: " + _time.format(date));
         jLabelOrderDate.setText("Order Date: " + _date.format(date));
+        _theDate = _date.format(date);
+        _theTime = _time.format(date);
     }
 
     /**
@@ -875,7 +879,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
      * @author Dan 801685
      */
     public void updateInvoiceTextArea() {
-        jTextAreaInvoice.setText("Total Cost: " + pipeSystem.generateOrderInvoice());
+        jTextAreaInvoice.setText(pipeSystem.generateOrderInvoice(_orderNumber));
     }
 
     /**
@@ -996,5 +1000,10 @@ public class LongPipesSystem extends javax.swing.JFrame {
             pipeColors = 2;
         }
         return pipeColors;
+    }
+    
+    
+    public static String[] getDateTime(){
+        return new String[]{_theDate, _theTime};
     }
 }
