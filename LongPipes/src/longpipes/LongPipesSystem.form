@@ -55,9 +55,9 @@
               <EmptySpace max="32767" attributes="0"/>
               <Component id="jPanelTopInfo" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jPanelOrder" min="-2" max="-2" attributes="0"/>
-                  <Component id="jPanelBasket" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jPanelOrder" max="32767" attributes="0"/>
+                  <Component id="jPanelBasket" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanelStatus" min="-2" max="-2" attributes="0"/>
@@ -609,8 +609,8 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelQuantity" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jSpinnerQuantity" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelQuantity" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -652,7 +652,7 @@
                       <Component id="jLabelOrderDate" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="163" max="-2" attributes="0"/>
                       <Component id="jLabelOrderTime" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="47" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -725,7 +725,7 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jPanelFinalCost" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jScrollPane4" pref="244" max="32767" attributes="0"/>
+                  <Component id="jScrollPane4" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -747,11 +747,11 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane3" pref="460" max="32767" attributes="0"/>
+                          <Component id="jScrollPane3" pref="425" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="jButtonClearBasket" min="-2" pref="118" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jButtonRemoveSelected" min="-2" pref="118" max="-2" attributes="0"/>
+                              <Component id="jButtonRemoveSelected" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -822,13 +822,17 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="jButtonBuyOrder" min="-2" pref="134" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabelOrderRef" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="jLabelTotalOrders" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jLabelTotalOrders" alignment="1" pref="231" max="32767" attributes="0"/>
                                   <Component id="jLabelTotalCost" alignment="1" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -837,10 +841,6 @@
                                   <Component id="jTextFieldOrderTotalCost" alignment="1" max="32767" attributes="0"/>
                                   <Component id="jTextFieldOrderRef" pref="184" max="32767" attributes="0"/>
                               </Group>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="jButtonBuyOrder" min="-2" pref="118" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -942,7 +942,6 @@
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
-                <Property name="text" type="java.lang.String" value="Total of pipe x:&#x9;&#x9;&#x9;&#xa3;10.00&#xa;Total of pipe y:&#x9;&#x9;&#x9;&#xa3;9.33&#xa;Total of pipe z:&#x9;&#x9;&#x9;&#xa3;23.45&#xa;Inner Insulation:&#x9;&#x9;&#x9;&#xa3;13.44&#xa;Outer Reinforcement:&#x9;&#x9;&#x9;&#xa3;11.48&#xa;Chemical Resistance:&#x9;&#x9;&#x9;&#xa3;63.21&#xa;Total Cost of pipe:&#x9;&#x9;&#x9;&#xa3;55.99&#xa;Total Cost of extra:&#x9;&#x9;&#x9;&#xa3;33.94&#xa;Order Total:&#x9;&#x9;&#x9;&#x9;&#xa3;140.40&#xa;&#xa;Order Ref No:&#x9;&#x9;&#x9;&#x9;003421&#xa;Date:&#x9;&#x9;&#x9;&#x9;&#x9;17/11/2017&#xa;Time:&#x9;&#x9;&#x9;&#x9;&#x9;05:32:29&#xa;&#x9;Thanks for shopping with LongPipes"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -966,7 +965,7 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="254" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="364" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
