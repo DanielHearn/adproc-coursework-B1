@@ -150,8 +150,9 @@
                       <Component id="jPanelQuantity" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jButtonResetOrder" min="-2" pref="134" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="144" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="jButtonAddOrder" min="-2" pref="135" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jPanelDiameter" alignment="0" max="32767" attributes="0"/>
                       <Component id="jPanelLength" alignment="0" max="32767" attributes="0"/>
@@ -206,12 +207,15 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabelLength" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
-                              <Component id="jTextFieldLength" min="-2" pref="238" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="jTextFieldLength" min="-2" pref="240" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jLabelLengthInfo" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabelLengthInfo" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -241,7 +245,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="2"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Length to be set in meters (0.5m to 6m)"/>
+                <Property name="text" type="java.lang.String" value="Length to be set in meters, valid lengths between (0.5m to 6m)"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldLength">
@@ -272,12 +276,15 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabelDiameter" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Component id="jTextFieldDiameter" min="-2" pref="240" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jLabelDiameterInfo" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabelDiameterInfo" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -285,11 +292,11 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabelDiameter" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldDiameter" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabelDiameter" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldDiameter" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                       <Component id="jLabelDiameterInfo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -307,7 +314,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="11" style="2"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Diameter to be set in inches (1&quot; to 6&quot;)"/>
+                <Property name="text" type="java.lang.String" value="Diameter to be set in inches, valid diameters between  (1&quot; to 6&quot;)"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldDiameter">
@@ -498,9 +505,9 @@
                           <Component id="jCheckBoxInnerInsulation" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jButtonClearFeatures" alignment="0" min="-2" pref="133" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" min="-2" pref="233" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jScrollPane2" min="-2" pref="233" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -615,9 +622,9 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabelQuantity" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Component id="jSpinnerQuantity" min="-2" pref="248" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jSpinnerQuantity" min="-2" pref="248" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

@@ -15,4 +15,11 @@ public class TypeFivePipe extends TypeThreePipe{
         super(inputLength, inputDiameter, pipeGrade, pipeColors, true, true, pipeChemicalResistance, pipeQuantity);
     }
     
+    /**
+    * @return String containing all the pipe details
+    */
+    @Override
+    public int getPipeType() { 
+        return 5;
+    }
 }

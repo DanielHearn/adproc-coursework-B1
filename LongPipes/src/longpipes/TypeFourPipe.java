@@ -14,4 +14,12 @@ public class TypeFourPipe extends TypeThreePipe{
     public TypeFourPipe(double inputLength, double inputDiameter, int pipeGrade, int pipeColors, boolean pipeChemicalResistance, int pipeQuantity) {
         super(inputLength, inputDiameter, pipeGrade, pipeColors, true, false, pipeChemicalResistance, pipeQuantity);
     }
+    
+    /**
+    * @return String containing all the pipe details
+    */
+    @Override
+    public int getPipeType() { 
+        return 4;
+    }
 }

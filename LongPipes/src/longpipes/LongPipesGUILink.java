@@ -15,16 +15,6 @@ public class LongPipesGUILink {
     
     public Order order = new Order();
     
-    public double PipeLength;
-    public double PipeDiameter;
-    public int PipeGrade;
-    public int PipeColor;
-    public int PipeQuantity;
-    public Boolean PipeInsulation;
-    public Boolean PipeRefinforcement;
-    public Boolean PipeChemicalResistance;
-   
-    
     public LongPipesGUILink() {
         
     }
@@ -53,40 +43,30 @@ public class LongPipesGUILink {
             areInputsValid = false;
             invalidText += "pipe quantity, ";
         }
-        
-        // DEBUG OUTPUT --
-        System.out.println("--------------------------------------");
-        System.out.println("Length: " + pipeLength);
-        System.out.println("Diameter: " + pipeDiameter);
-        System.out.println("Grade: " + pipeGrade);
-        System.out.println("Color: " + pipeColors);
-        System.out.println("Pipe insulation:  " + pipeInsulation);
-        System.out.println("Pipe reinforcement: " + pipeReinforcement);
-        System.out.println("Pipe chemical resistance: " + pipeChemicalResistance);
-        System.out.println("Pipe quantity: " + pipeQuantity);
-
-        Pipe pipe = new Pipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeInsulation, pipeReinforcement, pipeChemicalResistance, pipeQuantity);
 
         if(areInputsValid) {
             boolean isPipeTypeValid = true;
             
-            
             if((pipeGrade >= 1 && pipeGrade <= 3) && (pipeColors == 0) && (pipeInsulation == false) && (pipeReinforcement == false)) {
-                pipe = new TypeOnePipe(pipeLength, pipeDiameter, pipeGrade, pipeChemicalResistance, pipeQuantity);
+                Pipe newPipe = new TypeOnePipe(pipeLength, pipeDiameter, pipeGrade, pipeChemicalResistance, pipeQuantity);
+                order.addPipe(newPipe);  
             } else if ((pipeGrade >= 2 && pipeGrade <= 4) && (pipeColors == 1) && (pipeInsulation == false) && (pipeReinforcement == false)) {
-                pipe = new TypeTwoPipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeChemicalResistance, pipeQuantity);  
+                Pipe newPipe = new TypeTwoPipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeChemicalResistance, pipeQuantity);  
+                order.addPipe(newPipe);  
             } else if ((pipeGrade >= 2 && pipeGrade <= 5) && (pipeColors == 2) && (pipeInsulation == false) && (pipeReinforcement == false)) {
-                pipe = new TypeThreePipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeChemicalResistance, pipeQuantity);  
+                Pipe newPipe = new TypeThreePipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeChemicalResistance, pipeQuantity);  
+                order.addPipe(newPipe);  
             } else if ((pipeGrade >= 2 && pipeGrade <= 5) && (pipeColors == 2) && (pipeInsulation == true) && (pipeReinforcement == false)) {
-                pipe = new TypeFourPipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeChemicalResistance, pipeQuantity);  
+                Pipe newPipe = new TypeFourPipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeChemicalResistance, pipeQuantity);  
+                order.addPipe(newPipe);  
             } else if ((pipeGrade >= 3 && pipeGrade <= 5) && (pipeColors == 2) && (pipeInsulation == true) && (pipeReinforcement == true)) {
-                pipe = new TypeFivePipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeChemicalResistance, pipeQuantity);  
+                Pipe newPipe = new TypeFivePipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeChemicalResistance, pipeQuantity);  
+                order.addPipe(newPipe);  
             } else {
                 isPipeTypeValid = false;
             }
             
             if (isPipeTypeValid) {
-                order.addPipe(pipe);  
                 return "Pipe added to basket"; 
             } else {
                 return "Pipe specifications do meet any of our available pipe types"; 
@@ -106,7 +86,6 @@ public class LongPipesGUILink {
         return order.totalCost();
     }
     
-    
     /** 
     * @return The number of individual orders within the order.
     * @author Dan 801685
@@ -116,11 +95,17 @@ public class LongPipesGUILink {
     }
     
     /**
-    * 
-    * @return The invoice
+    * @return The invoice text
     */
-    public String generateOrderInvoice(int orderNo) {
-        return order.getInvoice(orderNo);
+    public String generateOrderInvoice() {
+        return order.getInvoice(order.getOrderNumber());
+    }
+    
+    /**
+    * @return The order number
+    */
+    public Integer retrieveOrderNumber() {
+        return order.getOrderNumber();
     }
     
     /**

@@ -20,4 +20,11 @@ public class TypeThreePipe extends Pipe{
         super(inputLength, inputDiameter, pipeGrade, pipeColors, innerInsulation, outerReinforcement, pipeChemicalResistance, pipeQuantity);
     }
 
+    /**
+    * @return String containing all the pipe details
+    */
+    @Override
+    public int getPipeType() { 
+        return 3;
+    }
 }

@@ -9,7 +9,7 @@ package longpipes;
  * Pipe class that is a super class of the pipe types with all pipe specifications
  * @author hearn
  */
-public class Pipe {
+public abstract class Pipe {
     private final double length;
     private final double outerDiameter;
     private final double innerDiameter;
@@ -190,31 +190,15 @@ public class Pipe {
     /**
     * @return String containing all the pipe details
     */
+    public int getPipeType() { 
+        return 0;
+    }
+    
+    /**
+    * @return String containing all the pipe details
+    */
     public String getDetails() {
-        String classNameString = this.getClass().getSimpleName();
-        String className = "Type ";
-        switch (classNameString) {
-            case "TypeOnePipe":  
-                className += "1";
-                break;
-            case "TypeTwoPipe":  
-                className += "2";
-                break;
-            case "TypeThreePipe":  
-                className += "3";
-                break;
-            case "TypeFourPipe":  
-                className += "4";
-                break;
-            case "TypeFivePipe":  
-                className += "5";
-                break;
-            default:  
-                className += "1";
-                break;
-        }        
-        
-        String pipeDetailString = className + " - [Length: " + length + ", Diameter: " + outerDiameter + ", Colours: " + colours + ", Quantity: " + pipeQuantity + "]";
+        String pipeDetailString = "Type " + getPipeType() + " - [Length: " + length + ", Diameter: " + outerDiameter + ", Colours: " + colours + ", Quantity: " + pipeQuantity + "]" + " = " + String.format("£%.2f", calculateCost());
         return pipeDetailString;
     }
 }

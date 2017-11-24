@@ -15,4 +15,11 @@ public class TypeTwoPipe extends Pipe{
         super(inputLength, inputDiameter, pipeGrade, pipeColors, false, false, pipeChemicalResistance, pipeQuantity);
     }
     
+    /**
+    * @return String containing all the pipe details
+    */
+    @Override
+    public int getPipeType() { 
+        return 2;
+    }
 }
