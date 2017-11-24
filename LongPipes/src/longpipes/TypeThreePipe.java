@@ -27,4 +27,21 @@ public class TypeThreePipe extends Pipe{
     public int getPipeType() { 
         return 3;
     }
+    
+    /**
+    * @return The percentage extra costs based on the pipe additional costs
+    */
+    @Override
+    public double calculatePercentageExtra() {
+        double percentageExtra = 0;
+        
+        // Add two pipe colour cost
+        percentageExtra += 0.16;
+        
+        if(this.getChemicalResistance()) {
+            percentageExtra += 0.14;   
+        }
+        
+        return percentageExtra;
+    } 
 }

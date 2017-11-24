@@ -17,8 +17,7 @@ public class Order {
     private int orderNumber;
 
     public Order() {
-        Random rand = new Random();
-        orderNumber = rand.nextInt(9999) + 1;
+        orderNumber = 1;
     }
 
     /**
@@ -38,7 +37,7 @@ public class Order {
         double totalCost = 0;
         for (int pipe = 0; pipe < orderedPipes.size(); pipe++) {
             System.out.println("Calculating pipe: " + pipe);
-            totalCost += orderedPipes.get(pipe).calculateCost();
+            totalCost += orderedPipes.get(pipe).calculateTotalCost();
         }
         return totalCost;
     }
@@ -51,6 +50,20 @@ public class Order {
         return orderedPipes.size();
     }
 
+    public String generateInvoiceString(Pipe currentPipe, String currentPipeType, String inputString, double inputDouble) {
+        String startString = currentPipeType + ": " + inputString + ": ";
+        String formattedNumber = String.format("£%.2f", inputDouble);
+        String invoiceString = formatInvoice(startString) + formattedNumber;
+        return invoiceString;
+    }
+    
+    public String generateInvoiceString(Pipe currentPipe, String currentPipeType, String inputString, int inputInt) {
+        String startString = currentPipeType + ": " + inputString + ": ";
+        String formattedNumber = Integer.toString(inputInt);
+        String invoiceString = formatInvoice(startString) + formattedNumber;
+        return invoiceString;
+    }
+    
     /**
      * Prints out each of the pipe details then the order total cost
      * @author Lee 750834
@@ -60,42 +73,40 @@ public class Order {
     public String getInvoice(int orderNo) {
         String invoice = "";
         if (orderedPipes.size() > 0) {
+            orderNumber ++;
             ArrayList<String> invoiceStrings = new ArrayList<>();
-
-            /*
-
-            String innerInsulation = formatInvoice("Inner Insulation:", 40) + "£34.56";
-            String outerReinforcement = formatInvoice("Outter Reinforcement:", 40) + "£23.34";
-            String chemicalResistance = formatInvoice("Chemical Resistance:", 40) + "£11:33";
-            String totalCostAdditionalFeatures = formatInvoice("Additional Features:", 40) + "£23.45";
-
-            */
 
             String LINEBREAK = "";
 
             for (int i = 0; i < orderedPipes.size(); i++) {
                 Pipe currentPipe = orderedPipes.get(i);
-
-                String pipeStartString = "Pipe " + i + " cost: ";
-                String pipeCost = String.format("£%.2f", currentPipe.calculateCost());
-                String pipeInvoiceString = formatInvoice(pipeStartString, 40) + pipeCost;
-                invoiceStrings.add(pipeInvoiceString);
-
-                //NEED TO GET REST OF PIPE INFO, e.g breakdown of costs
+                String currentPipeType = "Pipe Order " + i;
+                double individualPipeCost = currentPipe.calculateIndividualCost();
+                double pipeMaterialCost = currentPipe.calculateMaterialCost(currentPipe.calculatePipeVolume(), currentPipe.getGrade());
+                double pipeExtraCost = currentPipe.calculateExtraMaterialCost(pipeMaterialCost, currentPipe.calculatePercentageExtra());
+                int pipeQuantity = currentPipe.getPipeQuantity();
+                double totalCost = currentPipe.calculateTotalCost();
+                
+                invoiceStrings.add(generateInvoiceString(currentPipe, currentPipeType, "Individual Pipe Cost", individualPipeCost));
+                invoiceStrings.add(generateInvoiceString(currentPipe, currentPipeType, "Pipe Material Cost", pipeMaterialCost));
+                invoiceStrings.add(generateInvoiceString(currentPipe, currentPipeType, "Pipe Additional Feature Cost", pipeExtraCost));
+                invoiceStrings.add(generateInvoiceString(currentPipe, currentPipeType, "Quantity of Pipes in Order", pipeQuantity));
+                invoiceStrings.add(generateInvoiceString(currentPipe, currentPipeType, "Total Pipe Order Cost", totalCost));
             }
 
             invoiceStrings.add(LINEBREAK);
 
             String orderTotal = String.format("£%.2f", totalCost());
-            orderTotal = formatInvoice("Total Cost:", 40) + orderTotal;
+            orderTotal = formatInvoice("Total Cost:") + orderTotal;
 
-            String orderRef = formatInvoice("Order Ref No:", 40) + Integer.toString(orderNo);
+            String orderRef = formatInvoice("Order Ref No:") + Integer.toString(orderNo);
             String[] dateTime = LongPipesSystem.getDateTime();
-            String date = formatInvoice("Date:", 40) + dateTime[0];
-            String time = formatInvoice("Time:", 40) + dateTime[1];
+            String date = formatInvoice("Date:") + dateTime[0];
+            String time = formatInvoice("Time:") + dateTime[1];
             String thankyou = "             Thanks for shopping with LongPipes";
 
             invoiceStrings.add(orderRef);
+            invoiceStrings.add(orderTotal); 
             invoiceStrings.add(date);
             invoiceStrings.add(time);
             invoiceStrings.add(LINEBREAK);
@@ -120,8 +131,8 @@ public class Order {
      * @author Lee 750834
      * @return Returns a formated string
      */
-    public static String formatInvoice(String s, int n) {
-        return String.format("%1$-" + n + "s", s);
+    public static String formatInvoice(String inputString) {
+        return String.format("%1$-" + 45 + "s", inputString);
     }
 
     /**

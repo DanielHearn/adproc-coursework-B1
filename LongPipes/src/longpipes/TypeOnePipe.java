@@ -22,4 +22,18 @@ public class TypeOnePipe extends Pipe{
     public int getPipeType() { 
         return 1;
     }
+    
+    /**
+    * @return The percentage extra costs based on the pipe additional costs
+    */
+    @Override
+    public double calculatePercentageExtra() {
+        double percentageExtra = 0;
+        
+        if(this.getChemicalResistance()) {
+            percentageExtra += 0.14;   
+        }
+        
+        return percentageExtra;
+    } 
 }

@@ -27,7 +27,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
         defaultForm();
         setupBasketList();
         updateFormDateTime();
-        generateOrderNumber();
+        getOrderNumber();
     }
 
     // Setup objects
@@ -756,6 +756,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
 
     private void jButtonBuyOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuyOrderActionPerformed
         updateInvoiceTextArea();
+        clearBasket();
     }//GEN-LAST:event_jButtonBuyOrderActionPerformed
 
     private void jTextFieldLengthKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldLengthKeyTyped
@@ -877,7 +878,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
      * @return Generates a random order number. This is just cosmetic.
      * @author Lee 750834
      */
-    public void generateOrderNumber() {
+    public void getOrderNumber() {
         jTextFieldOrderRef.setText(Integer.toString(pipeSystem.retrieveOrderNumber()));
     }
 

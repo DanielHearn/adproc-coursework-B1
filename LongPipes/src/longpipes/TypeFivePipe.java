@@ -22,4 +22,27 @@ public class TypeFivePipe extends TypeThreePipe{
     public int getPipeType() { 
         return 5;
     }
+    
+    /**
+    * @return The percentage extra costs based on the pipe additional costs
+    */
+    @Override
+    public double calculatePercentageExtra() {
+        double percentageExtra = 0;
+
+        // Add two pipe colour cost
+        percentageExtra += 0.16;
+        
+        // Add inner insulation cost
+        percentageExtra += 0.13;
+        
+        // Add outer reinforcement cost
+        percentageExtra += 0.17;
+        
+        if(this.getChemicalResistance()) {
+            percentageExtra += 0.14;   
+        }
+        
+        return percentageExtra;
+    } 
 }

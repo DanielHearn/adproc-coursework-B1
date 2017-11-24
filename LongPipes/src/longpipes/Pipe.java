@@ -7,7 +7,7 @@ package longpipes;
 
 /**
  * Pipe class that is a super class of the pipe types with all pipe specifications
- * @author hearn
+ * @author dan 801685
  */
 public abstract class Pipe {
     private final double length;
@@ -110,28 +110,8 @@ public abstract class Pipe {
     /**
     * @return The percentage extra costs based on the pipe additional costs
     */
-    public double getPercentageExtraCosts() {
-        double percentageExtra = 0;
-
-        if(colours == 1)  {
-            percentageExtra += 0.12;
-        } else if(colours == 2) {
-            percentageExtra += 0.16;
-        }
-        
-        if(innerInsulation) {
-            percentageExtra += 0.13;
-        }
-        
-        if(outerReinforcement) {
-            percentageExtra += 0.17;
-        }
-        
-        if(chemicalResistance) {
-            percentageExtra += 0.14;   
-        }
-        
-        return percentageExtra;
+    public double calculatePercentageExtra() {
+        return 0;
     } 
     
     /**
@@ -144,23 +124,34 @@ public abstract class Pipe {
         double innerRadius = innerDiameter / 2;
        
         double pipeVolume = Math.PI * lengthInches * (Math.pow(outerRadius,2) - Math.pow(innerRadius, 2) );
-        System.out.println("VOLUME " + pipeVolume);
         return pipeVolume;
     }
     
     /**
     * @return The total cost of the pipe based on volume, additional costs and grade
     */
-    public double calculateCost() {
-        //overwrite within other pipes
-        //seperate into functions (keep other functions here, e.g additional costs and matrial costs)
-        double percentageExtra = getPercentageExtraCosts();
-        
+    public double calculateTotalCost() {
+        double individualPipeCost = calculateIndividualCost();
+        double pipeOrderCost = individualPipeCost * pipeQuantity;
+        return pipeOrderCost;
+    }
+   
+    public double calculateIndividualCost() {
+        double percentageExtra = calculatePercentageExtra();
         double pipeVolume = calculatePipeVolume();
-        //based on grade calculate cost per inch3
+        double materialCost = calculateMaterialCost(pipeVolume, grade);
+        double pipeCost = materialCost + calculateExtraMaterialCost(materialCost, percentageExtra); 
+        return pipeCost;
+    }
+    
+    public double calculateExtraMaterialCost(double materialCost, double percentageExtra) {
+        return materialCost * percentageExtra;
+    }
+    
+    public double calculateMaterialCost(double pipeVolume, int pipeGrade) {
         double materialCost = 0;
         
-        switch (grade) {
+        switch (pipeGrade) {
             case 1:
                 materialCost = pipeVolume * 0.4;
                 break;
@@ -180,15 +171,11 @@ public abstract class Pipe {
                 materialCost = pipeVolume;
                 break;
         }
-        System.out.println("Extra: " + percentageExtra);
-        double pipeCost = materialCost + (materialCost * percentageExtra);
-        System.out.println("Pipe Cost: " + pipeCost);
-        double orderCost = pipeCost * pipeQuantity;
-        return orderCost;
+        return materialCost;
     }
-   
+    
     /**
-    * @return String containing all the pipe details
+    * @return String containing all the pipe details, Override by pipe subclasses
     */
     public int getPipeType() { 
         return 0;
@@ -198,7 +185,7 @@ public abstract class Pipe {
     * @return String containing all the pipe details
     */
     public String getDetails() {
-        String pipeDetailString = "Type " + getPipeType() + " - [Length: " + length + ", Diameter: " + outerDiameter + ", Colours: " + colours + ", Quantity: " + pipeQuantity + "]" + " = " + String.format("£%.2f", calculateCost());
+        String pipeDetailString = "Type " + getPipeType() + " - [Length: " + length + ", Diameter: " + outerDiameter + ", Colours: " + colours + ", Quantity: " + pipeQuantity + "]" + " = " + String.format("£%.2f", calculateTotalCost());
         return pipeDetailString;
     }
 }
