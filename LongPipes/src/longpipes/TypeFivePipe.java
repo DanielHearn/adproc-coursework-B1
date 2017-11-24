@@ -11,8 +11,8 @@ package longpipes;
  */
 public class TypeFivePipe extends TypeThreePipe{
     
-    public TypeFivePipe(double inputLength, double inputDiameter, int pipeGrade, int pipeColors, boolean pipeChemicalResistance, int pipeQuantity) {
-        super(inputLength, inputDiameter, pipeGrade, pipeColors, true, true, pipeChemicalResistance, pipeQuantity);
+    public TypeFivePipe(double inputLength, double inputDiameter, int pipeGrade, int pipeColours, boolean pipeChemicalResistance, int pipeQuantity) {
+        super(inputLength, inputDiameter, pipeGrade, pipeColours, true, true, pipeChemicalResistance, pipeQuantity);
     }
     
     /**

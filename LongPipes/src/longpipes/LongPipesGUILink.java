@@ -24,10 +24,10 @@ public class LongPipesGUILink {
     * @return String indicating whether the input pipe is valid or not
     * @author Dan 801685
     */
-    public String ValidatePipe(double pipeLength, double pipeDiameter, int pipeGrade, int pipeColors, Boolean pipeInsulation, Boolean pipeReinforcement, Boolean pipeChemicalResistance, int pipeQuantity) {
+    public String ValidatePipe(double pipeLength, double pipeDiameter, int pipeGrade, int pipeColours, Boolean pipeInsulation, Boolean pipeReinforcement, Boolean pipeChemicalResistance, int pipeQuantity) {
        
         boolean areInputsValid = true;
-        String invalidText = "Pipe input is not valid due to: ";
+        String invalidText = "Pipe input is not valid due to the following inputs: ";
         
         if (!(pipeLength >= 0.5 && pipeLength <= 6)) {
             areInputsValid = false;
@@ -47,20 +47,20 @@ public class LongPipesGUILink {
         if(areInputsValid) {
             boolean isPipeTypeValid = true;
             
-            if((pipeGrade >= 1 && pipeGrade <= 3) && (pipeColors == 0) && (pipeInsulation == false) && (pipeReinforcement == false)) {
+            if((pipeGrade >= 1 && pipeGrade <= 3) && (pipeColours == 0) && (pipeInsulation == false) && (pipeReinforcement == false)) {
                 Pipe newPipe = new TypeOnePipe(pipeLength, pipeDiameter, pipeGrade, pipeChemicalResistance, pipeQuantity);
                 order.addPipe(newPipe);  
-            } else if ((pipeGrade >= 2 && pipeGrade <= 4) && (pipeColors == 1) && (pipeInsulation == false) && (pipeReinforcement == false)) {
-                Pipe newPipe = new TypeTwoPipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeChemicalResistance, pipeQuantity);  
+            } else if ((pipeGrade >= 2 && pipeGrade <= 4) && (pipeColours == 1) && (pipeInsulation == false) && (pipeReinforcement == false)) {
+                Pipe newPipe = new TypeTwoPipe(pipeLength, pipeDiameter, pipeGrade, pipeColours, pipeChemicalResistance, pipeQuantity);  
                 order.addPipe(newPipe);  
-            } else if ((pipeGrade >= 2 && pipeGrade <= 5) && (pipeColors == 2) && (pipeInsulation == false) && (pipeReinforcement == false)) {
-                Pipe newPipe = new TypeThreePipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeChemicalResistance, pipeQuantity);  
+            } else if ((pipeGrade >= 2 && pipeGrade <= 5) && (pipeColours == 2) && (pipeInsulation == false) && (pipeReinforcement == false)) {
+                Pipe newPipe = new TypeThreePipe(pipeLength, pipeDiameter, pipeGrade, pipeColours, pipeChemicalResistance, pipeQuantity);  
                 order.addPipe(newPipe);  
-            } else if ((pipeGrade >= 2 && pipeGrade <= 5) && (pipeColors == 2) && (pipeInsulation == true) && (pipeReinforcement == false)) {
-                Pipe newPipe = new TypeFourPipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeChemicalResistance, pipeQuantity);  
+            } else if ((pipeGrade >= 2 && pipeGrade <= 5) && (pipeColours == 2) && (pipeInsulation == true) && (pipeReinforcement == false)) {
+                Pipe newPipe = new TypeFourPipe(pipeLength, pipeDiameter, pipeGrade, pipeColours, pipeChemicalResistance, pipeQuantity);  
                 order.addPipe(newPipe);  
-            } else if ((pipeGrade >= 3 && pipeGrade <= 5) && (pipeColors == 2) && (pipeInsulation == true) && (pipeReinforcement == true)) {
-                Pipe newPipe = new TypeFivePipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeChemicalResistance, pipeQuantity);  
+            } else if ((pipeGrade >= 3 && pipeGrade <= 5) && (pipeColours == 2) && (pipeInsulation == true) && (pipeReinforcement == true)) {
+                Pipe newPipe = new TypeFivePipe(pipeLength, pipeDiameter, pipeGrade, pipeColours, pipeChemicalResistance, pipeQuantity);  
                 order.addPipe(newPipe);  
             } else {
                 isPipeTypeValid = false;

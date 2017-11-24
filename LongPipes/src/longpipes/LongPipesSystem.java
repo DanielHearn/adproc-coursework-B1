@@ -60,16 +60,12 @@ public class LongPipesSystem extends javax.swing.JFrame {
         jLabelDiameter = new javax.swing.JLabel();
         jLabelDiameterInfo = new javax.swing.JLabel();
         jTextFieldDiameter = new javax.swing.JTextField();
-        panelPlasticGrade = new javax.swing.JPanel();
-        jRadioButtonGrade1 = new javax.swing.JRadioButton();
-        jRadioButtonGrade2 = new javax.swing.JRadioButton();
-        jRadioButtonGrade3 = new javax.swing.JRadioButton();
-        jRadioButtonGrade4 = new javax.swing.JRadioButton();
-        jRadioButtonGrade5 = new javax.swing.JRadioButton();
-        jPanel1 = new javax.swing.JPanel();
-        jRadioButtonColor0 = new javax.swing.JRadioButton();
-        jRadioButtonColor1 = new javax.swing.JRadioButton();
-        jRadioButtonColor2 = new javax.swing.JRadioButton();
+        jPanelPlasticGrade = new javax.swing.JPanel();
+        jComboBoxGrade = new javax.swing.JComboBox<>();
+        jPanelColour = new javax.swing.JPanel();
+        jRadioButtonColour0 = new javax.swing.JRadioButton();
+        jRadioButtonColour1 = new javax.swing.JRadioButton();
+        jRadioButtonColour2 = new javax.swing.JRadioButton();
         jPanelAdditionalFeatures = new javax.swing.JPanel();
         jButtonClearFeatures = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -235,86 +231,60 @@ public class LongPipesSystem extends javax.swing.JFrame {
 
         jTextFieldDiameter.getAccessibleContext().setAccessibleDescription("");
 
-        panelPlasticGrade.setBorder(javax.swing.BorderFactory.createTitledBorder("Plastic Grade"));
-        panelPlasticGrade.setName(""); // NOI18N
+        jPanelPlasticGrade.setBorder(javax.swing.BorderFactory.createTitledBorder("Plastic Grade"));
+        jPanelPlasticGrade.setName(""); // NOI18N
 
-        pipeGradeGroup.add(jRadioButtonGrade1);
-        jRadioButtonGrade1.setText("Grade [1]");
+        jComboBoxGrade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Grade 1", "Grade 2", "Grade 3", "Grade 4", "Grade 5" }));
 
-        pipeGradeGroup.add(jRadioButtonGrade2);
-        jRadioButtonGrade2.setText("Grade [2]");
-
-        pipeGradeGroup.add(jRadioButtonGrade3);
-        jRadioButtonGrade3.setText("Grade [3]");
-
-        pipeGradeGroup.add(jRadioButtonGrade4);
-        jRadioButtonGrade4.setText("Grade [4]");
-
-        pipeGradeGroup.add(jRadioButtonGrade5);
-        jRadioButtonGrade5.setText("Grade [5]");
-
-        javax.swing.GroupLayout panelPlasticGradeLayout = new javax.swing.GroupLayout(panelPlasticGrade);
-        panelPlasticGrade.setLayout(panelPlasticGradeLayout);
-        panelPlasticGradeLayout.setHorizontalGroup(
-            panelPlasticGradeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelPlasticGradeLayout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelPlasticGradeLayout = new javax.swing.GroupLayout(jPanelPlasticGrade);
+        jPanelPlasticGrade.setLayout(jPanelPlasticGradeLayout);
+        jPanelPlasticGradeLayout.setHorizontalGroup(
+            jPanelPlasticGradeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPlasticGradeLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jRadioButtonGrade1)
+                .addComponent(jComboBoxGrade, 0, 73, Short.MAX_VALUE)
+                .addGap(385, 385, 385))
+        );
+        jPanelPlasticGradeLayout.setVerticalGroup(
+            jPanelPlasticGradeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPlasticGradeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jComboBoxGrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
+
+        jPanelColour.setBorder(javax.swing.BorderFactory.createTitledBorder("Colour"));
+
+        pipeColorGroup.add(jRadioButtonColour0);
+        jRadioButtonColour0.setText("No Colour");
+
+        pipeColorGroup.add(jRadioButtonColour1);
+        jRadioButtonColour1.setText("1 Colour");
+
+        pipeColorGroup.add(jRadioButtonColour2);
+        jRadioButtonColour2.setText("2 Colours");
+
+        javax.swing.GroupLayout jPanelColourLayout = new javax.swing.GroupLayout(jPanelColour);
+        jPanelColour.setLayout(jPanelColourLayout);
+        jPanelColourLayout.setHorizontalGroup(
+            jPanelColourLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelColourLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jRadioButtonColour0)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButtonGrade2)
-                .addGap(12, 12, 12)
-                .addComponent(jRadioButtonGrade3)
+                .addComponent(jRadioButtonColour1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButtonGrade4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButtonGrade5)
+                .addComponent(jRadioButtonColour2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        panelPlasticGradeLayout.setVerticalGroup(
-            panelPlasticGradeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPlasticGradeLayout.createSequentialGroup()
+        jPanelColourLayout.setVerticalGroup(
+            jPanelColourLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelColourLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelPlasticGradeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButtonGrade1)
-                    .addComponent(jRadioButtonGrade2)
-                    .addComponent(jRadioButtonGrade3)
-                    .addComponent(jRadioButtonGrade4)
-                    .addComponent(jRadioButtonGrade5))
-                .addContainerGap())
-        );
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Color"));
-
-        pipeColorGroup.add(jRadioButtonColor0);
-        jRadioButtonColor0.setText("No Color");
-
-        pipeColorGroup.add(jRadioButtonColor1);
-        jRadioButtonColor1.setText("Colors [1]");
-
-        pipeColorGroup.add(jRadioButtonColor2);
-        jRadioButtonColor2.setText("Colors [2]");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jRadioButtonColor0)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButtonColor1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButtonColor2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButtonColor0)
-                    .addComponent(jRadioButtonColor1)
-                    .addComponent(jRadioButtonColor2))
+                .addGroup(jPanelColourLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButtonColour0)
+                    .addComponent(jRadioButtonColour1)
+                    .addComponent(jRadioButtonColour2))
                 .addContainerGap())
         );
 
@@ -329,8 +299,8 @@ public class LongPipesSystem extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"1 Color", "12%"},
-                {"2 Colors", "16%"},
+                {"1 Colour", "12%"},
+                {"2 Colours", "16%"},
                 {"Inner Insulation", "13% "},
                 {"Outer Reinforcement", "17%"},
                 {"Chemical Resistance", "14%"}
@@ -419,7 +389,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
             .addGroup(jPanelQuantityLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelQuantity)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSpinnerQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -481,8 +451,8 @@ public class LongPipesSystem extends javax.swing.JFrame {
             .addGroup(jPanelOrderLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panelPlasticGrade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelPlasticGrade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelColour, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanelAdditionalFeatures, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanelQuantity, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanelOrderLayout.createSequentialGroup()
@@ -505,9 +475,9 @@ public class LongPipesSystem extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelDiameter, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelPlasticGrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelPlasticGrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelColour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelAdditionalFeatures, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -519,7 +489,8 @@ public class LongPipesSystem extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        panelPlasticGrade.getAccessibleContext().setAccessibleDescription("");
+        jPanelPlasticGrade.getAccessibleContext().setAccessibleDescription("");
+        jPanelColour.getAccessibleContext().setAccessibleName("Colour");
 
         jPanelBasket.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 72, 168)));
 
@@ -574,7 +545,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
 
         jTextFieldOrderTotalCost.setEditable(false);
         jTextFieldOrderTotalCost.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        jTextFieldOrderTotalCost.setText("£0");
+        jTextFieldOrderTotalCost.setText("£0.00");
 
         jLabelTotalOrders.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabelTotalOrders.setText("TOTAL ORDERS:");
@@ -823,6 +794,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBoxChemicalResistance;
     private javax.swing.JCheckBox jCheckBoxInnerInsulation;
     private javax.swing.JCheckBox jCheckBoxOuterReinforcement;
+    private javax.swing.JComboBox<String> jComboBoxGrade;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelDiameter;
@@ -838,26 +810,22 @@ public class LongPipesSystem extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelTotalCost;
     private javax.swing.JLabel jLabelTotalOrders;
     private javax.swing.JList<String> jListBasketList;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelAdditionalFeatures;
     private javax.swing.JPanel jPanelBasket;
     private javax.swing.JPanel jPanelBasketControl;
+    private javax.swing.JPanel jPanelColour;
     private javax.swing.JPanel jPanelDiameter;
     private javax.swing.JPanel jPanelFinalCost;
     private javax.swing.JPanel jPanelInfo;
     private javax.swing.JPanel jPanelLength;
     private javax.swing.JPanel jPanelOrder;
+    private javax.swing.JPanel jPanelPlasticGrade;
     private javax.swing.JPanel jPanelQuantity;
     private javax.swing.JPanel jPanelStatus;
     private javax.swing.JPanel jPanelTopInfo;
-    private javax.swing.JRadioButton jRadioButtonColor0;
-    private javax.swing.JRadioButton jRadioButtonColor1;
-    private javax.swing.JRadioButton jRadioButtonColor2;
-    private javax.swing.JRadioButton jRadioButtonGrade1;
-    private javax.swing.JRadioButton jRadioButtonGrade2;
-    private javax.swing.JRadioButton jRadioButtonGrade3;
-    private javax.swing.JRadioButton jRadioButtonGrade4;
-    private javax.swing.JRadioButton jRadioButtonGrade5;
+    private javax.swing.JRadioButton jRadioButtonColour0;
+    private javax.swing.JRadioButton jRadioButtonColour1;
+    private javax.swing.JRadioButton jRadioButtonColour2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -869,7 +837,6 @@ public class LongPipesSystem extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldOrderRef;
     private javax.swing.JTextField jTextFieldOrderTotalCost;
     private javax.swing.JTextField jTextFieldTotalOrders;
-    private javax.swing.JPanel panelPlasticGrade;
     private javax.swing.ButtonGroup pipeColorGroup;
     private javax.swing.ButtonGroup pipeGradeGroup;
     // End of variables declaration//GEN-END:variables
@@ -890,8 +857,9 @@ public class LongPipesSystem extends javax.swing.JFrame {
         jTextFieldLength.setText("0");
         jTextFieldDiameter.setText("0");
         jSpinnerQuantity.setText("0");
-        jRadioButtonGrade1.setSelected(true);
-        jRadioButtonColor0.setSelected(true);
+        //jRadioButtonGrade1.setSelected(true);
+        jComboBoxGrade.setSelectedIndex(0);
+        jRadioButtonColour0.setSelected(true);
         jCheckBoxInnerInsulation.setSelected(false);
         jCheckBoxOuterReinforcement.setSelected(false);
         jCheckBoxChemicalResistance.setSelected(false);
@@ -992,7 +960,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
         double pipeLength = Double.parseDouble(jTextFieldLength.getText());
         double pipeDiameter = Double.parseDouble(jTextFieldDiameter.getText());
         int pipeGrade = getPipeGrade();
-        int pipeColors = getColours();
+        int pipeColours = getColours();
 
         Boolean pipeInsulation = jCheckBoxInnerInsulation.isSelected();
         Boolean pipeReinforcement = jCheckBoxOuterReinforcement.isSelected();
@@ -1000,7 +968,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
         int pipeQuantity = Integer.parseInt(jSpinnerQuantity.getText());
 
         //Get better way of handling valid/invalid ui without direct string checking
-        String pipeStatusText = pipeSystem.ValidatePipe(pipeLength, pipeDiameter, pipeGrade, pipeColors, pipeInsulation, pipeReinforcement, pipeChemicalResistance, pipeQuantity);
+        String pipeStatusText = pipeSystem.ValidatePipe(pipeLength, pipeDiameter, pipeGrade, pipeColours, pipeInsulation, pipeReinforcement, pipeChemicalResistance, pipeQuantity);
         jLabelStatus.setText(pipeStatusText);
         //Replace with get methods for order
         if ("Pipe added to basket".equals(pipeStatusText)) {
@@ -1020,7 +988,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
      * @author Dan 801685
      */
     public int getPipeGrade() {
-        int pipeGrade = 1;
+        /*int pipeGrade = 1;
         if (jRadioButtonGrade1.isSelected() == true) {
             pipeGrade = 1;
         } else if (jRadioButtonGrade2.isSelected() == true) {
@@ -1031,7 +999,10 @@ public class LongPipesSystem extends javax.swing.JFrame {
             pipeGrade = 4;
         } else if (jRadioButtonGrade5.isSelected() == true) {
             pipeGrade = 5;
-        }
+        }*/
+        Object selectedGradeObject = jComboBoxGrade.getSelectedItem();
+        String pipeGradeText = String.valueOf(selectedGradeObject);
+        int pipeGrade = Integer.parseInt(pipeGradeText.substring(pipeGradeText.length() - 1));
         return pipeGrade;
     }
 
@@ -1040,15 +1011,15 @@ public class LongPipesSystem extends javax.swing.JFrame {
      * @author Dan 801685
      */
     public int getColours() {
-        int pipeColors = 0;
-        if (jRadioButtonColor0.isSelected() == true) {
-            pipeColors = 0;
-        } else if (jRadioButtonColor1.isSelected() == true) {
-            pipeColors = 1;
-        } else if (jRadioButtonColor2.isSelected() == true) {
-            pipeColors = 2;
+        int pipeColours = 0;
+        if (jRadioButtonColour0.isSelected() == true) {
+            pipeColours = 0;
+        } else if (jRadioButtonColour1.isSelected() == true) {
+            pipeColours = 1;
+        } else if (jRadioButtonColour2.isSelected() == true) {
+            pipeColours = 2;
         }
-        return pipeColors;
+        return pipeColours;
     }
 
     /*

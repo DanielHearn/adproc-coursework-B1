@@ -50,14 +50,23 @@ public class Order {
         return orderedPipes.size();
     }
 
-    public String generateInvoiceString(Pipe currentPipe, String currentPipeType, String inputString, double inputDouble) {
+    /**
+     * @param currentPipe The current pipe
+     * @param currentPipeType The current pipe type
+     * @param inputString The main string content
+     * @param inputDouble The double value to be placed at the end of the string
+     * @return The string formatted for use in the invoice based on pipe details
+     * @author Dan 801685
+     */
+    public String generateInvoicePipeString(Pipe currentPipe, String currentPipeType, String inputString, double inputDouble) {
         String startString = currentPipeType + ": " + inputString + ": ";
         String formattedNumber = String.format("£%.2f", inputDouble);
         String invoiceString = formatInvoice(startString) + formattedNumber;
         return invoiceString;
     }
     
-    public String generateInvoiceString(Pipe currentPipe, String currentPipeType, String inputString, int inputInt) {
+    
+    public String generateInvoicePipeString(Pipe currentPipe, String currentPipeType, String inputString, int inputInt) {
         String startString = currentPipeType + ": " + inputString + ": ";
         String formattedNumber = Integer.toString(inputInt);
         String invoiceString = formatInvoice(startString) + formattedNumber;
@@ -87,11 +96,11 @@ public class Order {
                 int pipeQuantity = currentPipe.getPipeQuantity();
                 double totalCost = currentPipe.calculateTotalCost();
                 
-                invoiceStrings.add(generateInvoiceString(currentPipe, currentPipeType, "Individual Pipe Cost", individualPipeCost));
-                invoiceStrings.add(generateInvoiceString(currentPipe, currentPipeType, "Pipe Material Cost", pipeMaterialCost));
-                invoiceStrings.add(generateInvoiceString(currentPipe, currentPipeType, "Pipe Additional Feature Cost", pipeExtraCost));
-                invoiceStrings.add(generateInvoiceString(currentPipe, currentPipeType, "Quantity of Pipes in Order", pipeQuantity));
-                invoiceStrings.add(generateInvoiceString(currentPipe, currentPipeType, "Total Pipe Order Cost", totalCost));
+                invoiceStrings.add(generateInvoicePipeString(currentPipe, currentPipeType, "Individual Pipe Cost", individualPipeCost));
+                invoiceStrings.add(generateInvoicePipeString(currentPipe, currentPipeType, "Pipe Material Cost", pipeMaterialCost));
+                invoiceStrings.add(generateInvoicePipeString(currentPipe, currentPipeType, "Pipe Additional Feature Cost", pipeExtraCost));
+                invoiceStrings.add(generateInvoicePipeString(currentPipe, currentPipeType, "Quantity of Pipes in Order", pipeQuantity));
+                invoiceStrings.add(generateInvoicePipeString(currentPipe, currentPipeType, "Total Pipe Order Cost", totalCost));
             }
 
             invoiceStrings.add(LINEBREAK);
@@ -123,20 +132,26 @@ public class Order {
         return invoice;
     }
     
+    /**
+     * @author Dan 801685
+     * @return The order number
+     */
     public int getOrderNumber() {
         return orderNumber;
     }
 
     /**
      * @author Lee 750834
-     * @return Returns a formated string
+     * @param inputString The string to be formatted
+     * @return Return a formated string for the invoice
      */
     public static String formatInvoice(String inputString) {
         return String.format("%1$-" + 45 + "s", inputString);
     }
 
     /**
-     * @return The pipes within the ordered pipes arraylist
+     * @author Dan 801685
+     * @return The pipes within the orderedPipes arraylist
      */
     public ArrayList<Pipe> getOrderedPipes() {
         return orderedPipes;

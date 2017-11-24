@@ -11,13 +11,13 @@ package longpipes;
  */
 public class TypeThreePipe extends Pipe{
     
-    public TypeThreePipe(double inputLength, double inputDiameter, int pipeGrade, int pipeColors, boolean pipeChemicalResistance, int pipeQuantity) {
-        super(inputLength, inputDiameter, pipeGrade, pipeColors, false, false, pipeChemicalResistance, pipeQuantity);
+    public TypeThreePipe(double inputLength, double inputDiameter, int pipeGrade, int pipeColours, boolean pipeChemicalResistance, int pipeQuantity) {
+        super(inputLength, inputDiameter, pipeGrade, pipeColours, false, false, pipeChemicalResistance, pipeQuantity);
     }
     
     // Constructor for type four and five pipes
-    public TypeThreePipe(double inputLength, double inputDiameter, int pipeGrade, int pipeColors, boolean innerInsulation, boolean outerReinforcement, boolean pipeChemicalResistance, int pipeQuantity) {
-        super(inputLength, inputDiameter, pipeGrade, pipeColors, innerInsulation, outerReinforcement, pipeChemicalResistance, pipeQuantity);
+    public TypeThreePipe(double inputLength, double inputDiameter, int pipeGrade, int pipeColours, boolean innerInsulation, boolean outerReinforcement, boolean pipeChemicalResistance, int pipeQuantity) {
+        super(inputLength, inputDiameter, pipeGrade, pipeColours, innerInsulation, outerReinforcement, pipeChemicalResistance, pipeQuantity);
     }
 
     /**
