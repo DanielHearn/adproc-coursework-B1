@@ -419,7 +419,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
             .addGroup(jPanelQuantityLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelQuantity)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addComponent(jSpinnerQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -453,9 +453,9 @@ public class LongPipesSystem extends javax.swing.JFrame {
             .addGroup(jPanelInfoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelOrderDate)
-                .addGap(163, 163, 163)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelOrderTime)
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanelInfoLayout.setVerticalGroup(
             jPanelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -548,7 +548,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
             .addGroup(jPanelBasketControlLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelBasketControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
                     .addGroup(jPanelBasketControlLayout.createSequentialGroup()
                         .addComponent(jButtonClearBasket, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -590,7 +590,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
         jTextFieldOrderRef.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         jTextFieldOrderRef.setText("000000");
 
-        jButtonBuyOrder.setText("Complete Order");
+        jButtonBuyOrder.setText("Order Basket");
         jButtonBuyOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonBuyOrderActionPerformed(evt);
@@ -606,11 +606,11 @@ public class LongPipesSystem extends javax.swing.JFrame {
                 .addGroup(jPanelFinalCostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanelFinalCostLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButtonBuyOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButtonBuyOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelFinalCostLayout.createSequentialGroup()
                         .addGroup(jPanelFinalCostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelOrderRef, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabelTotalOrders, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                            .addComponent(jLabelTotalOrders, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
                             .addComponent(jLabelTotalCost, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanelFinalCostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)

@@ -31,9 +31,35 @@ public class TypeOnePipe extends Pipe{
         double percentageExtra = 0;
         
         if(this.getChemicalResistance()) {
-            percentageExtra += 0.14;   
+            percentageExtra += this.getChemicalResistanceCost();   
         }
         
         return percentageExtra;
     } 
+    
+    /**
+     * @param pipeVolume The volume of the pipe
+     * @param pipeGrade The grade of the pipe
+    * @return The cost for the material of an individual pipe
+    */
+    @Override
+    public double calculateMaterialCost(double pipeVolume, int pipeGrade) {
+        double materialCost = 0;
+        
+        switch (pipeGrade) {
+            case 1:
+                materialCost = pipeVolume * 0.4;
+                break;
+            case 2:
+                materialCost = pipeVolume * 0.6;
+                break;
+            case 3:
+                materialCost = pipeVolume * 0.75;
+                break;
+            default:
+                materialCost = pipeVolume * 0.4;
+                break;
+        }
+        return materialCost;
+    }
 }

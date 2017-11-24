@@ -30,19 +30,42 @@ public class TypeFivePipe extends TypeThreePipe{
     public double calculatePercentageExtra() {
         double percentageExtra = 0;
 
-        // Add two pipe colour cost
-        percentageExtra += 0.16;
+        percentageExtra += this.getTwoColourCost();
         
-        // Add inner insulation cost
-        percentageExtra += 0.13;
+        percentageExtra += this.getInnerInsulationCost();
         
-        // Add outer reinforcement cost
-        percentageExtra += 0.17;
+        percentageExtra += this.getOuterReinforcementCost();
         
         if(this.getChemicalResistance()) {
-            percentageExtra += 0.14;   
+            percentageExtra += this.getChemicalResistanceCost(); 
         }
         
         return percentageExtra;
     } 
+    
+    /**
+     * @param pipeVolume The volume of the pipe
+     * @param pipeGrade The grade of the pipe
+    * @return The cost for the material of an individual pipe
+    */
+    @Override
+    public double calculateMaterialCost(double pipeVolume, int pipeGrade) {
+        double materialCost = 0;
+        
+        switch (pipeGrade) {
+            case 3:
+                materialCost = pipeVolume * 0.75;
+                break;
+            case 4:
+                materialCost = pipeVolume * 0.8;
+                break;
+            case 5:
+                materialCost = pipeVolume * 0.95;
+                break;
+            default:
+                materialCost = pipeVolume * 0.6;
+                break;
+        }
+        return materialCost;
+    }
 }

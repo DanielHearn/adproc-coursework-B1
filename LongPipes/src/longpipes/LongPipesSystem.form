@@ -622,7 +622,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabelQuantity" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="75" max="32767" attributes="0"/>
                       <Component id="jSpinnerQuantity" min="-2" pref="248" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -681,9 +681,9 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabelOrderDate" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="163" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="jLabelOrderTime" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="61" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -778,7 +778,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane3" pref="411" max="32767" attributes="0"/>
+                          <Component id="jScrollPane3" pref="459" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="jButtonClearBasket" min="-2" pref="118" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
@@ -858,12 +858,12 @@
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="jButtonBuyOrder" min="-2" pref="134" max="-2" attributes="0"/>
+                              <Component id="jButtonBuyOrder" min="-2" pref="118" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabelOrderRef" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="jLabelTotalOrders" alignment="1" pref="217" max="32767" attributes="0"/>
+                                  <Component id="jLabelTotalOrders" alignment="1" pref="265" max="32767" attributes="0"/>
                                   <Component id="jLabelTotalCost" alignment="1" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -953,7 +953,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="jButtonBuyOrder">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Complete Order"/>
+                <Property name="text" type="java.lang.String" value="Order Basket"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonBuyOrderActionPerformed"/>

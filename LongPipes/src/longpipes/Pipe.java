@@ -41,60 +41,59 @@ public abstract class Pipe {
         outerReinforcement = inputOuterReinforcement;
         chemicalResistance = inputChemicalResistance;
         pipeQuantity = inputPipeQuantity;
-        
     }
     
     /**
-    * @return The pipe length
+    * @return The pipe's length
     */
     public double getLength() {
         return length;
     }
     
     /**
-    * @return The pipe outer diameter
+    * @return The pipe's outer diameter
     */
     public double getOuterDiameter() {
         return outerDiameter;
     }
     
     /**
-    * @return The pipe inner diameter
+    * @return The pipe's inner diameter
     */
     public double getInnerDiameter() {
         return innerDiameter;
     }
     
     /**
-    * @return The pipe grade
+    * @return The pipe's grade
     */
     public int getGrade() {
         return grade;
     }
     
     /**
-    * @return The pipe colours 
+    * @return The pipe's pipe colours 
     */
     public int getColours() {
         return colours;
     }
     
     /**
-    * @return The inner insulation
+    * @return The pipe's inner insulation
     */
     public Boolean getInnerInsulation() {
         return innerInsulation;
     }
     
     /**
-    * @return The outer reinforcement
+    * @return The pipe's outer reinforcement
     */
     public Boolean getOuterReinforcement() {
         return outerReinforcement;
     }
     
     /**
-    * @return The chemical resistance
+    * @return The pipe's chemical resistance
     */
     public Boolean getChemicalResistance() {
         return chemicalResistance;
@@ -105,6 +104,41 @@ public abstract class Pipe {
     */
     public int getPipeQuantity() {
         return pipeQuantity;
+    }
+    
+    /**
+    * @return The additional cost for one colour
+    */
+    public double getOneColourCost() {
+        return 0.12;
+    }
+    
+    /**
+    * @return The additional cost for one colour
+    */
+    public double getTwoColourCost() {
+        return 0.16;
+    }
+    
+    /**
+    * @return The inner insulation cost
+    */
+    public double getInnerInsulationCost() {
+        return 0.13;
+    }
+    
+    /**
+    * @return The outer reinforcement cost
+    */
+    public double getOuterReinforcementCost() {
+        return 0.17;
+    }
+  
+    /**
+    * @return The chemical resistance cost
+    */
+    public double getChemicalResistanceCost() {
+        return 0.14;
     }
     
     /**
@@ -128,7 +162,7 @@ public abstract class Pipe {
     }
     
     /**
-    * @return The total cost of the pipe based on volume, additional costs and grade
+    * @return The total cost of the pipe based on the individual cost and quantity of pipes ordered
     */
     public double calculateTotalCost() {
         double individualPipeCost = calculateIndividualCost();
@@ -136,42 +170,33 @@ public abstract class Pipe {
         return pipeOrderCost;
     }
    
+    /**
+    * @return The total cost of an individual pipe within the order
+    */
     public double calculateIndividualCost() {
         double percentageExtra = calculatePercentageExtra();
         double pipeVolume = calculatePipeVolume();
         double materialCost = calculateMaterialCost(pipeVolume, grade);
-        double pipeCost = materialCost + calculateExtraMaterialCost(materialCost, percentageExtra); 
+        double pipeCost = materialCost + calculateExtraFeatureCost(materialCost, percentageExtra); 
         return pipeCost;
     }
     
-    public double calculateExtraMaterialCost(double materialCost, double percentageExtra) {
+    /**
+     * @param materialCost The cost for the materials of an individual pipe
+     * @param percentageExtra The percentage extra based on the pipe's additional features
+    * @return The cost of the extra features for an individual pipe
+    */
+    public double calculateExtraFeatureCost(double materialCost, double percentageExtra) {
         return materialCost * percentageExtra;
     }
     
+    /**
+     * @param pipeVolume The volume of the pipe
+     * @param pipeGrade The grade of the pipe
+    * @return The cost for the material of an individual pipe
+    */
     public double calculateMaterialCost(double pipeVolume, int pipeGrade) {
-        double materialCost = 0;
-        
-        switch (pipeGrade) {
-            case 1:
-                materialCost = pipeVolume * 0.4;
-                break;
-            case 2:
-                materialCost = pipeVolume * 0.6;
-                break;
-            case 3:
-                materialCost = pipeVolume * 0.75;
-                break;
-            case 4:
-                materialCost = pipeVolume * 0.8;
-                break;
-            case 5:
-                materialCost = pipeVolume * 0.95;
-                break;
-            default:
-                materialCost = pipeVolume;
-                break;
-        }
-        return materialCost;
+        return 0;
     }
     
     /**
@@ -185,7 +210,8 @@ public abstract class Pipe {
     * @return String containing all the pipe details
     */
     public String getDetails() {
-        String pipeDetailString = "Type " + getPipeType() + " - [Length: " + length + ", Diameter: " + outerDiameter + ", Colours: " + colours + ", Quantity: " + pipeQuantity + "]" + " = " + String.format("£%.2f", calculateTotalCost());
+        String pipeDetailString = "Type " + getPipeType() + " - [Length: " + length + ", Diameter: " + outerDiameter + 
+                ", Colours: " + colours + ", Quantity: " + pipeQuantity + "]" + " = " + String.format("£%.2f", calculateTotalCost());
         return pipeDetailString;
     }
 }

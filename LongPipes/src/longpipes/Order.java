@@ -67,7 +67,7 @@ public class Order {
     /**
      * Prints out each of the pipe details then the order total cost
      * @author Lee 750834
-     * @param orderNo
+     * @param orderNo The number of the order
      * @return Return invoice details
      */
     public String getInvoice(int orderNo) {
@@ -83,7 +83,7 @@ public class Order {
                 String currentPipeType = "Pipe Order " + i;
                 double individualPipeCost = currentPipe.calculateIndividualCost();
                 double pipeMaterialCost = currentPipe.calculateMaterialCost(currentPipe.calculatePipeVolume(), currentPipe.getGrade());
-                double pipeExtraCost = currentPipe.calculateExtraMaterialCost(pipeMaterialCost, currentPipe.calculatePercentageExtra());
+                double pipeExtraCost = currentPipe.calculateExtraFeatureCost(pipeMaterialCost, currentPipe.calculatePercentageExtra());
                 int pipeQuantity = currentPipe.getPipeQuantity();
                 double totalCost = currentPipe.calculateTotalCost();
                 
@@ -103,14 +103,14 @@ public class Order {
             String[] dateTime = LongPipesSystem.getDateTime();
             String date = formatInvoice("Date:") + dateTime[0];
             String time = formatInvoice("Time:") + dateTime[1];
-            String thankyou = "             Thanks for shopping with LongPipes";
+            String thankyouText = formatInvoice("Thanks for shopping with LongPipes"); 
 
             invoiceStrings.add(orderRef);
             invoiceStrings.add(orderTotal); 
             invoiceStrings.add(date);
             invoiceStrings.add(time);
             invoiceStrings.add(LINEBREAK);
-            invoiceStrings.add(thankyou);
+            invoiceStrings.add(thankyouText);
 
             for (int i = 0; i < invoiceStrings.size(); i++) {
                 invoice +=  invoiceStrings.get(i) + "\n";

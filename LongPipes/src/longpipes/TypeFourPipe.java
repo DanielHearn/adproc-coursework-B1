@@ -30,14 +30,12 @@ public class TypeFourPipe extends TypeThreePipe{
     public double calculatePercentageExtra() {
         double percentageExtra = 0;
 
-        // Add two pipe colour cost
-        percentageExtra += 0.16;
+        percentageExtra += this.getTwoColourCost();
         
-        // Add inner insulation cost
-        percentageExtra += 0.13;
+        percentageExtra += this.getInnerInsulationCost();
         
         if(this.getChemicalResistance()) {
-            percentageExtra += 0.14;   
+            percentageExtra += this.getChemicalResistanceCost();
         }
         
         return percentageExtra;
