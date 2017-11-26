@@ -12,7 +12,7 @@ package longpipes;
 public class TypeOnePipe extends Pipe{
     
     public TypeOnePipe(double inputLength, double inputDiameter, int pipeGrade, boolean pipeChemicalResistance, int pipeQuantity) {
-        super(inputLength, inputDiameter, pipeGrade, 0, false, false, pipeChemicalResistance, pipeQuantity);
+        super(inputLength, inputDiameter, pipeGrade, 0, pipeChemicalResistance, pipeQuantity);
     }
     
     /**
@@ -30,8 +30,8 @@ public class TypeOnePipe extends Pipe{
     public double calculatePercentageExtra() {
         double percentageExtra = 0;
         
-        if(this.getChemicalResistance()) {
-            percentageExtra += this.getChemicalResistanceCost();   
+        if(getChemicalResistance()) {
+            percentageExtra += getChemicalResistanceCost();   
         }
         
         return percentageExtra;

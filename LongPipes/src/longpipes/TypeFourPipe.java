@@ -10,9 +10,11 @@ package longpipes;
  * @author up801685
  */
 public class TypeFourPipe extends TypeThreePipe{
+    private final Boolean innerInsulation;
     
-    public TypeFourPipe(double inputLength, double inputDiameter, int pipeGrade, int pipeColours, boolean pipeChemicalResistance, int pipeQuantity) {
-        super(inputLength, inputDiameter, pipeGrade, pipeColours, true, false, pipeChemicalResistance, pipeQuantity);
+    public TypeFourPipe(double inputLength, double inputDiameter, int pipeGrade, int pipeColours, boolean pipeInnerInsulation, boolean pipeChemicalResistance, int pipeQuantity) {
+        super(inputLength, inputDiameter, pipeGrade, pipeColours, pipeChemicalResistance, pipeQuantity);
+        innerInsulation = pipeInnerInsulation;
     }
     
     /**
@@ -24,18 +26,32 @@ public class TypeFourPipe extends TypeThreePipe{
     }
     
     /**
+    * @return The pipe's inner insulation
+    */
+    public Boolean getInnerInsulation() {
+        return innerInsulation;
+    }
+    
+    /**
+    * @return The inner insulation cost
+    */
+    public double getInnerInsulationCost() {
+        return 0.13;
+    }
+    
+    /**
     * @return The percentage extra costs based on the pipe additional costs
     */
     @Override
     public double calculatePercentageExtra() {
         double percentageExtra = 0;
 
-        percentageExtra += this.getTwoColourCost();
+        percentageExtra += getTwoColourCost();
         
-        percentageExtra += this.getInnerInsulationCost();
+        percentageExtra += getInnerInsulationCost();
         
-        if(this.getChemicalResistance()) {
-            percentageExtra += this.getChemicalResistanceCost();
+        if(getChemicalResistance()) {
+            percentageExtra += getChemicalResistanceCost();
         }
         
         return percentageExtra;

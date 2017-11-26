@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -48,6 +49,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
 
         pipeGradeGroup = new javax.swing.ButtonGroup();
         pipeColorGroup = new javax.swing.ButtonGroup();
+        jOptionPane = new javax.swing.JOptionPane();
         jPanelStatus = new javax.swing.JPanel();
         jLabelStatus = new javax.swing.JLabel();
         jLabelStatusTime = new javax.swing.JLabel();
@@ -490,7 +492,6 @@ public class LongPipesSystem extends javax.swing.JFrame {
         );
 
         jPanelPlasticGrade.getAccessibleContext().setAccessibleDescription("");
-        jPanelColour.getAccessibleContext().setAccessibleName("Colour");
 
         jPanelBasket.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 72, 168)));
 
@@ -581,7 +582,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
                     .addGroup(jPanelFinalCostLayout.createSequentialGroup()
                         .addGroup(jPanelFinalCostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelOrderRef, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabelTotalOrders, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+                            .addComponent(jLabelTotalOrders, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabelTotalCost, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanelFinalCostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -810,6 +811,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelTotalCost;
     private javax.swing.JLabel jLabelTotalOrders;
     private javax.swing.JList<String> jListBasketList;
+    private javax.swing.JOptionPane jOptionPane;
     private javax.swing.JPanel jPanelAdditionalFeatures;
     private javax.swing.JPanel jPanelBasket;
     private javax.swing.JPanel jPanelBasketControl;
@@ -842,7 +844,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     /**
-     * @return Generates a random order number. This is just cosmetic.
+     * Generates a random order number. This is just cosmetic.
      * @author Lee 750834
      */
     public void getOrderNumber() {
@@ -850,7 +852,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
     }
 
     /**
-     * @return Default the form and clear all the fields.
+     * Default the form and clear all the fields.
      * @author Lee 750834
      */
     public void defaultForm() {
@@ -866,8 +868,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
     }
 
     /**
-     * @return Update the date and time within the form every mouseclick. (cant
-     * find timers)
+     * Update the date and time within the form every mouse click.
      * @author Lee 750834
      */
     public void updateFormDateTime() {
@@ -910,7 +911,6 @@ public class LongPipesSystem extends javax.swing.JFrame {
 
     /**
      * Update the total order label with the total order number
-     *
      * @author Dan 801685
      */
     public void updateTotalOrders() {
@@ -950,7 +950,62 @@ public class LongPipesSystem extends javax.swing.JFrame {
         orderedPipes.clear();
         updateInvoiceUI();
     }
+    
+    /**
+     * Validate the pipe inputs and output a status message depending on the pipe validity
+     * @author Dan 801685
+     * @param pipeLength
+     * @param pipeDiameter
+     * @param pipeGrade
+     * @param pipeColours
+     * @param pipeInsulation
+     * @param pipeReinforcement
+     * @param pipeChemicalResistance
+     * @param pipeQuantity
+     */
+    public void validatePipeInputs(double pipeLength, double pipeDiameter, int pipeGrade, int pipeColours, Boolean pipeInsulation, Boolean pipeReinforcement, Boolean pipeChemicalResistance, int pipeQuantity) {
+        boolean pipeInputsValid = true;
+        String invalidText = "Pipe input is not valid due to the following inputs: ";
+        
+        if (!(pipeLength >= 0.5 && pipeLength <= 6)) {
+            pipeInputsValid = false;
+            invalidText += "pipe length, ";
+        }
+        
+        if (!(pipeDiameter >= 1 && pipeDiameter <= 5)) {
+            pipeInputsValid = false;
+            invalidText += "pipe diameter, ";
+        }
+        
+        if (!(pipeQuantity >= 1 && pipeQuantity <= 100)) {
+            pipeInputsValid = false;
+            invalidText += "pipe quantity, ";
+        }
 
+        if (pipeInputsValid) {
+            if(pipeSystem.validateTypePipe(pipeLength, pipeDiameter, pipeGrade, pipeColours, pipeInsulation, pipeReinforcement, pipeChemicalResistance, pipeQuantity)) {
+                updateBasketModel();
+                setStatusText("Pipe Added To Basket");
+            } else {
+                String invalidTypeText = "Input pipe specifications do meet any of our available pipe types.";
+                setStatusText(invalidTypeText);
+                displayErrorModal("Invalid Pipe Specification", invalidTypeText);
+            }
+        } else {
+            setStatusText(invalidText);     
+            displayErrorModal("Invalid Pipe Inputs", invalidText);
+        }
+    }
+
+    /**
+     * Set the status text to new value
+     * @param statusText The new status text
+     * @author Dan 801685
+     */
+    public void setStatusText(String statusText) {
+        jLabelStatus.setText(statusText); 
+    }
+    
     /**
      * @return Send to link to validate pipe type and add to order.
      * @author Lee 750834
@@ -967,20 +1022,25 @@ public class LongPipesSystem extends javax.swing.JFrame {
         Boolean pipeChemicalResistance = jCheckBoxChemicalResistance.isSelected();
         int pipeQuantity = Integer.parseInt(jSpinnerQuantity.getText());
 
-        //Get better way of handling valid/invalid ui without direct string checking
-        String pipeStatusText = pipeSystem.ValidatePipe(pipeLength, pipeDiameter, pipeGrade, pipeColours, pipeInsulation, pipeReinforcement, pipeChemicalResistance, pipeQuantity);
-        jLabelStatus.setText(pipeStatusText);
-        //Replace with get methods for order
-        if ("Pipe added to basket".equals(pipeStatusText)) {
-            basketModel.clear();
-            ArrayList<Pipe> orderedPipes = pipeSystem.getOrderedPipes();
-
-            for (int i = 0; i < orderedPipes.size(); i++) {  
-                basketModel.addElement(orderedPipes.get(i).getDetails());
-            }
-            defaultForm();
-            updateInvoiceUI();
+        validatePipeInputs(pipeLength, pipeDiameter, pipeGrade, pipeColours, pipeInsulation, pipeReinforcement, pipeChemicalResistance, pipeQuantity);
+    }
+    
+    public void displayErrorModal(String errorTitle, String errorDescription) {
+        JOptionPane.showMessageDialog(this, errorDescription, errorTitle, JOptionPane.ERROR_MESSAGE);
+    }
+    
+    /*
+     * Update the basket model from the pipes within the ordered pipes
+     * @author Dan 801685
+     */
+    public void updateBasketModel() {
+        basketModel.clear();
+        ArrayList<Pipe> orderedPipes = pipeSystem.getOrderedPipes();
+        for (int i = 0; i < orderedPipes.size(); i++) {  
+            basketModel.addElement(orderedPipes.get(i).getDetails());
         }
+        defaultForm();
+        updateInvoiceUI();
     }
 
     /*
@@ -988,18 +1048,6 @@ public class LongPipesSystem extends javax.swing.JFrame {
      * @author Dan 801685
      */
     public int getPipeGrade() {
-        /*int pipeGrade = 1;
-        if (jRadioButtonGrade1.isSelected() == true) {
-            pipeGrade = 1;
-        } else if (jRadioButtonGrade2.isSelected() == true) {
-            pipeGrade = 2;
-        } else if (jRadioButtonGrade3.isSelected() == true) {
-            pipeGrade = 3;
-        } else if (jRadioButtonGrade4.isSelected() == true) {
-            pipeGrade = 4;
-        } else if (jRadioButtonGrade5.isSelected() == true) {
-            pipeGrade = 5;
-        }*/
         Object selectedGradeObject = jComboBoxGrade.getSelectedItem();
         String pipeGradeText = String.valueOf(selectedGradeObject);
         int pipeGrade = Integer.parseInt(pipeGradeText.substring(pipeGradeText.length() - 1));
@@ -1024,6 +1072,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
 
     /*
      * @return The formatted date and time
+     * @author Lee 750834
      */
     public static String[] getDateTime() {
         return new String[]{theDate, theTime};

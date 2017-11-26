@@ -8,7 +8,6 @@ package longpipes;
 import java.util.*;
 
 /**
- *
  * @author dan up801685
  */
 public class Order {
@@ -65,7 +64,14 @@ public class Order {
         return invoiceString;
     }
     
-    
+    /**
+     * @param currentPipe The current pipe
+     * @param currentPipeType The current pipe type
+     * @param inputString The main string content
+     * @param inputInt The int value to be placed at the end of the string
+     * @return The string formatted for use in the invoice based on pipe details
+     * @author Dan 801685
+     */
     public String generateInvoicePipeString(Pipe currentPipe, String currentPipeType, String inputString, int inputInt) {
         String startString = currentPipeType + ": " + inputString + ": ";
         String formattedNumber = Integer.toString(inputInt);
@@ -75,9 +81,9 @@ public class Order {
     
     /**
      * Prints out each of the pipe details then the order total cost
-     * @author Lee 750834
      * @param orderNo The number of the order
      * @return Return invoice details
+     * @author Lee 750834
      */
     public String getInvoice(int orderNo) {
         String invoice = "";
@@ -101,6 +107,7 @@ public class Order {
                 invoiceStrings.add(generateInvoicePipeString(currentPipe, currentPipeType, "Pipe Additional Feature Cost", pipeExtraCost));
                 invoiceStrings.add(generateInvoicePipeString(currentPipe, currentPipeType, "Quantity of Pipes in Order", pipeQuantity));
                 invoiceStrings.add(generateInvoicePipeString(currentPipe, currentPipeType, "Total Pipe Order Cost", totalCost));
+                invoiceStrings.add("---------------------------------------------");
             }
 
             invoiceStrings.add(LINEBREAK);
@@ -133,25 +140,25 @@ public class Order {
     }
     
     /**
-     * @author Dan 801685
      * @return The order number
+     * @author Dan 801685
      */
     public int getOrderNumber() {
         return orderNumber;
     }
 
     /**
-     * @author Lee 750834
      * @param inputString The string to be formatted
      * @return Return a formated string for the invoice
+     * @author Lee 750834
      */
     public static String formatInvoice(String inputString) {
         return String.format("%1$-" + 45 + "s", inputString);
     }
 
     /**
-     * @author Dan 801685
      * @return The pipes within the orderedPipes arraylist
+     * @author Dan 801685
      */
     public ArrayList<Pipe> getOrderedPipes() {
         return orderedPipes;

@@ -15,8 +15,6 @@ public abstract class Pipe {
     private final double innerDiameter;
     private final int grade;
     private final int colours;
-    private final Boolean innerInsulation;
-    private final Boolean outerReinforcement;
     private final Boolean chemicalResistance;
     private final int pipeQuantity;
    
@@ -26,19 +24,15 @@ public abstract class Pipe {
      * @param inputOuterDiameter
      * @param inputGrade
      * @param inputColours
-     * @param inputInnerInsulation
-     * @param inputOuterReinforcement
      * @param inputChemicalResistance
      * @param inputPipeQuantity
     */
-    public Pipe(double inputLength, double inputOuterDiameter, int inputGrade, int inputColours, Boolean inputInnerInsulation, Boolean inputOuterReinforcement, Boolean inputChemicalResistance, int inputPipeQuantity) {
+    public Pipe(double inputLength, double inputOuterDiameter, int inputGrade, int inputColours, Boolean inputChemicalResistance, int inputPipeQuantity) {
         length = inputLength;
         outerDiameter = inputOuterDiameter;
         innerDiameter = outerDiameter*0.9;
         grade = inputGrade;
         colours = inputColours;
-        innerInsulation = inputInnerInsulation;
-        outerReinforcement = inputOuterReinforcement;
         chemicalResistance = inputChemicalResistance;
         pipeQuantity = inputPipeQuantity;
     }
@@ -79,20 +73,6 @@ public abstract class Pipe {
     }
     
     /**
-    * @return The pipe's inner insulation
-    */
-    public Boolean getInnerInsulation() {
-        return innerInsulation;
-    }
-    
-    /**
-    * @return The pipe's outer reinforcement
-    */
-    public Boolean getOuterReinforcement() {
-        return outerReinforcement;
-    }
-    
-    /**
     * @return The pipe's chemical resistance
     */
     public Boolean getChemicalResistance() {
@@ -106,34 +86,6 @@ public abstract class Pipe {
         return pipeQuantity;
     }
     
-    /**
-    * @return The additional cost for one colour
-    */
-    public double getOneColourCost() {
-        return 0.12;
-    }
-    
-    /**
-    * @return The additional cost for one colour
-    */
-    public double getTwoColourCost() {
-        return 0.16;
-    }
-    
-    /**
-    * @return The inner insulation cost
-    */
-    public double getInnerInsulationCost() {
-        return 0.13;
-    }
-    
-    /**
-    * @return The outer reinforcement cost
-    */
-    public double getOuterReinforcementCost() {
-        return 0.17;
-    }
-  
     /**
     * @return The chemical resistance cost
     */

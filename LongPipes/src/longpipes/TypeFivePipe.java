@@ -9,35 +9,51 @@ package longpipes;
  *
  * @author up801685
  */
-public class TypeFivePipe extends TypeThreePipe{
+public class TypeFivePipe extends TypeFourPipe{
+    private final Boolean outerReinforcement;
     
     public TypeFivePipe(double inputLength, double inputDiameter, int pipeGrade, int pipeColours, boolean pipeChemicalResistance, int pipeQuantity) {
-        super(inputLength, inputDiameter, pipeGrade, pipeColours, true, true, pipeChemicalResistance, pipeQuantity);
+        super(inputLength, inputDiameter, pipeGrade, pipeColours, true, pipeChemicalResistance, pipeQuantity);
+        outerReinforcement = true;
     }
     
     /**
-    * @return String containing all the pipe details
-    */
+     * @return String containing all the pipe details
+     */
     @Override
     public int getPipeType() { 
         return 5;
     }
     
     /**
-    * @return The percentage extra costs based on the pipe additional costs
-    */
+     * @return The pipe's outer reinforcement
+     */
+    public Boolean getOuterReinforcement() {
+        return outerReinforcement;
+    }
+    
+    /**
+     * @return The outer reinforcement cost
+     */
+    public double getOuterReinforcementCost() {
+        return 0.17;
+    }
+    
+    /**
+     * @return The percentage extra costs based on the pipe additional costs
+     */
     @Override
     public double calculatePercentageExtra() {
         double percentageExtra = 0;
 
-        percentageExtra += this.getTwoColourCost();
+        percentageExtra += getTwoColourCost();
         
-        percentageExtra += this.getInnerInsulationCost();
+        percentageExtra += getInnerInsulationCost();
         
-        percentageExtra += this.getOuterReinforcementCost();
+        percentageExtra += getOuterReinforcementCost();
         
-        if(this.getChemicalResistance()) {
-            percentageExtra += this.getChemicalResistanceCost(); 
+        if(getChemicalResistance()) {
+            percentageExtra += getChemicalResistanceCost(); 
         }
         
         return percentageExtra;
@@ -46,8 +62,8 @@ public class TypeFivePipe extends TypeThreePipe{
     /**
      * @param pipeVolume The volume of the pipe
      * @param pipeGrade The grade of the pipe
-    * @return The cost for the material of an individual pipe
-    */
+     * @return The cost for the material of an individual pipe
+     */
     @Override
     public double calculateMaterialCost(double pipeVolume, int pipeGrade) {
         double materialCost = 0;

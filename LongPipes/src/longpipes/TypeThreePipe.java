@@ -12,14 +12,9 @@ package longpipes;
 public class TypeThreePipe extends Pipe{
     
     public TypeThreePipe(double inputLength, double inputDiameter, int pipeGrade, int pipeColours, boolean pipeChemicalResistance, int pipeQuantity) {
-        super(inputLength, inputDiameter, pipeGrade, pipeColours, false, false, pipeChemicalResistance, pipeQuantity);
+        super(inputLength, inputDiameter, pipeGrade, pipeColours, pipeChemicalResistance, pipeQuantity);
     }
     
-    // Constructor for type four and five pipes
-    public TypeThreePipe(double inputLength, double inputDiameter, int pipeGrade, int pipeColours, boolean innerInsulation, boolean outerReinforcement, boolean pipeChemicalResistance, int pipeQuantity) {
-        super(inputLength, inputDiameter, pipeGrade, pipeColours, innerInsulation, outerReinforcement, pipeChemicalResistance, pipeQuantity);
-    }
-
     /**
     * @return String containing all the pipe details
     */
@@ -29,16 +24,23 @@ public class TypeThreePipe extends Pipe{
     }
     
     /**
+    * @return The additional cost for two colours
+    */
+    public double getTwoColourCost() {
+        return 0.16;
+    }
+    
+    /**
     * @return The percentage extra costs based on the pipe additional costs
     */
     @Override
     public double calculatePercentageExtra() {
         double percentageExtra = 0;
         
-        percentageExtra += this.getTwoColourCost();
+        percentageExtra += getTwoColourCost();
         
-        if(this.getChemicalResistance()) {
-            percentageExtra += this.getChemicalResistanceCost();
+        if(getChemicalResistance()) {
+            percentageExtra += getChemicalResistanceCost();
         }
         
         return percentageExtra;

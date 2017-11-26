@@ -6,6 +6,8 @@
     </Component>
     <Component class="javax.swing.ButtonGroup" name="pipeColorGroup">
     </Component>
+    <Component class="javax.swing.JOptionPane" name="jOptionPane">
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -41,7 +43,7 @@
                   <Component id="jPanelTopInfo" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="jPanelOrder" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                       <Component id="jPanelBasket" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -391,9 +393,6 @@
               </Border>
             </Property>
           </Properties>
-          <AccessibilityProperties>
-            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Colour"/>
-          </AccessibilityProperties>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -828,7 +827,7 @@
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabelOrderRef" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="jLabelTotalOrders" alignment="1" pref="265" max="32767" attributes="0"/>
+                                  <Component id="jLabelTotalOrders" alignment="1" max="32767" attributes="0"/>
                                   <Component id="jLabelTotalCost" alignment="1" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>

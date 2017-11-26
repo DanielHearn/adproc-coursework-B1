@@ -12,7 +12,7 @@ package longpipes;
 public class TypeTwoPipe extends Pipe{
     
     public TypeTwoPipe(double inputLength, double inputDiameter, int pipeGrade, int pipeColours, boolean pipeChemicalResistance, int pipeQuantity) {
-        super(inputLength, inputDiameter, pipeGrade, pipeColours, false, false, pipeChemicalResistance, pipeQuantity);
+        super(inputLength, inputDiameter, pipeGrade, pipeColours, pipeChemicalResistance, pipeQuantity);
     }
     
     /**
@@ -24,16 +24,23 @@ public class TypeTwoPipe extends Pipe{
     }
     
     /**
+    * @return The additional cost for one colour
+    */
+    public double getOneColourCost() {
+        return 0.12;
+    }
+    
+    /**
     * @return The percentage extra costs based on the pipe additional costs
     */
     @Override
      public double calculatePercentageExtra() {
         double percentageExtra = 0;
 
-        percentageExtra += this.getOneColourCost();
+        percentageExtra += getOneColourCost();
         
-        if(this.getChemicalResistance()) {
-            percentageExtra += this.getChemicalResistanceCost();
+        if(getChemicalResistance()) {
+            percentageExtra += getChemicalResistanceCost();
         }
         
         return percentageExtra;
