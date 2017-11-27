@@ -14,7 +14,7 @@ public abstract class Pipe {
     private final int pipeQuantity;
    
     /**
-    * Construct a new pipe with the common pipe specifications used by all other pipe types
+     * Construct a new pipe with the common pipe specifications used by all other pipe types
      * @param inputLength the double representing the length of this pipe
      * @param inputOuterDiameter the double representing the outer diameter of this pipe
      * @param inputGrade the integer representing the plastic grade of this pipe
@@ -97,14 +97,6 @@ public abstract class Pipe {
     }
     
     /**
-     * Gets the double representing the percentage extra cost of the pipe additional features
-     * @return the base cost of the additional features of this pipe
-     */
-    public double calculatePercentageExtra() {
-        return 0;
-    } 
-    
-    /**
      * Gets the double representing the plastic material volume of this pipe
      * @return the plastic material volume of this pipe
      */
@@ -139,6 +131,14 @@ public abstract class Pipe {
         double pipeCost = materialCost + calculateAdditionalFeatureCost(materialCost, percentageExtra); 
         return pipeCost;
     }
+    
+    /**
+     * Gets the double representing the percentage extra cost of the pipe additional features
+     * @return the base cost of the additional features of this pipe
+     */
+    public double calculatePercentageExtra() {
+        return 0;
+    } 
     
     /**
      * Gets the double representing the cost of the additional features for the features used by this pipe

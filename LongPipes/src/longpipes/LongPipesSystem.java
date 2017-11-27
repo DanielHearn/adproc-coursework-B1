@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package longpipes;
 
 import java.text.SimpleDateFormat;
@@ -10,33 +5,30 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author up750834
+ * Class containing all GUI features 
+ * @author Dan 801685
+ * @author Lee 750834
  */
 public class LongPipesSystem extends javax.swing.JFrame {
 
     /**
-     * Creates new form LongPipesSystem
+     * Creates new form LongPipesSystem and initialises the ui with default data
      */
     public LongPipesSystem() {
         initComponents();
-        defaultForm();
-        setupBasketList();
-        updateFormDateTime();
-        getOrderNumber();
+        initaliseInterfaceData();
     }
 
-    // Setup objects
+    // Setup interface objects and variables
     DefaultListModel basketModel = new DefaultListModel();
     LongPipesGUILink pipeSystem = new LongPipesGUILink();
     private static String theDate;
     private static String theTime;
-    private Character[] charList = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'};
+    private final Character[] charList = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'};
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -844,13 +836,24 @@ public class LongPipesSystem extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     /**
-     * Generates a random order number. This is just cosmetic.
+     * Initialise the interface with default data
+     * @author Lee 750834
+     */
+    public void initaliseInterfaceData() {
+        defaultForm();
+        setupBasketList();
+        updateFormDateTime();
+        getOrderNumber();
+    }
+    
+    /**
+     * Sets the order number text to the assigned order number
      * @author Lee 750834
      */
     public void getOrderNumber() {
         jTextFieldOrderRef.setText(Integer.toString(pipeSystem.retrieveOrderNumber()));
     }
-
+    
     /**
      * Default the form and clear all the fields.
      * @author Lee 750834
@@ -859,7 +862,6 @@ public class LongPipesSystem extends javax.swing.JFrame {
         jTextFieldLength.setText("0");
         jTextFieldDiameter.setText("0");
         jSpinnerQuantity.setText("0");
-        //jRadioButtonGrade1.setSelected(true);
         jComboBoxGrade.setSelectedIndex(0);
         jRadioButtonColour0.setSelected(true);
         jCheckBoxInnerInsulation.setSelected(false);
@@ -883,7 +885,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
     }
 
     /**
-     * Update the invoice UI new order information
+     * Update the basket UI with the total cost and total orders
      * @author Dan 801685
      */
     public void updateInvoiceUI() {
@@ -892,7 +894,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
     }
 
     /**
-     * Update the invoice UI new order information
+     * Update the invoice UI with invoice text corresponding to the last completed order
      * @author Dan 801685
      */
     public void updateInvoiceTextArea() {
@@ -919,7 +921,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
     }
 
     /**
-     * @return Create a new basket list model.
+     * Create a new basket list model
      * @author Lee 750834
      */
     public void setupBasketList() {
@@ -927,7 +929,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
     }
 
     /**
-     * @return Removes a selected pipe.
+     * Removes the pipe currently selected within the basket UI
      * @author Lee 750834
      */
     public void removeSelectedPipe() {
@@ -941,7 +943,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
     }
 
     /**
-     * @return Clear the basket and update the UI.
+     * Clear the basket and update the UI with default order data
      * @author Lee 750834
      */
     public void clearBasket() {
@@ -954,14 +956,14 @@ public class LongPipesSystem extends javax.swing.JFrame {
     /**
      * Validate the pipe inputs and output a status message depending on the pipe validity
      * @author Dan 801685
-     * @param pipeLength
-     * @param pipeDiameter
-     * @param pipeGrade
-     * @param pipeColours
-     * @param pipeInsulation
-     * @param pipeReinforcement
-     * @param pipeChemicalResistance
-     * @param pipeQuantity
+     * @param pipeLength the double representing the length of this pipe
+     * @param pipeDiameter the double representing the outer diameter of this pipe
+     * @param pipeGrade the integer representing the plastic grade of this pipe
+     * @param pipeColours the integer representing the number of colours being used in this pipe
+     * @param pipeInsulation the boolean representing if this pipe has inner insulation
+     * @param pipeReinforcement the boolean representing if this pipe has outer reinforcement
+     * @param pipeChemicalResistance the boolean representing if this pipe has chemical resistance properties
+     * @param pipeQuantity the integer representing the quantity of this pipe being ordered
      */
     public void validatePipeInputs(double pipeLength, double pipeDiameter, int pipeGrade, int pipeColours, Boolean pipeInsulation, Boolean pipeReinforcement, Boolean pipeChemicalResistance, int pipeQuantity) {
         boolean pipeInputsValid = true;
@@ -999,7 +1001,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
 
     /**
      * Set the status text to new value
-     * @param statusText The new status text
+     * @param statusText the new status text
      * @author Dan 801685
      */
     public void setStatusText(String statusText) {
@@ -1007,7 +1009,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
     }
     
     /**
-     * @return Send to link to validate pipe type and add to order.
+     * Retrieve the pipe order UI inputs send the inputs to be validated
      * @author Lee 750834
      * @author Dan 801685
      */
@@ -1025,12 +1027,18 @@ public class LongPipesSystem extends javax.swing.JFrame {
         validatePipeInputs(pipeLength, pipeDiameter, pipeGrade, pipeColours, pipeInsulation, pipeReinforcement, pipeChemicalResistance, pipeQuantity);
     }
     
+    /**
+     * Display an error modal showing error information based on its parameters
+     * @author Dan 801685
+     * @param errorTitle the title of the error 
+     * @param errorDescription the more detailed description of the error
+     */
     public void displayErrorModal(String errorTitle, String errorDescription) {
         JOptionPane.showMessageDialog(this, errorDescription, errorTitle, JOptionPane.ERROR_MESSAGE);
     }
     
-    /*
-     * Update the basket model from the pipes within the ordered pipes
+    /**
+     * Update the basket model with the pipes from the ordered pipes
      * @author Dan 801685
      */
     public void updateBasketModel() {
@@ -1043,8 +1051,8 @@ public class LongPipesSystem extends javax.swing.JFrame {
         updateInvoiceUI();
     }
 
-    /*
-     * @return Grade of input pipe from the user interface input
+    /**
+     * Gets the int representing the grade of input pipe from the UI checkbox
      * @author Dan 801685
      */
     public int getPipeGrade() {
@@ -1054,8 +1062,9 @@ public class LongPipesSystem extends javax.swing.JFrame {
         return pipeGrade;
     }
 
-    /*
-     * @return Number of colours of input pipe from the user interface input
+    /**
+     * Gets the integer representing the number of colours the input pipe will have from the UI
+     * @return the number of colours the input pipe will have
      * @author Dan 801685
      */
     public int getColours() {
@@ -1070,8 +1079,9 @@ public class LongPipesSystem extends javax.swing.JFrame {
         return pipeColours;
     }
 
-    /*
-     * @return The formatted date and time
+    /**
+     * Gets the string representing the formatted current date and time
+     * @return the date and time
      * @author Lee 750834
      */
     public static String[] getDateTime() {

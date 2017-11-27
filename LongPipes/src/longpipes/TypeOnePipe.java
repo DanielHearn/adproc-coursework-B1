@@ -6,21 +6,31 @@ package longpipes;
  */
 public class TypeOnePipe extends Pipe{
     
+    /**
+     * Construct a new pipe with the common pipe specifications used by all other pipe types
+     * @param inputLength the double representing the length of this pipe
+     * @param inputDiameter the double representing the outer diameter of this pipe
+     * @param pipeGrade the integer representing the plastic grade of this pipe
+     * @param pipeChemicalResistance the boolean representing if this pipe has chemical resistance properties
+     * @param pipeQuantity the integer representing the quantity of this pipe being ordered
+     */
     public TypeOnePipe(double inputLength, double inputDiameter, int pipeGrade, boolean pipeChemicalResistance, int pipeQuantity) {
         super(inputLength, inputDiameter, pipeGrade, 0, pipeChemicalResistance, pipeQuantity);
     }
     
     /**
-    * @return String containing all the pipe details
-    */
+     * Gets the integer representing the type of this pipe
+     * @return the type of this pipe
+     */
     @Override
     public int getPipeType() { 
         return 1;
     }
     
     /**
-    * @return The percentage extra costs based on the pipe additional costs
-    */
+     * Gets the double representing the percentage extra cost of the pipe additional features
+     * @return the base cost of the additional features of this pipe
+     */
     @Override
     public double calculatePercentageExtra() {
         double percentageExtra = 0;
@@ -33,10 +43,11 @@ public class TypeOnePipe extends Pipe{
     } 
     
     /**
-     * @param pipeVolume The volume of the pipe
-     * @param pipeGrade The grade of the pipe
-    * @return The cost for the material of an individual pipe
-    */
+     * Gets the double representing the material cost for an individual pipe within this pipe order
+     * @param pipeVolume the volume of the pipe
+     * @param pipeGrade the grade of the pipe
+     * @return the cost for the material of an individual pipe
+     */
     @Override
     public double calculateMaterialCost(double pipeVolume, int pipeGrade) {
         double materialCost = 0;

@@ -1,26 +1,27 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package longpipes;
 
 import java.util.*;
 
 /**
+ * Class representing an order of pipes 
  * @author dan up801685
+ * @author Lee 750834
  */
 public class Order {
 
     ArrayList<Pipe> orderedPipes = new ArrayList<>();
     private int orderNumber;
 
+    /**
+     * Creates a new order and initialises the order number to 1
+     */
     public Order() {
         orderNumber = 1;
     }
 
     /**
-     * @param inputPipe The pipe being added to the order
+     * Adds a new pipe input from the parameter into the ordered pipes arraylist
+     * @param inputPipe the pipe being added to this order
      * @author Dan 801685
      */
     public void addPipe(Pipe inputPipe) {
@@ -29,9 +30,10 @@ public class Order {
     }
 
     /**
-     * @return The total cost of the order, generated from each pipes cost
+     * Gets the double representing the total cost of this order
+     * @return the total cost of this order
      * @author Dan 801685
-     */
+     */ 
     public double totalCost() {
         double totalCost = 0;
         for (int pipe = 0; pipe < orderedPipes.size(); pipe++) {
@@ -42,7 +44,8 @@ public class Order {
     }
 
     /**
-     * @return The number of individual orders within the order.
+     * Gets the integer representing the number of individual orders within this order
+     * @return the number of individual orders
      * @author Dan 801685
      */
     public int getOrderedPipesLength() {
@@ -50,10 +53,11 @@ public class Order {
     }
 
     /**
-     * @param currentPipe The current pipe
-     * @param currentPipeType The current pipe type
-     * @param inputString The main string content
-     * @param inputDouble The double value to be placed at the end of the string
+     * Gets a string representing a pipes details for use in the invoice text
+     * @param currentPipe the current pipe
+     * @param currentPipeType the current pipe type
+     * @param inputString the main string content
+     * @param inputDouble the double value to be placed at the end of the string
      * @return The string formatted for use in the invoice based on pipe details
      * @author Dan 801685
      */
@@ -65,10 +69,11 @@ public class Order {
     }
     
     /**
-     * @param currentPipe The current pipe
-     * @param currentPipeType The current pipe type
-     * @param inputString The main string content
-     * @param inputInt The int value to be placed at the end of the string
+     * Gets a string representing a pipes details for use in the invoice text
+     * @param currentPipe the current pipe
+     * @param currentPipeType the current pipe type
+     * @param inputString the main string content
+     * @param inputInt the integer value to be placed at the end of the string
      * @return The string formatted for use in the invoice based on pipe details
      * @author Dan 801685
      */
@@ -80,10 +85,11 @@ public class Order {
     }
     
     /**
-     * Prints out each of the pipe details then the order total cost
-     * @param orderNo The number of the order
-     * @return Return invoice details
+     * Gets the string representing the invoice text
+     * @param orderNo the number of the order
+     * @return the invoice details
      * @author Lee 750834
+     * @author Dan 801685
      */
     public String getInvoice(int orderNo) {
         String invoice = "";
@@ -140,16 +146,18 @@ public class Order {
     }
     
     /**
-     * @return The order number
+     * Gets the integer representing the order number
+     * @return the order number
      * @author Dan 801685
-     */
+     */ 
     public int getOrderNumber() {
         return orderNumber;
     }
 
     /**
-     * @param inputString The string to be formatted
-     * @return Return a formated string for the invoice
+     * Gets the string representing the formatted invoice data
+     * @param inputString the string to be formatted
+     * @return the formated string
      * @author Lee 750834
      */
     public static String formatInvoice(String inputString) {
@@ -157,7 +165,8 @@ public class Order {
     }
 
     /**
-     * @return The pipes within the orderedPipes arraylist
+     * Gets the arraylist of pipes
+     * @return the ordered pipes 
      * @author Dan 801685
      */
     public ArrayList<Pipe> getOrderedPipes() {

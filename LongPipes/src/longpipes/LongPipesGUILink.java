@@ -3,6 +3,8 @@ package longpipes;
 import java.util.ArrayList;
 
 /**
+ * Class representing the link between the GUI class and order class
+ * Acting as the program's main class
  * @author Dan 801685
  * @author Lee 750834
  */
@@ -10,10 +12,21 @@ public class LongPipesGUILink {
     
     public Order order = new Order();
     
+    /**
+     * Creates a GUI link
+     */
     public LongPipesGUILink() {}
     
-    /*
+    /**
      * Validates the input pipe and if valid add its to the order
+     * @param pipeLength the double representing the length of this pipe
+     * @param pipeDiameter the double representing the outer diameter of this pipe
+     * @param pipeGrade the integer representing the plastic grade of this pipe
+     * @param pipeColours the integer representing the number of colours being used in this pipe
+     * @param pipeInsulation the boolean representing if this pipe has inner insulation
+     * @param pipeReinforcement the boolean representing if this pipe has outer reinforcement
+     * @param pipeChemicalResistance the boolean representing if this pipe has chemical resistance properties
+     * @param pipeQuantity the integer representing the quantity of this pipe being ordered
      * @return String indicating whether the input pipe is valid or not
      * @author Dan 801685
      */
@@ -45,19 +58,20 @@ public class LongPipesGUILink {
         } else {
             return false; 
         }
-
     }
     
-    /** 
-     * @return The total cost of the order
+    /**
+     * Gets the double representing the total cost of the order
+     * @return the total cost of the order
      * @author Dan 801685
      */ 
     public double orderTotalCost() {
         return order.totalCost();
     }
     
-    /** 
-     * @return The number of individual orders within the order.
+    /**
+     * Gets the integer representing the total number of pipe orders within the order
+     * @return the total cost of the order
      * @author Dan 801685
      */ 
     public int orderTotalOrders() {
@@ -65,7 +79,8 @@ public class LongPipesGUILink {
     }
     
     /**
-     * @return The invoice text
+     * Gets the string representing the invoice text of the order
+     * @return the invoice text
      * @author Lee 750834
      */
     public String generateOrderInvoice() {
@@ -73,15 +88,17 @@ public class LongPipesGUILink {
     }
     
     /**
-     * @return The order number
+     * Gets the integer representing the order number
+     * @return the order number
      * @author Dan 801685
      */
-    public Integer retrieveOrderNumber() {
+    public int retrieveOrderNumber() {
         return order.getOrderNumber();
     }
     
     /**
-     * @return The pipes within the ordered pipes arraylist
+     * Gets the ordered pipes arraylist from the order
+     * @return the ordered pipes arraylist
      * @author Dan 801685
      */
     public ArrayList<Pipe> getOrderedPipes() {
