@@ -1,13 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package longpipes;
 
 /**
- *
- * @author up801685
+ * Type five pipe class that contains all pipe properties that are specific to the type five pipe
+ * @author dan 801685
  */
 public class TypeFivePipe extends TypeFourPipe{
     private final Boolean outerReinforcement;

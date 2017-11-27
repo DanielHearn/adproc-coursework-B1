@@ -98,7 +98,7 @@ public class Order {
                 String currentPipeType = "Pipe Order " + i;
                 double individualPipeCost = currentPipe.calculateIndividualCost();
                 double pipeMaterialCost = currentPipe.calculateMaterialCost(currentPipe.calculatePipeVolume(), currentPipe.getGrade());
-                double pipeExtraCost = currentPipe.calculateExtraFeatureCost(pipeMaterialCost, currentPipe.calculatePercentageExtra());
+                double pipeExtraCost = currentPipe.calculateAdditionalFeatureCost(pipeMaterialCost, currentPipe.calculatePercentageExtra());
                 int pipeQuantity = currentPipe.getPipeQuantity();
                 double totalCost = currentPipe.calculateTotalCost();
                 
