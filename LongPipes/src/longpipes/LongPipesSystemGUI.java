@@ -20,7 +20,7 @@ public class LongPipesSystemGUI extends javax.swing.JFrame {
 
     // Setup interface objects and variables
     DefaultListModel basketModel = new DefaultListModel();
-    LongPipesGUILink pipeSystem = new LongPipesGUILink();
+    LongPipesSystem pipeSystem = new LongPipesSystem();
     private static String theDate;
     private static String theTime;
     private final Character[] charList = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'};    
@@ -29,6 +29,7 @@ public class LongPipesSystemGUI extends javax.swing.JFrame {
      * Creates new form LongPipesSystem and initialises the ui with default data
      */
     public LongPipesSystemGUI() {
+        String[] args = {};
         initComponents();
         initaliseInterfaceData();
         Timer timer = new Timer();
@@ -534,7 +535,7 @@ public class LongPipesSystemGUI extends javax.swing.JFrame {
             .addGroup(jPanelBasketControlLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelBasketControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 596, Short.MAX_VALUE)
                     .addGroup(jPanelBasketControlLayout.createSequentialGroup()
                         .addComponent(jButtonClearBasket, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -589,15 +590,13 @@ public class LongPipesSystemGUI extends javax.swing.JFrame {
         jPanelFinalCostLayout.setHorizontalGroup(
             jPanelFinalCostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFinalCostLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelFinalCostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonBuyOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanelFinalCostLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButtonBuyOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelFinalCostLayout.createSequentialGroup()
-                        .addGroup(jPanelFinalCostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanelFinalCostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabelTotalOrders, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
                             .addComponent(jLabelOrderRef, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabelTotalOrders, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabelTotalCost, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanelFinalCostLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -986,6 +985,32 @@ public class LongPipesSystemGUI extends javax.swing.JFrame {
         orderedPipes.clear();
         updateInvoiceUI();
     }
+    
+    /**
+     * Retrieve the pipe order UI inputs send the inputs to be validated
+     *
+     * @author Lee 750834
+     * @author Dan 801685
+     */
+    public void addNewPipeOrder() {
+        try {
+            double pipeLength = Double.parseDouble(jTextFieldLength.getText());
+            double pipeDiameter = Double.parseDouble(jTextFieldDiameter.getText());
+            int pipeGrade = getPipeGrade();
+            int pipeColours = getColours();
+
+            Boolean pipeInsulation = jCheckBoxInnerInsulation.isSelected();
+            Boolean pipeReinforcement = jCheckBoxOuterReinforcement.isSelected();
+            Boolean pipeChemicalResistance = jCheckBoxChemicalResistance.isSelected();
+            int pipeQuantity = Integer.parseInt(jSpinnerQuantity.getText());
+
+            validatePipeInputs(pipeLength, pipeDiameter, pipeGrade, pipeColours, pipeInsulation, pipeReinforcement, pipeChemicalResistance, pipeQuantity);   
+        } catch(Exception error) {
+            String errorText = "Ensure no inputs are empty or have multiple full stops '.'";
+            setStatusText(errorText);
+            displayErrorModal("Invalid Pipe Inputs", errorText);        
+        }
+    }
 
     /**
      * Validate the pipe inputs and output a status message depending on the
@@ -1049,32 +1074,6 @@ public class LongPipesSystemGUI extends javax.swing.JFrame {
      */
     public void setStatusText(String statusText) {
         jLabelStatus.setText(statusText);
-    }
-    
-    /**
-     * Retrieve the pipe order UI inputs send the inputs to be validated
-     *
-     * @author Lee 750834
-     * @author Dan 801685
-     */
-    public void addNewPipeOrder() {
-        try {
-            double pipeLength = Double.parseDouble(jTextFieldLength.getText());
-            double pipeDiameter = Double.parseDouble(jTextFieldDiameter.getText());
-            int pipeGrade = getPipeGrade();
-            int pipeColours = getColours();
-
-            Boolean pipeInsulation = jCheckBoxInnerInsulation.isSelected();
-            Boolean pipeReinforcement = jCheckBoxOuterReinforcement.isSelected();
-            Boolean pipeChemicalResistance = jCheckBoxChemicalResistance.isSelected();
-            int pipeQuantity = Integer.parseInt(jSpinnerQuantity.getText());
-
-            validatePipeInputs(pipeLength, pipeDiameter, pipeGrade, pipeColours, pipeInsulation, pipeReinforcement, pipeChemicalResistance, pipeQuantity);   
-        } catch(Exception error) {
-            String errorText = "Ensure no inputs are emtpty or have multiple full stops '.'";
-            setStatusText(errorText);
-            displayErrorModal("Invalid Pipe Inputs", errorText);        
-        }
     }
 
     /**

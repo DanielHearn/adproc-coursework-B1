@@ -1,17 +1,21 @@
 package longpipes;
 
 /**
- * Type one pipe class that contains all pipe properties that are specific to the type one pipe
+ * Type one pipe class that contains all pipe properties that are specific to 
+ * the type one pipe
  * @author dan 801685
  */
 public class TypeOnePipe extends Pipe{
     
     /**
-     * Construct a new pipe with the common pipe specifications used by all other pipe types
+     * Construct a new pipe with the common pipe specifications used by all 
+     * other pipe types
+     * 
      * @param inputLength the double representing the length of this pipe
      * @param inputDiameter the double representing the outer diameter of this pipe
      * @param pipeGrade the integer representing the plastic grade of this pipe
-     * @param pipeChemicalResistance the boolean representing if this pipe has chemical resistance properties
+     * @param pipeChemicalResistance the boolean representing if this pipe has 
+     * chemical resistance properties
      * @param pipeQuantity the integer representing the quantity of this pipe being ordered
      */
     public TypeOnePipe(double inputLength, double inputDiameter, int pipeGrade, boolean pipeChemicalResistance, int pipeQuantity) {

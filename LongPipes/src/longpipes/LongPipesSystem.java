@@ -9,16 +9,19 @@ import java.util.ArrayList;
  * @author Dan 801685
  * @author Lee 750834
  */
-public class LongPipesGUILink {
+public class LongPipesSystem {
 
     public Order order = new Order();
 
     /**
-     * Creates a GUI link
+     * @param args the command line arguments
      */
-    public LongPipesGUILink() {
+    public static void main(String args[]) {
+        LongPipesSystemGUI gui = new LongPipesSystemGUI();
+        String[] argsGui = {};
+        gui.main(argsGui); //Load the GUI
     }
-
+    
     /**
      * Validates the input pipe and if valid add its to the order
      *

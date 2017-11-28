@@ -173,8 +173,14 @@ public abstract class Pipe {
      * @return the pipe details
      */
     public String getDetails() {
-        String pipeDetailString = "Type " + getPipeType() + " Pipe - [Length: " + length + ", Diameter: " + outerDiameter + 
-            ", Colours: " + colours + ", Quantity: " + pipeQuantity + "]" + " = " + String.format("£%.2f", calculateTotalCost());
+        String pipeDetailString = "Type " 
+                + getPipeType() 
+                + " Pipe - [Length: " + length 
+                + ", Diameter: " + outerDiameter 
+                + ", Colours: " + colours 
+                + ", ChemResist: " + chemicalResistance
+                + ", Quantity: " + pipeQuantity + "]" 
+                + " = " + String.format("£%.2f", calculateTotalCost());
         return pipeDetailString;
     }
 }
