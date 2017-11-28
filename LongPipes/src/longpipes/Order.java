@@ -11,6 +11,7 @@ public class Order {
 
     ArrayList<Pipe> orderedPipes = new ArrayList<>();
     private int orderNumber;
+    ArrayList<String> invoiceStrings = new ArrayList<>();
 
     /**
      * Creates a new order and initialises the order number to 1
@@ -92,31 +93,13 @@ public class Order {
      * @author Dan 801685
      */
     public String getInvoice(int orderNo) {
+        invoiceStrings.clear();
         String invoice = "";
+        String linebreak = "";
         if (orderedPipes.size() > 0) {
             orderNumber ++;
-            ArrayList<String> invoiceStrings = new ArrayList<>();
 
-            String LINEBREAK = "";
-
-            for (int i = 0; i < orderedPipes.size(); i++) {
-                Pipe currentPipe = orderedPipes.get(i);
-                String currentPipeType = "Pipe Order " + i;
-                double individualPipeCost = currentPipe.calculateIndividualCost();
-                double pipeMaterialCost = currentPipe.calculateMaterialCost(currentPipe.calculatePipeVolume(), currentPipe.getGrade());
-                double pipeExtraCost = currentPipe.calculateAdditionalFeatureCost(pipeMaterialCost, currentPipe.calculatePercentageExtra());
-                int pipeQuantity = currentPipe.getPipeQuantity();
-                double totalCost = currentPipe.calculateTotalCost();
-                
-                invoiceStrings.add(generateInvoicePipeString(currentPipe, currentPipeType, "Individual Pipe Cost", individualPipeCost));
-                invoiceStrings.add(generateInvoicePipeString(currentPipe, currentPipeType, "Pipe Material Cost", pipeMaterialCost));
-                invoiceStrings.add(generateInvoicePipeString(currentPipe, currentPipeType, "Pipe Additional Feature Cost", pipeExtraCost));
-                invoiceStrings.add(generateInvoicePipeString(currentPipe, currentPipeType, "Quantity of Pipes in Order", pipeQuantity));
-                invoiceStrings.add(generateInvoicePipeString(currentPipe, currentPipeType, "Total Pipe Order Cost", totalCost));
-                invoiceStrings.add("---------------------------------------------");
-            }
-
-            invoiceStrings.add(LINEBREAK);
+            getInvoicePipeDetails();
 
             String orderTotal = String.format("£%.2f", totalCost());
             orderTotal = formatInvoice("Total Cost:") + orderTotal;
@@ -131,7 +114,7 @@ public class Order {
             invoiceStrings.add(orderTotal); 
             invoiceStrings.add(date);
             invoiceStrings.add(time);
-            invoiceStrings.add(LINEBREAK);
+            invoiceStrings.add(linebreak);
             invoiceStrings.add(thankyouText);
 
             for (int i = 0; i < invoiceStrings.size(); i++) {
@@ -143,6 +126,29 @@ public class Order {
         }
 
         return invoice;
+    }
+    
+    /**
+     * Sets the invoice pipe details based on each of the ordered pipes
+     * @author Dan 801685
+     */
+    public void getInvoicePipeDetails() {
+        for (int i = 0; i < orderedPipes.size(); i++) {
+            Pipe currentPipe = orderedPipes.get(i);
+            String currentPipeType = "Pipe Order " + i;
+            double individualPipeCost = currentPipe.calculateIndividualCost();
+            double pipeMaterialCost = currentPipe.calculateMaterialCost(currentPipe.calculatePipeVolume(), currentPipe.getGrade());
+            double pipeExtraCost = currentPipe.calculateAdditionalFeatureCost(pipeMaterialCost, currentPipe.calculatePercentageExtra());
+            int pipeQuantity = currentPipe.getPipeQuantity();
+            double totalCost = currentPipe.calculateTotalCost();
+
+            invoiceStrings.add(generateInvoicePipeString(currentPipe, currentPipeType, "Individual Pipe Cost", individualPipeCost));
+            invoiceStrings.add(generateInvoicePipeString(currentPipe, currentPipeType, "Pipe Material Cost", pipeMaterialCost));
+            invoiceStrings.add(generateInvoicePipeString(currentPipe, currentPipeType, "Pipe Additional Feature Cost", pipeExtraCost));
+            invoiceStrings.add(generateInvoicePipeString(currentPipe, currentPipeType, "Quantity of Pipes in Order", pipeQuantity));
+            invoiceStrings.add(generateInvoicePipeString(currentPipe, currentPipeType, "Total Pipe Order Cost", totalCost));
+            invoiceStrings.add("---------------------------------------------");
+        }
     }
     
     /**

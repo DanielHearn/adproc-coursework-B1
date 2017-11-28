@@ -969,17 +969,17 @@ public class LongPipesSystem extends javax.swing.JFrame {
         boolean pipeInputsValid = true;
         String invalidText = "Pipe input is not valid due to the following inputs: ";
         
-        if (!(pipeLength >= 0.5 && pipeLength <= 6)) {
+        if (pipeSystem.validatePipeLength(pipeLength)) {
             pipeInputsValid = false;
             invalidText += "pipe length, ";
         }
         
-        if (!(pipeDiameter >= 1 && pipeDiameter <= 5)) {
+        if (pipeSystem.validatePipeDiameter(pipeDiameter)) {
             pipeInputsValid = false;
             invalidText += "pipe diameter, ";
         }
         
-        if (!(pipeQuantity >= 1 && pipeQuantity <= 100)) {
+        if (pipeSystem.validatePipeQuantity(pipeQuantity)) {
             pipeInputsValid = false;
             invalidText += "pipe quantity, ";
         }
@@ -1052,7 +1052,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
     }
 
     /**
-     * Gets the int representing the grade of input pipe from the UI checkbox
+     * Gets the integer representing the grade of input pipe from the UI checkbox
      * @author Dan 801685
      */
     public int getPipeGrade() {

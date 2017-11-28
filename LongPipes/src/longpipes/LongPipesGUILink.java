@@ -53,11 +53,37 @@ public class LongPipesGUILink {
             isPipeTypeValid = false;
         }
 
-        if (isPipeTypeValid) {
-            return true; 
-        } else {
-            return false; 
-        }
+        return isPipeTypeValid;
+    }
+    
+    /**
+     * Gets the validity of the pipe length
+     * @param pipeLength the pipe length
+     * @return the validity of the pipe length
+     * @author Dan 801685
+     */ 
+    public Boolean validatePipeLength(double pipeLength) {
+        return !(pipeLength >= 0.5 && pipeLength <= 6);
+    }
+    
+    /**
+     * Gets the validity of the pipe diameter
+     * @param pipeDiameter the pipe diameter
+     * @return the validity of the pipe diameter
+     * @author Dan 801685
+     */ 
+    public Boolean validatePipeDiameter(double pipeDiameter) {
+        return !(pipeDiameter >= 1 && pipeDiameter <= 5);
+    }
+    
+    /**
+     * Gets the validity of the pipe quantity
+     * @param pipeQuantity the pipe quantity
+     * @return the validity of the pipe quantity
+     * @author Dan 801685
+     */ 
+    public Boolean validatePipeQuantity(double pipeQuantity) {
+        return !(pipeQuantity >= 1 && pipeQuantity <= 100);
     }
     
     /**
