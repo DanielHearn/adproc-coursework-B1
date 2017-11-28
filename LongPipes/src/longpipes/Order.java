@@ -4,6 +4,7 @@ import java.util.*;
 
 /**
  * Class representing an order of pipes 
+ * 
  * @author dan up801685
  * @author Lee 750834
  */
@@ -22,6 +23,7 @@ public class Order {
 
     /**
      * Adds a new pipe input from the parameter into the ordered pipes arraylist
+     * 
      * @param inputPipe the pipe being added to this order
      * @author Dan 801685
      */
@@ -32,6 +34,7 @@ public class Order {
 
     /**
      * Gets the double representing the total cost of this order
+     * 
      * @return the total cost of this order
      * @author Dan 801685
      */ 
@@ -44,7 +47,9 @@ public class Order {
     }
 
     /**
-     * Gets the integer representing the number of individual orders within this order
+     * Gets the integer representing the number of individual orders within
+     * this order
+     * 
      * @return the number of individual orders
      * @author Dan 801685
      */
@@ -53,7 +58,18 @@ public class Order {
     }
 
     /**
+     * Gets the integer representing the order number
+     * 
+     * @return the order number
+     * @author Dan 801685
+     */ 
+    public int getOrderNumber() {
+        return orderNumber;
+    }    
+    
+    /**
      * Gets a string representing a pipes details for use in the invoice text
+     * 
      * @param currentPipe the current pipe
      * @param currentPipeType the current pipe type
      * @param inputString the main string content
@@ -70,6 +86,7 @@ public class Order {
     
     /**
      * Gets a string representing a pipes details for use in the invoice text
+     * 
      * @param currentPipe the current pipe
      * @param currentPipeType the current pipe type
      * @param inputString the main string content
@@ -86,6 +103,7 @@ public class Order {
     
     /**
      * Gets the string representing the invoice text
+     * 
      * @param orderNo the number of the order
      * @return the invoice details
      * @author Lee 750834
@@ -98,7 +116,7 @@ public class Order {
         if (orderedPipes.size() > 0) {
             orderNumber ++;
 
-            getInvoicePipeDetails();
+            setInvoicePipeDetails();
 
             String orderTotal = String.format("£%.2f", totalCost());
             orderTotal = formatInvoice("Total Cost:") + orderTotal;
@@ -129,12 +147,13 @@ public class Order {
     
     /**
      * Sets the invoice pipe details based on each of the ordered pipes
+     * 
      * @author Dan 801685
      */
-    public void getInvoicePipeDetails() {
+    public void setInvoicePipeDetails() {
         for (int i = 0; i < orderedPipes.size(); i++) {
             Pipe currentPipe = orderedPipes.get(i);
-            String currentPipeType = "Pipe Order " + (i+1); // Show pipe order number incremented by 1 to avoid index 0
+            String currentPipeType = "Pipe Order " + (i+1);
             double individualPipeCost = currentPipe.calculateIndividualCost();
             double pipeMaterialCost = currentPipe.calculateMaterialCost(currentPipe.calculatePipeVolume(), currentPipe.getGrade());
             double pipeExtraCost = currentPipe.calculateAdditionalFeatureCost(pipeMaterialCost, currentPipe.calculatePercentageExtra());
@@ -149,18 +168,11 @@ public class Order {
             invoiceStrings.add("---------------------------------------------");
         }
     }
-    
-    /**
-     * Gets the integer representing the order number
-     * @return the order number
-     * @author Dan 801685
-     */ 
-    public int getOrderNumber() {
-        return orderNumber;
-    }
+   
 
     /**
      * Gets the string representing the formatted invoice data
+     * 
      * @param inputString the string to be formatted
      * @return the formated string
      * @author Lee 750834
@@ -170,7 +182,8 @@ public class Order {
     }
 
     /**
-     * Gets the arraylist of pipes
+     * Gets the arraylist of pipes that have been ordered
+     * 
      * @return the ordered pipes 
      * @author Dan 801685
      */

@@ -107,7 +107,7 @@ public class LongPipesSystem {
      * @return the total cost of the order
      * @author Dan 801685
      */
-    public double orderTotalCost() {
+    public double getTotalOrderCost() {
         return order.totalCost();
     }
 
@@ -118,7 +118,7 @@ public class LongPipesSystem {
      * @return the total cost of the order
      * @author Dan 801685
      */
-    public int orderTotalOrders() {
+    public int getTotalPipeOrders() {
         return order.getOrderedPipesLength();
     }
 
@@ -138,7 +138,7 @@ public class LongPipesSystem {
      * @return the order number
      * @author Dan 801685
      */
-    public int retrieveOrderNumber() {
+    public int getOrderNumber() {
         return order.getOrderNumber();
     }
 

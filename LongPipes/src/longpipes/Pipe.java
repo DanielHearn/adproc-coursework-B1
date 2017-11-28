@@ -2,6 +2,7 @@ package longpipes;
 
 /**
  * Pipe class that is the abstract super class of the pipe types
+ * 
  * @author dan 801685
  */
 public abstract class Pipe {
@@ -15,6 +16,7 @@ public abstract class Pipe {
    
     /**
      * Construct a new pipe with the common pipe specifications used by all other pipe types
+     * 
      * @param inputLength the double representing the length of this pipe
      * @param inputOuterDiameter the double representing the outer diameter of this pipe
      * @param inputGrade the integer representing the plastic grade of this pipe
@@ -34,6 +36,7 @@ public abstract class Pipe {
     
     /**
      * Gets the double representing the length of this pipe
+     * 
      * @return the length of this pipe
      */
     public double getLength() {
@@ -42,6 +45,7 @@ public abstract class Pipe {
     
     /**
      * Gets the double representing the outer diameter of this pipe
+     * 
      * @return the outer diameter of this pipe
      */
     public double getOuterDiameter() {
@@ -50,6 +54,7 @@ public abstract class Pipe {
     
     /**
      * Gets the double representing the inner diameter of this pipe
+     * 
      * @return the inner diameter of this pipe
      */
     public double getInnerDiameter() {
@@ -57,7 +62,9 @@ public abstract class Pipe {
     }
     
     /**
-     * Gets the integer representing the number of colours being used in this pipe
+     * Gets the integer representing the number of colours being used in this 
+     * pipe
+     * 
      * @return the number of colours being used in this pipe
      */
     public int getColours() {
@@ -66,6 +73,7 @@ public abstract class Pipe {
     
     /**
      * Get the integer representing the plastic grade of this pipe
+     * 
      * @return the plastic grade of this pipe
      */
     public int getGrade() {
@@ -73,7 +81,9 @@ public abstract class Pipe {
     }
     
     /**
-     * Gets the boolean representing the chemical resistance property of this pipe
+     * Gets the boolean representing the chemical resistance property of this
+     * pipe
+     * 
      * @return the chemical resistance property of this pipe
      */
     public Boolean getChemicalResistance() {
@@ -82,6 +92,7 @@ public abstract class Pipe {
     
     /**
      * Gets the integer representing the quantity of this pipe being ordered
+     * 
      * @return the quantity of this pipe being ordered
      */
     public int getPipeQuantity() {
@@ -89,7 +100,18 @@ public abstract class Pipe {
     }
     
     /**
-     * Gets the double representing the percentage extra cost of the chemical resistance property
+     * Gets the integer representing the type of this pipe
+     * 
+     * @return the type of this pipe
+     */
+    public int getPipeType() { 
+        return 0;
+    }
+    
+    /**
+     * Gets the double representing the percentage extra cost of the chemical
+     * resistance property
+     * 
      * @return the cost of the chemical resistance property
      */
     public double getChemicalResistanceCost() {
@@ -98,6 +120,7 @@ public abstract class Pipe {
     
     /**
      * Gets the double representing the plastic material volume of this pipe
+     * 
      * @return the plastic material volume of this pipe
      */
     public double calculatePipeVolume() {
@@ -111,7 +134,9 @@ public abstract class Pipe {
     }
     
     /**
-     * Gets the total cost of this pipe based on the individual cost and quantity of pipes ordered
+     * Gets the total cost of this pipe based on the individual cost and
+     * quantity of pipes ordered
+     * 
      * @return the total cost of this pipe order
      */
     public double calculateTotalCost() {
@@ -121,7 +146,9 @@ public abstract class Pipe {
     }
    
     /**
-     * Gets the double representing the total cost of an individual pipe within this pipe order
+     * Gets the double representing the total cost of an individual pipe within
+     * this pipe order
+     * 
      * @return the total cost of an individual pipe
      */
     public double calculateIndividualCost() {
@@ -133,7 +160,9 @@ public abstract class Pipe {
     }
     
     /**
-     * Gets the double representing the percentage extra cost of the pipe additional features
+     * Gets the double representing the percentage extra cost of the pipe 
+     * additional features
+     * 
      * @return the base cost of the additional features of this pipe
      */
     public double calculatePercentageExtra() {
@@ -141,9 +170,12 @@ public abstract class Pipe {
     } 
     
     /**
-     * Gets the double representing the cost of the additional features for the features used by this pipe
+     * Gets the double representing the cost of the additional features for the
+     * features used by this pipe
+     * 
      * @param materialCost the cost for the materials of an individual pipe
-     * @param percentageExtra the percentage extra based on the additional features of this pipe
+     * @param percentageExtra the percentage extra based on the additional 
+     *                        features of this pipe
      * @return the cost of the additional features for an individual pipe
      */
     public double calculateAdditionalFeatureCost(double materialCost, double percentageExtra) {
@@ -151,7 +183,9 @@ public abstract class Pipe {
     }
     
     /**
-     * Gets the double representing the material cost for an individual pipe within this pipe order
+     * Gets the double representing the material cost for an individual pipe
+     * within this pipe order
+     * 
      * @param pipeVolume the volume of the pipe
      * @param pipeGrade the grade of the pipe
      * @return the cost for the material of an individual pipe
@@ -161,15 +195,8 @@ public abstract class Pipe {
     }
     
     /**
-     * Gets the integer representing the type of this pipe
-     * @return the type of this pipe
-     */
-    public int getPipeType() { 
-        return 0;
-    }
-    
-    /**
-     * Gets the string containing all the pipe details for use in the basket ui
+     * Gets the string containing all the pipe details for use in the basket GUI
+     * 
      * @return the pipe details
      */
     public String getDetails() {

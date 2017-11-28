@@ -29,7 +29,6 @@ public class LongPipesSystemGUI extends javax.swing.JFrame {
      * Creates new form LongPipesSystem and initialises the ui with default data
      */
     public LongPipesSystemGUI() {
-        String[] args = {};
         initComponents();
         initaliseInterfaceData();
         Timer timer = new Timer();
@@ -723,7 +722,7 @@ public class LongPipesSystemGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonClearBasketActionPerformed
 
     private void jButtonAddOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddOrderActionPerformed
-        addNewPipeOrder();
+        processNewPipeOrder();
     }//GEN-LAST:event_jButtonAddOrderActionPerformed
 
     private void jButtonRemoveSelectedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoveSelectedActionPerformed
@@ -874,7 +873,7 @@ public class LongPipesSystemGUI extends javax.swing.JFrame {
      * @author Lee 750834
      */
     public void getOrderNumber() {
-        jTextFieldOrderRef.setText(Integer.toString(pipeSystem.retrieveOrderNumber()));
+        jTextFieldOrderRef.setText(Integer.toString(pipeSystem.getOrderNumber()));
     }
 
     /**
@@ -935,7 +934,7 @@ public class LongPipesSystemGUI extends javax.swing.JFrame {
      * @author Dan 801685
      */
     public void updateTotalCost() {
-        Double orderTotalCost = pipeSystem.orderTotalCost();
+        Double orderTotalCost = pipeSystem.getTotalOrderCost();
         String orderTotalCostString = String.format("£%.2f", orderTotalCost);
         jTextFieldOrderTotalCost.setText(orderTotalCostString);
     }
@@ -946,7 +945,7 @@ public class LongPipesSystemGUI extends javax.swing.JFrame {
      * @author Dan 801685
      */
     public void updateTotalOrders() {
-        String totalOrders = Integer.toString(pipeSystem.orderTotalOrders());
+        String totalOrders = Integer.toString(pipeSystem.getTotalPipeOrders());
         jTextFieldTotalOrders.setText(totalOrders);
     }
 
@@ -992,7 +991,7 @@ public class LongPipesSystemGUI extends javax.swing.JFrame {
      * @author Lee 750834
      * @author Dan 801685
      */
-    public void addNewPipeOrder() {
+    public void processNewPipeOrder() {
         try {
             double pipeLength = Double.parseDouble(jTextFieldLength.getText());
             double pipeDiameter = Double.parseDouble(jTextFieldDiameter.getText());
@@ -1019,18 +1018,18 @@ public class LongPipesSystemGUI extends javax.swing.JFrame {
      * @author Dan 801685
      * @param pipeLength the double representing the length of this pipe
      * @param pipeDiameter the double representing the outer diameter of this
-     * pipe
+     *                     pipe
      * @param pipeGrade the integer representing the plastic grade of this pipe
      * @param pipeColours the integer representing the number of colours being
-     * used in this pipe
+     *                    used in this pipe
      * @param pipeInsulation the boolean representing if this pipe has inner
-     * insulation
+     *                       insulation
      * @param pipeReinforcement the boolean representing if this pipe has outer
-     * reinforcement
+     *                          reinforcement
      * @param pipeChemicalResistance the boolean representing if this pipe has
-     * chemical resistance properties
+     *                               chemical resistance properties
      * @param pipeQuantity the integer representing the quantity of this pipe
-     * being ordered
+     *                     being ordered
      */
     public void validatePipeInputs(double pipeLength, double pipeDiameter, int pipeGrade, int pipeColours, Boolean pipeInsulation, Boolean pipeReinforcement, Boolean pipeChemicalResistance, int pipeQuantity) {
         boolean pipeInputsValid = true;
