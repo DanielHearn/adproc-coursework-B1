@@ -38,7 +38,6 @@ public class Order {
     public double totalCost() {
         double totalCost = 0;
         for (int pipe = 0; pipe < orderedPipes.size(); pipe++) {
-            System.out.println("Calculating pipe: " + pipe);
             totalCost += orderedPipes.get(pipe).calculateTotalCost();
         }
         return totalCost;
@@ -105,7 +104,7 @@ public class Order {
             orderTotal = formatInvoice("Total Cost:") + orderTotal;
 
             String orderRef = formatInvoice("Order Ref No:") + Integer.toString(orderNo);
-            String[] dateTime = LongPipesSystem.getDateTime();
+            String[] dateTime = LongPipesSystemGUI.getDateTime();
             String date = formatInvoice("Date:") + dateTime[0];
             String time = formatInvoice("Time:") + dateTime[1];
             String thankyouText = formatInvoice("Thanks for shopping with LongPipes"); 
@@ -135,7 +134,7 @@ public class Order {
     public void getInvoicePipeDetails() {
         for (int i = 0; i < orderedPipes.size(); i++) {
             Pipe currentPipe = orderedPipes.get(i);
-            String currentPipeType = "Pipe Order " + i;
+            String currentPipeType = "Pipe Order " + (i+1); // Show pipe order number incremented by 1 to avoid index 0
             double individualPipeCost = currentPipe.calculateIndividualCost();
             double pipeMaterialCost = currentPipe.calculateMaterialCost(currentPipe.calculatePipeVolume(), currentPipe.getGrade());
             double pipeExtraCost = currentPipe.calculateAdditionalFeatureCost(pipeMaterialCost, currentPipe.calculatePercentageExtra());

@@ -84,7 +84,7 @@ public class LongPipesGUILink {
      * @author Dan 801685
      */
     public Boolean validatePipeDiameter(double pipeDiameter) {
-        return !(pipeDiameter >= 1 && pipeDiameter <= 5);
+        return !(pipeDiameter >= 1 && pipeDiameter <= 6);
     }
 
     /**
@@ -147,5 +147,15 @@ public class LongPipesGUILink {
      */
     public ArrayList<Pipe> getOrderedPipes() {
         return order.orderedPipes;
+    }
+    
+    /**
+     * Gets number of pipe orders from the ordered pipes arraylist in the order
+     *
+     * @return the length of ordered pipes
+     * @author Dan 801685
+     */
+    public int getOrderedPipesSize() {
+        return order.orderedPipes.size();
     }
 }
