@@ -23,6 +23,27 @@ public class LongPipesSystem {
     }
     
     /**
+     * Gets the double representing the total cost of the order
+     *
+     * @return the total cost of the order
+     * @author Dan 801685
+     */
+    public double getTotalOrderCost() {
+        return order.totalCost();
+    }
+
+    /**
+     * Gets the integer representing the total number of pipe orders within the
+     * order
+     *
+     * @return the total cost of the order
+     * @author Dan 801685
+     */
+    public int getTotalPipeOrders() {
+        return order.getOrderedPipesLength();
+    }
+
+    /**
      * Validates the input pipe and if valid add its to the order
      *
      * @param pipeLength the double representing the length of this pipe
@@ -45,7 +66,6 @@ public class LongPipesSystem {
     public boolean validateTypePipe(double pipeLength, double pipeDiameter, int pipeGrade, int pipeColours, Boolean pipeInsulation, Boolean pipeReinforcement, Boolean pipeChemicalResistance, int pipeQuantity) {
 
         boolean isPipeTypeValid = true;
-
         if ((pipeGrade >= 1 && pipeGrade <= 3) && (pipeColours == 0) && (pipeInsulation == false) && (pipeReinforcement == false)) {
             Pipe newPipe = new TypeOnePipe(pipeLength, pipeDiameter, pipeGrade, pipeChemicalResistance, pipeQuantity);
             order.addPipe(newPipe);
@@ -69,14 +89,13 @@ public class LongPipesSystem {
     }
 
     /**
-     * Gets the validity of the pipe length
+     * Calls the order to remove the input pipe based on the arraylist index
      *
-     * @param pipeLength the pipe length
-     * @return the validity of the pipe length
+     * @param pipeIndex the pipe index 
      * @author Dan 801685
      */
-    public Boolean validatePipeLength(double pipeLength) {
-        return !(pipeLength >= 0.5 && pipeLength <= 6);
+    public void removePipe(int pipeIndex) {
+        order.removePipe(pipeIndex);
     }
 
     /**
@@ -102,26 +121,16 @@ public class LongPipesSystem {
     }
 
     /**
-     * Gets the double representing the total cost of the order
+     * Gets the validity of the pipe length
      *
-     * @return the total cost of the order
+     * @param pipeLength the pipe length
+     * @return the validity of the pipe length
      * @author Dan 801685
      */
-    public double getTotalOrderCost() {
-        return order.totalCost();
+    public Boolean validatePipeLength(double pipeLength) {
+        return !(pipeLength >= 0.5 && pipeLength <= 6);
     }
-
-    /**
-     * Gets the integer representing the total number of pipe orders within the
-     * order
-     *
-     * @return the total cost of the order
-     * @author Dan 801685
-     */
-    public int getTotalPipeOrders() {
-        return order.getOrderedPipesLength();
-    }
-
+   
     /**
      * Gets the string representing the invoice text of the order
      *

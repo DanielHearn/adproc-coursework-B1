@@ -124,12 +124,13 @@ public abstract class Pipe {
      * @return the plastic material volume of this pipe
      */
     public double calculatePipeVolume() {
-        double lengthInches = length * 39.37; //One metre is equal to 39.37 inches
-   
+        double lengthInches = length * 39.3701; //One metre is equal to 39.37 inches
+        System.out.println("Length: " + lengthInches);
         double outerRadius = outerDiameter / 2;
         double innerRadius = innerDiameter / 2;
-       
+        System.out.println("Radiu: " + outerRadius + ", " + innerRadius);
         double pipeVolume = Math.PI * lengthInches * (Math.pow(outerRadius,2) - Math.pow(innerRadius, 2) );
+        System.out.println("Volume: " + pipeVolume);
         return pipeVolume;
     }
     
@@ -153,8 +154,10 @@ public abstract class Pipe {
      */
     public double calculateIndividualCost() {
         double percentageExtra = calculatePercentageExtra();
+        System.out.println("Extra Percentage: " + percentageExtra);
         double pipeVolume = calculatePipeVolume();
         double materialCost = calculateMaterialCost(pipeVolume, grade);
+        System.out.println("Mat cost: " + materialCost);
         double pipeCost = materialCost + calculateAdditionalFeatureCost(materialCost, percentageExtra); 
         return pipeCost;
     }

@@ -33,6 +33,16 @@ public class Order {
     }
 
     /**
+     * Calls the order to remove the input pipe based on the arraylist index
+     *
+     * @param pipeIndex the pipe index 
+     * @author Dan 801685
+     */
+    public void removePipe(int pipeIndex) {
+        orderedPipes.remove(pipeIndex);
+    }
+    
+    /**
      * Gets the double representing the total cost of this order
      * 
      * @return the total cost of this order

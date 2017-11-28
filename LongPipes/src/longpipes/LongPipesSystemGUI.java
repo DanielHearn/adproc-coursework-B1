@@ -967,8 +967,7 @@ public class LongPipesSystemGUI extends javax.swing.JFrame {
         int listIndex = jListBasketList.getSelectedIndex();
         if (listIndex >= 0) {
             basketModel.remove(listIndex);
-            ArrayList<Pipe> orderedPipes = pipeSystem.getOrderedPipes();
-            orderedPipes.remove((listIndex));
+            pipeSystem.removePipe((listIndex));
             updateInvoiceUI();
         }
     }
