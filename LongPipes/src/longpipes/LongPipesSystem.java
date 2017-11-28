@@ -5,11 +5,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 /**
- * Class containing all GUI features 
+ * Class containing all GUI features
+ *
  * @author Dan 801685
  * @author Lee 750834
  */
@@ -21,6 +24,18 @@ public class LongPipesSystem extends javax.swing.JFrame {
     public LongPipesSystem() {
         initComponents();
         initaliseInterfaceData();
+        Timer timer = new Timer();
+
+        // Create a new timer and run tasks every 0.5s
+        TimerTask task = new TimerTask() {
+            public void run() {
+                runtimeValidateCheckoutButtons();
+                runtimeValidateAddOrderButtons();
+                updateFormDateTime();
+            }
+        };
+
+        timer.scheduleAtFixedRate(task, 0, 500);
     }
 
     // Setup interface objects and variables
@@ -98,11 +113,6 @@ public class LongPipesSystem extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Long Pipes Ordering System");
         setResizable(false);
-        addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                formMouseClicked(evt);
-            }
-        });
 
         jPanelStatus.setBackground(new java.awt.Color(153, 72, 168));
         jPanelStatus.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -236,8 +246,8 @@ public class LongPipesSystem extends javax.swing.JFrame {
             jPanelPlasticGradeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelPlasticGradeLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jComboBoxGrade, 0, 73, Short.MAX_VALUE)
-                .addGap(385, 385, 385))
+                .addComponent(jComboBoxGrade, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelPlasticGradeLayout.setVerticalGroup(
             jPanelPlasticGradeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -383,7 +393,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
             .addGroup(jPanelQuantityLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelQuantity)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addComponent(jSpinnerQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -554,7 +564,8 @@ public class LongPipesSystem extends javax.swing.JFrame {
         jTextFieldOrderRef.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         jTextFieldOrderRef.setText("000000");
 
-        jButtonBuyOrder.setText("Order Basket");
+        jButtonBuyOrder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/longpipes/longpipesIcons/shopping-cart-verified-symbol.png"))); // NOI18N
+        jButtonBuyOrder.setText("Checkout");
         jButtonBuyOrder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonBuyOrderActionPerformed(evt);
@@ -637,6 +648,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
         jLabel1.setText("LongPipes Ordering System");
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(153, 153, 153));
         jLabel2.setText("GrB-1");
 
         javax.swing.GroupLayout jPanelTopInfoLayout = new javax.swing.GroupLayout(jPanelTopInfo);
@@ -706,10 +718,6 @@ public class LongPipesSystem extends javax.swing.JFrame {
     private void jButtonRemoveSelectedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoveSelectedActionPerformed
         removeSelectedPipe();
     }//GEN-LAST:event_jButtonRemoveSelectedActionPerformed
-
-    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-        updateFormDateTime();
-    }//GEN-LAST:event_formMouseClicked
 
     private void jButtonClearFeaturesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonClearFeaturesActionPerformed
         // Reset the feature toggles.
@@ -837,6 +845,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
 
     /**
      * Initialise the interface with default data
+     *
      * @author Lee 750834
      */
     public void initaliseInterfaceData() {
@@ -845,17 +854,19 @@ public class LongPipesSystem extends javax.swing.JFrame {
         updateFormDateTime();
         getOrderNumber();
     }
-    
+
     /**
      * Sets the order number text to the assigned order number
+     *
      * @author Lee 750834
      */
     public void getOrderNumber() {
         jTextFieldOrderRef.setText(Integer.toString(pipeSystem.retrieveOrderNumber()));
     }
-    
+
     /**
      * Default the form and clear all the fields.
+     *
      * @author Lee 750834
      */
     public void defaultForm() {
@@ -871,6 +882,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
 
     /**
      * Update the date and time within the form every mouse click.
+     *
      * @author Lee 750834
      */
     public void updateFormDateTime() {
@@ -886,6 +898,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
 
     /**
      * Update the basket UI with the total cost and total orders
+     *
      * @author Dan 801685
      */
     public void updateInvoiceUI() {
@@ -894,7 +907,9 @@ public class LongPipesSystem extends javax.swing.JFrame {
     }
 
     /**
-     * Update the invoice UI with invoice text corresponding to the last completed order
+     * Update the invoice UI with invoice text corresponding to the last
+     * completed order
+     *
      * @author Dan 801685
      */
     public void updateInvoiceTextArea() {
@@ -903,6 +918,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
 
     /**
      * Update the total cost label with the total order cost
+     *
      * @author Dan 801685
      */
     public void updateTotalCost() {
@@ -913,6 +929,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
 
     /**
      * Update the total order label with the total order number
+     *
      * @author Dan 801685
      */
     public void updateTotalOrders() {
@@ -922,6 +939,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
 
     /**
      * Create a new basket list model
+     *
      * @author Lee 750834
      */
     public void setupBasketList() {
@@ -930,6 +948,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
 
     /**
      * Removes the pipe currently selected within the basket UI
+     *
      * @author Lee 750834
      */
     public void removeSelectedPipe() {
@@ -944,6 +963,7 @@ public class LongPipesSystem extends javax.swing.JFrame {
 
     /**
      * Clear the basket and update the UI with default order data
+     *
      * @author Lee 750834
      */
     public void clearBasket() {
@@ -952,40 +972,48 @@ public class LongPipesSystem extends javax.swing.JFrame {
         orderedPipes.clear();
         updateInvoiceUI();
     }
-    
+
     /**
-     * Validate the pipe inputs and output a status message depending on the pipe validity
+     * Validate the pipe inputs and output a status message depending on the
+     * pipe validity
+     *
      * @author Dan 801685
      * @param pipeLength the double representing the length of this pipe
-     * @param pipeDiameter the double representing the outer diameter of this pipe
+     * @param pipeDiameter the double representing the outer diameter of this
+     * pipe
      * @param pipeGrade the integer representing the plastic grade of this pipe
-     * @param pipeColours the integer representing the number of colours being used in this pipe
-     * @param pipeInsulation the boolean representing if this pipe has inner insulation
-     * @param pipeReinforcement the boolean representing if this pipe has outer reinforcement
-     * @param pipeChemicalResistance the boolean representing if this pipe has chemical resistance properties
-     * @param pipeQuantity the integer representing the quantity of this pipe being ordered
+     * @param pipeColours the integer representing the number of colours being
+     * used in this pipe
+     * @param pipeInsulation the boolean representing if this pipe has inner
+     * insulation
+     * @param pipeReinforcement the boolean representing if this pipe has outer
+     * reinforcement
+     * @param pipeChemicalResistance the boolean representing if this pipe has
+     * chemical resistance properties
+     * @param pipeQuantity the integer representing the quantity of this pipe
+     * being ordered
      */
     public void validatePipeInputs(double pipeLength, double pipeDiameter, int pipeGrade, int pipeColours, Boolean pipeInsulation, Boolean pipeReinforcement, Boolean pipeChemicalResistance, int pipeQuantity) {
         boolean pipeInputsValid = true;
         String invalidText = "Pipe input is not valid due to the following inputs: ";
-        
+
         if (pipeSystem.validatePipeLength(pipeLength)) {
             pipeInputsValid = false;
             invalidText += "pipe length, ";
         }
-        
+
         if (pipeSystem.validatePipeDiameter(pipeDiameter)) {
             pipeInputsValid = false;
             invalidText += "pipe diameter, ";
         }
-        
+
         if (pipeSystem.validatePipeQuantity(pipeQuantity)) {
             pipeInputsValid = false;
             invalidText += "pipe quantity, ";
         }
 
         if (pipeInputsValid) {
-            if(pipeSystem.validateTypePipe(pipeLength, pipeDiameter, pipeGrade, pipeColours, pipeInsulation, pipeReinforcement, pipeChemicalResistance, pipeQuantity)) {
+            if (pipeSystem.validateTypePipe(pipeLength, pipeDiameter, pipeGrade, pipeColours, pipeInsulation, pipeReinforcement, pipeChemicalResistance, pipeQuantity)) {
                 updateBasketModel();
                 setStatusText("Pipe Added To Basket");
             } else {
@@ -994,22 +1022,24 @@ public class LongPipesSystem extends javax.swing.JFrame {
                 displayErrorModal("Invalid Pipe Specification", invalidTypeText);
             }
         } else {
-            setStatusText(invalidText);     
+            setStatusText(invalidText);
             displayErrorModal("Invalid Pipe Inputs", invalidText);
         }
     }
 
     /**
      * Set the status text to new value
+     *
      * @param statusText the new status text
      * @author Dan 801685
      */
     public void setStatusText(String statusText) {
-        jLabelStatus.setText(statusText); 
+        jLabelStatus.setText(statusText);
     }
-    
+
     /**
      * Retrieve the pipe order UI inputs send the inputs to be validated
+     *
      * @author Lee 750834
      * @author Dan 801685
      */
@@ -1026,25 +1056,27 @@ public class LongPipesSystem extends javax.swing.JFrame {
 
         validatePipeInputs(pipeLength, pipeDiameter, pipeGrade, pipeColours, pipeInsulation, pipeReinforcement, pipeChemicalResistance, pipeQuantity);
     }
-    
+
     /**
      * Display an error modal showing error information based on its parameters
+     *
      * @author Dan 801685
-     * @param errorTitle the title of the error 
+     * @param errorTitle the title of the error
      * @param errorDescription the more detailed description of the error
      */
     public void displayErrorModal(String errorTitle, String errorDescription) {
         JOptionPane.showMessageDialog(this, errorDescription, errorTitle, JOptionPane.ERROR_MESSAGE);
     }
-    
+
     /**
      * Update the basket model with the pipes from the ordered pipes
+     *
      * @author Dan 801685
      */
     public void updateBasketModel() {
         basketModel.clear();
         ArrayList<Pipe> orderedPipes = pipeSystem.getOrderedPipes();
-        for (int i = 0; i < orderedPipes.size(); i++) {  
+        for (int i = 0; i < orderedPipes.size(); i++) {
             basketModel.addElement(orderedPipes.get(i).getDetails());
         }
         defaultForm();
@@ -1052,7 +1084,9 @@ public class LongPipesSystem extends javax.swing.JFrame {
     }
 
     /**
-     * Gets the integer representing the grade of input pipe from the UI checkbox
+     * Gets the integer representing the grade of input pipe from the UI
+     * checkbox
+     *
      * @author Dan 801685
      */
     public int getPipeGrade() {
@@ -1063,7 +1097,9 @@ public class LongPipesSystem extends javax.swing.JFrame {
     }
 
     /**
-     * Gets the integer representing the number of colours the input pipe will have from the UI
+     * Gets the integer representing the number of colours the input pipe will
+     * have from the UI
+     *
      * @return the number of colours the input pipe will have
      * @author Dan 801685
      */
@@ -1081,10 +1117,43 @@ public class LongPipesSystem extends javax.swing.JFrame {
 
     /**
      * Gets the string representing the formatted current date and time
+     *
      * @return the date and time
      * @author Lee 750834
      */
     public static String[] getDateTime() {
         return new String[]{theDate, theTime};
+    }
+
+    /**
+     * Checks the condition of the basket and enables or disables buttons for
+     * further ordering
+     *
+     * @author Lee 750834
+     */
+    public void runtimeValidateCheckoutButtons() {
+        // Check if atleast one order was added
+        if (pipeSystem.order.orderedPipes.size() >= 1) {
+            jButtonBuyOrder.setEnabled(true);
+            jButtonClearBasket.setEnabled(true);
+            jButtonRemoveSelected.setEnabled(true);
+        } else {
+            jButtonBuyOrder.setEnabled(false);
+            jButtonClearBasket.setEnabled(false);
+            jButtonRemoveSelected.setEnabled(false);
+        }
+    }
+
+    /**
+     * Checks the conditions of the order and enables or disables buttons.
+     *
+     * @author Lee 750834
+     */
+    public void runtimeValidateAddOrderButtons() {       
+        if (jSpinnerQuantity.getText().equals("0")) {
+            jButtonAddOrder.setEnabled(false);
+        } else {
+            jButtonAddOrder.setEnabled(true);
+        }
     }
 }
