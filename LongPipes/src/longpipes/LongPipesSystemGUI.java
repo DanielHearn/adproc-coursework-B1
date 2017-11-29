@@ -312,7 +312,7 @@ public class LongPipesSystemGUI extends javax.swing.JFrame {
                 {"Chemical Resistance", "14%"}
             },
             new String [] {
-                "Item", "Additional Cost"
+                "Feature", "Additional Cost %"
             }
         ) {
             Class[] types = new Class [] {
@@ -991,22 +991,28 @@ public class LongPipesSystemGUI extends javax.swing.JFrame {
      * @author Dan 801685
      */
     public void processNewPipeOrder() {
-        try {
-            double pipeLength = Double.parseDouble(jTextFieldLength.getText());
-            double pipeDiameter = Double.parseDouble(jTextFieldDiameter.getText());
-            int pipeGrade = getPipeGrade();
-            int pipeColours = getColours();
-
-            Boolean pipeInsulation = jCheckBoxInnerInsulation.isSelected();
-            Boolean pipeReinforcement = jCheckBoxOuterReinforcement.isSelected();
-            Boolean pipeChemicalResistance = jCheckBoxChemicalResistance.isSelected();
-            int pipeQuantity = Integer.parseInt(jSpinnerQuantity.getText());
-
-            validatePipeInputs(pipeLength, pipeDiameter, pipeGrade, pipeColours, pipeInsulation, pipeReinforcement, pipeChemicalResistance, pipeQuantity);   
-        } catch(Exception error) {
-            String errorText = "Ensure no inputs are empty or have multiple full stops '.'";
+        if(pipeSystem.getOrderedPipesSize()==15) { //Limit number of seperate pipe orders to 15
+            String errorText = "There is a limit of up to 15 pipe orders within a single basket.";
             setStatusText(errorText);
-            displayErrorModal("Invalid Pipe Inputs", errorText);        
+            displayErrorModal("Basket Size Limit Reached", errorText);     
+        } else {
+            try {
+                double pipeLength = Double.parseDouble(jTextFieldLength.getText());
+                double pipeDiameter = Double.parseDouble(jTextFieldDiameter.getText());
+                int pipeGrade = getPipeGrade();
+                int pipeColours = getColours();
+
+                Boolean pipeInsulation = jCheckBoxInnerInsulation.isSelected();
+                Boolean pipeReinforcement = jCheckBoxOuterReinforcement.isSelected();
+                Boolean pipeChemicalResistance = jCheckBoxChemicalResistance.isSelected();
+                int pipeQuantity = Integer.parseInt(jSpinnerQuantity.getText());
+
+                validatePipeInputs(pipeLength, pipeDiameter, pipeGrade, pipeColours, pipeInsulation, pipeReinforcement, pipeChemicalResistance, pipeQuantity);   
+            } catch(Exception error) {
+                String errorText = "Ensure no inputs are empty or have multiple full stops '.'";
+                setStatusText(errorText);
+                displayErrorModal("Invalid Pipe Inputs", errorText);        
+            }
         }
     }
 
