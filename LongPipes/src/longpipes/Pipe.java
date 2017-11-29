@@ -124,14 +124,21 @@ public abstract class Pipe {
      * @return the plastic material volume of this pipe
      */
     public double calculatePipeVolume() {
-        double lengthInches = length * 39.3701; //One metre is equal to 39.37 inches
-        System.out.println("Length: " + lengthInches);
+        double lengthInches = metresToInches(length); //One metre is equal to 39.37 inches
         double outerRadius = outerDiameter / 2;
         double innerRadius = innerDiameter / 2;
-        System.out.println("Radiu: " + outerRadius + ", " + innerRadius);
         double pipeVolume = Math.PI * lengthInches * (Math.pow(outerRadius,2) - Math.pow(innerRadius, 2) );
-        System.out.println("Volume: " + pipeVolume);
         return pipeVolume;
+    }
+    
+    /**
+     * Gets the double of a conversion of input metres to inches
+     * 
+     * @param metres the metres to be converted to inches
+     * @return the equivalent inches
+     */
+    public double metresToInches(double metres) {
+        return metres * 39.3701;
     }
     
     /**
@@ -154,10 +161,8 @@ public abstract class Pipe {
      */
     public double calculateIndividualCost() {
         double percentageExtra = calculatePercentageExtra();
-        System.out.println("Extra Percentage: " + percentageExtra);
         double pipeVolume = calculatePipeVolume();
         double materialCost = calculateMaterialCost(pipeVolume, grade);
-        System.out.println("Mat cost: " + materialCost);
         double pipeCost = materialCost + calculateAdditionalFeatureCost(materialCost, percentageExtra); 
         return pipeCost;
     }
@@ -211,6 +216,24 @@ public abstract class Pipe {
                 + ", ChemResist: " + chemicalResistance
                 + ", Quantity: " + pipeQuantity + "]" 
                 + " = " + String.format("£%.2f", calculateTotalCost());
+        return pipeDetailString;
+    }
+    
+
+    /**
+     * Gets the string containing all the pipe details for use in the invoice GUI
+     * 
+     * @return the pipe details
+     */
+    public String getInvoiceDetails() {
+        String pipeDetailString = "Type " 
+                + getPipeType() 
+                + " Pipe - [L: " + length 
+                + ", D: " + outerDiameter 
+                + ", G: " + grade 
+                + ", C: " + colours 
+                + ", CR: " + chemicalResistance
+                + "]";
         return pipeDetailString;
     }
 }

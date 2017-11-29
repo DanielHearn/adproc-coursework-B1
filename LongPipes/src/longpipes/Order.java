@@ -87,7 +87,7 @@ public class Order {
      * @return The string formatted for use in the invoice based on pipe details
      * @author Dan 801685
      */
-    public String generateInvoicePipeString(Pipe currentPipe, String currentPipeType, String inputString, double inputDouble) {
+    public String genInvoicePipeString(Pipe currentPipe, String currentPipeType, String inputString, double inputDouble) {
         String startString = currentPipeType + ": " + inputString + ": ";
         String formattedNumber = String.format("£%.2f", inputDouble);
         String invoiceString = formatInvoice(startString) + formattedNumber;
@@ -104,7 +104,7 @@ public class Order {
      * @return The string formatted for use in the invoice based on pipe details
      * @author Dan 801685
      */
-    public String generateInvoicePipeString(Pipe currentPipe, String currentPipeType, String inputString, int inputInt) {
+    public String genInvoicePipeString(Pipe currentPipe, String currentPipeType, String inputString, int inputInt) {
         String startString = currentPipeType + ": " + inputString + ": ";
         String formattedNumber = Integer.toString(inputInt);
         String invoiceString = formatInvoice(startString) + formattedNumber;
@@ -129,7 +129,7 @@ public class Order {
             setInvoicePipeDetails();
 
             String orderTotal = String.format("£%.2f", totalCost());
-            orderTotal = formatInvoice("Total Cost:") + orderTotal;
+            orderTotal = formatInvoice("Total Basket Cost:") + orderTotal;
 
             String orderRef = formatInvoice("Order Ref No:") + Integer.toString(orderNo);
             String[] dateTime = LongPipesSystemGUI.getDateTime();
@@ -169,12 +169,12 @@ public class Order {
             double pipeExtraCost = currentPipe.calculateAdditionalFeatureCost(pipeMaterialCost, currentPipe.calculatePercentageExtra());
             int pipeQuantity = currentPipe.getPipeQuantity();
             double totalCost = currentPipe.calculateTotalCost();
-
-            invoiceStrings.add(generateInvoicePipeString(currentPipe, currentPipeType, "Individual Pipe Cost", individualPipeCost));
-            invoiceStrings.add(generateInvoicePipeString(currentPipe, currentPipeType, "Pipe Material Cost", pipeMaterialCost));
-            invoiceStrings.add(generateInvoicePipeString(currentPipe, currentPipeType, "Pipe Additional Feature Cost", pipeExtraCost));
-            invoiceStrings.add(generateInvoicePipeString(currentPipe, currentPipeType, "Quantity of Pipes in Order", pipeQuantity));
-            invoiceStrings.add(generateInvoicePipeString(currentPipe, currentPipeType, "Total Pipe Order Cost", totalCost));
+            invoiceStrings.add(currentPipe.getInvoiceDetails());
+            invoiceStrings.add(genInvoicePipeString(currentPipe, currentPipeType, "Individual Pipe Cost", individualPipeCost));
+            invoiceStrings.add(genInvoicePipeString(currentPipe, currentPipeType, "Pipe Material Cost", pipeMaterialCost));
+            invoiceStrings.add(genInvoicePipeString(currentPipe, currentPipeType, "Pipe Additional Feature Cost", pipeExtraCost));
+            invoiceStrings.add(genInvoicePipeString(currentPipe, currentPipeType, "Quantity of Pipes in Order", pipeQuantity));
+            invoiceStrings.add(genInvoicePipeString(currentPipe, currentPipeType, "Total Pipe Order Cost", totalCost));
             invoiceStrings.add("---------------------------------------------");
         }
     }
@@ -188,7 +188,7 @@ public class Order {
      * @author Lee 750834
      */
     public static String formatInvoice(String inputString) {
-        return String.format("%1$-" + 45 + "s", inputString);
+        return String.format("%1$-" + 55 + "s", inputString);
     }
 
     /**

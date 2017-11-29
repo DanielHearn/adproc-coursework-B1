@@ -296,7 +296,7 @@
                           <Component id="jLabelDiameter" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jTextFieldDiameter" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabelDiameterInfo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -758,7 +758,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane3" pref="596" max="32767" attributes="0"/>
+                          <Component id="jScrollPane3" pref="735" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="jButtonClearBasket" min="-2" pref="118" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
@@ -773,8 +773,8 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jScrollPane3" min="-2" pref="100" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane3" min="-2" pref="124" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jButtonClearBasket" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jButtonRemoveSelected" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -976,7 +976,7 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="364" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="467" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>

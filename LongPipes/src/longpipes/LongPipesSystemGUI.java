@@ -230,7 +230,7 @@ public class LongPipesSystemGUI extends javax.swing.JFrame {
                 .addGroup(jPanelDiameterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelDiameter)
                     .addComponent(jTextFieldDiameter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelDiameterInfo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -534,7 +534,7 @@ public class LongPipesSystemGUI extends javax.swing.JFrame {
             .addGroup(jPanelBasketControlLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelBasketControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 596, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 735, Short.MAX_VALUE)
                     .addGroup(jPanelBasketControlLayout.createSequentialGroup()
                         .addComponent(jButtonClearBasket, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -545,8 +545,8 @@ public class LongPipesSystemGUI extends javax.swing.JFrame {
             jPanelBasketControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelBasketControlLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelBasketControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonClearBasket)
                     .addComponent(jButtonRemoveSelected)))
@@ -668,7 +668,7 @@ public class LongPipesSystemGUI extends javax.swing.JFrame {
             .addGroup(jPanelTopInfoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addGap(364, 364, 364)
+                .addGap(467, 467, 467)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -1050,13 +1050,13 @@ public class LongPipesSystemGUI extends javax.swing.JFrame {
         }
 
         if (pipeInputsValid) {
-            if (pipeSystem.validateTypePipe(pipeLength, pipeDiameter, pipeGrade, pipeColours, pipeInsulation, pipeReinforcement, pipeChemicalResistance, pipeQuantity)) {
+            String validationText = pipeSystem.validateTypePipe(pipeLength, pipeDiameter, pipeGrade, pipeColours, pipeInsulation, pipeReinforcement, pipeChemicalResistance, pipeQuantity);
+            if (validationText.equals("Valid")) {
                 updateBasketModel();
                 setStatusText("Pipe Added To Basket");
             } else {
-                String invalidTypeText = "Input pipe specifications do meet any of our available pipe types.";
-                setStatusText(invalidTypeText);
-                displayErrorModal("Invalid Pipe Specification", invalidTypeText);
+                setStatusText(validationText);
+                displayErrorModal("Invalid Pipe Specification", validationText);
             }
         } else {
             setStatusText(invalidText);

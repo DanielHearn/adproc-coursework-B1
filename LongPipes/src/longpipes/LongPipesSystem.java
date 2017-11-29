@@ -60,32 +60,91 @@ public class LongPipesSystem {
      * chemical resistance properties
      * @param pipeQuantity the integer representing the quantity of this pipe
      * being ordered
-     * @return String indicating whether the input pipe is valid or not
+     * @return string indicating whether the input pipe is valid or not
      * @author Dan 801685
      */
-    public boolean validateTypePipe(double pipeLength, double pipeDiameter, int pipeGrade, int pipeColours, Boolean pipeInsulation, Boolean pipeReinforcement, Boolean pipeChemicalResistance, int pipeQuantity) {
+    public String validateTypePipe(double pipeLength, double pipeDiameter, int pipeGrade, int pipeColours, Boolean pipeInsulation, Boolean pipeReinforcement, Boolean pipeChemicalResistance, int pipeQuantity) {
 
-        boolean isPipeTypeValid = true;
-        if ((pipeGrade >= 1 && pipeGrade <= 3) && (pipeColours == 0) && (pipeInsulation == false) && (pipeReinforcement == false)) {
-            Pipe newPipe = new TypeOnePipe(pipeLength, pipeDiameter, pipeGrade, pipeChemicalResistance, pipeQuantity);
-            order.addPipe(newPipe);
-        } else if ((pipeGrade >= 2 && pipeGrade <= 4) && (pipeColours == 1) && (pipeInsulation == false) && (pipeReinforcement == false)) {
-            Pipe newPipe = new TypeTwoPipe(pipeLength, pipeDiameter, pipeGrade, pipeColours, pipeChemicalResistance, pipeQuantity);
-            order.addPipe(newPipe);
-        } else if ((pipeGrade >= 2 && pipeGrade <= 5) && (pipeColours == 2) && (pipeInsulation == false) && (pipeReinforcement == false)) {
-            Pipe newPipe = new TypeThreePipe(pipeLength, pipeDiameter, pipeGrade, pipeColours, pipeChemicalResistance, pipeQuantity);
-            order.addPipe(newPipe);
-        } else if ((pipeGrade >= 2 && pipeGrade <= 5) && (pipeColours == 2) && (pipeInsulation == true) && (pipeReinforcement == false)) {
-            Pipe newPipe = new TypeFourPipe(pipeLength, pipeDiameter, pipeGrade, pipeColours, pipeInsulation, pipeChemicalResistance, pipeQuantity);
-            order.addPipe(newPipe);
-        } else if ((pipeGrade >= 3 && pipeGrade <= 5) && (pipeColours == 2) && (pipeInsulation == true) && (pipeReinforcement == true)) {
-            Pipe newPipe = new TypeFivePipe(pipeLength, pipeDiameter, pipeGrade, pipeColours, pipeChemicalResistance, pipeQuantity);
-            order.addPipe(newPipe);
+        boolean isPipeTypeValid = false;
+        String invalidText = "";
+    
+        if(pipeInsulation) {
+            if(pipeGrade >= 2 && pipeGrade <= 5) {
+                if(pipeReinforcement) {
+                    if(pipeGrade >= 3) {
+                        if(pipeColours == 2) {
+                            Pipe newPipe = new TypeFivePipe(pipeLength, pipeDiameter, pipeGrade, pipeColours, pipeChemicalResistance, pipeQuantity);
+                            order.addPipe(newPipe);
+                            isPipeTypeValid = true;
+                        } else {
+                            invalidText = "Pipe colours of 0 or 1 are not valid with inner insulation.";
+                        }
+                    } else {
+                        invalidText = "Outer Reinforcement is not valid with a plastic grade of 1 or 2.";
+                    }
+                } else {
+                    if(pipeColours == 2) {
+                        Pipe newPipe = new TypeFourPipe(pipeLength, pipeDiameter, pipeGrade, pipeColours, pipeInsulation, pipeChemicalResistance, pipeQuantity);
+                        order.addPipe(newPipe);
+                        isPipeTypeValid = true;
+                    } else {
+                        invalidText = "Pipe colours of 0 or 1 are not valid with inner insulation.";
+                    }
+                }
+            } else {
+                invalidText = "Pipe colour of 1 is not valid with inner insulation.";
+            } 
         } else {
-            isPipeTypeValid = false;
+            if(pipeColours == 0) {
+                if(pipeGrade >= 1 && pipeGrade <= 3) {
+                    if(!pipeReinforcement) {
+                        Pipe newPipe = new TypeOnePipe(pipeLength, pipeDiameter, pipeGrade, pipeChemicalResistance, pipeQuantity);
+                        order.addPipe(newPipe);
+                        isPipeTypeValid = true;
+                    } else {
+                        invalidText = "Pipe colour of 0 is not valid with outer reinforcement.";
+                    }
+                } else {
+                    invalidText = "Pipe colour of 0 is not valid with a plastic grade of 4 or 5.";
+                }
+            } else {
+                if(pipeColours == 1) {
+                    if(pipeGrade >= 2 && pipeGrade <= 4) {
+                        if(!pipeReinforcement) {
+                            Pipe newPipe = new TypeTwoPipe(pipeLength, pipeDiameter, pipeGrade, pipeColours, pipeChemicalResistance, pipeQuantity);
+                            order.addPipe(newPipe);
+                            isPipeTypeValid = true;
+                        } else {
+                            invalidText = "Pipe colour of 0 is not valid with outer reinforcement.";
+                        }
+                    } else {
+                        invalidText = "Pipe colour of 1 is not valid with a plastic grade of 1 or 5.";
+                    }   
+                } else {
+                    if(pipeGrade >= 2) {
+                        if(!pipeReinforcement) {
+                            Pipe newPipe = new TypeThreePipe(pipeLength, pipeDiameter, pipeGrade, pipeColours, pipeChemicalResistance, pipeQuantity);
+                            order.addPipe(newPipe);
+                            isPipeTypeValid = true;
+                        } else {
+                            invalidText = "Outer reinforement is only valid with inner insulation. ";
+                        }
+                    } else {
+                        invalidText = "Pipe colour of 2 is not valid with a plastic grade of 1.";
+                    }   
+                }
+            }
+        }
+        
+        if (invalidText.isEmpty()) {
+            invalidText = "Input pipe specifications do meet any of our available pipe types.";
         }
 
-        return isPipeTypeValid;
+        if(isPipeTypeValid) {
+            return "Valid";
+        } else {
+            return invalidText;
+        }
     }
 
     /**
