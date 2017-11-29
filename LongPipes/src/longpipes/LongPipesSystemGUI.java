@@ -534,7 +534,7 @@ public class LongPipesSystemGUI extends javax.swing.JFrame {
             .addGroup(jPanelBasketControlLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelBasketControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 735, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
                     .addGroup(jPanelBasketControlLayout.createSequentialGroup()
                         .addComponent(jButtonClearBasket, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
