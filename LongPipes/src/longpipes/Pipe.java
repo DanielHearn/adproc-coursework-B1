@@ -1,5 +1,7 @@
 package longpipes;
 
+import java.text.DecimalFormat;
+
 /**
  * Pipe class that is the abstract super class of the pipe types
  * 
@@ -164,6 +166,7 @@ public abstract class Pipe {
         double pipeVolume = calculatePipeVolume();
         double materialCost = calculateMaterialCost(pipeVolume, grade);
         double pipeCost = materialCost + calculateAdditionalFeatureCost(materialCost, percentageExtra); 
+        pipeCost = Double.parseDouble(new DecimalFormat("##.##").format(pipeCost));
         return pipeCost;
     }
     

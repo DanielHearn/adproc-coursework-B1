@@ -1,5 +1,6 @@
 package longpipes;
 
+import java.text.DecimalFormat;
 import java.util.*;
 
 /**
@@ -53,6 +54,7 @@ public class Order {
         for (int pipe = 0; pipe < orderedPipes.size(); pipe++) {
             totalCost += orderedPipes.get(pipe).calculateTotalCost();
         }
+        totalCost = Double.parseDouble(new DecimalFormat("##.##").format(totalCost));
         return totalCost;
     }
 
