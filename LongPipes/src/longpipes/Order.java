@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * Class representing an order of pipes 
  * 
- * @author dan up801685
+ * @author Dan 801685
  * @author Lee 750834
  */
 public class Order {
