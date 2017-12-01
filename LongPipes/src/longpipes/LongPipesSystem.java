@@ -70,29 +70,25 @@ public class LongPipesSystem {
     
         if(pipeInsulation) {
             if(pipeGrade >= 2 && pipeGrade <= 5) {
-                if(pipeReinforcement) {
-                    if(pipeGrade >= 3) {
-                        if(pipeColours == 2) {
-                            Pipe newPipe = new TypeFivePipe(pipeLength, pipeDiameter, pipeGrade, pipeColours, pipeChemicalResistance, pipeQuantity);
-                            order.addPipe(newPipe);
-                            isPipeTypeValid = true;
+                if(pipeColours == 2) {
+                    if(pipeReinforcement) {
+                        if(pipeGrade >= 3) {
+                                Pipe newPipe = new TypeFivePipe(pipeLength, pipeDiameter, pipeGrade, pipeColours, pipeChemicalResistance, pipeQuantity);
+                                order.addPipe(newPipe);
+                                isPipeTypeValid = true;
                         } else {
-                            invalidText = "Pipe colours of 0 or 1 are not valid with inner insulation.";
+                            invalidText = "Outer Reinforcement is not valid with a plastic grade of 1 or 2.";
                         }
                     } else {
-                        invalidText = "Outer Reinforcement is not valid with a plastic grade of 1 or 2.";
-                    }
-                } else {
-                    if(pipeColours == 2) {
                         Pipe newPipe = new TypeFourPipe(pipeLength, pipeDiameter, pipeGrade, pipeColours, pipeInsulation, pipeChemicalResistance, pipeQuantity);
                         order.addPipe(newPipe);
                         isPipeTypeValid = true;
-                    } else {
-                        invalidText = "Pipe colours of 0 or 1 are not valid with inner insulation.";
                     }
+                } else {
+                    invalidText = "Pipe colours of 0 or 1 are not valid with inner insulation.";
                 }
             } else {
-                invalidText = "Pipe colour of 1 is not valid with inner insulation.";
+                invalidText = "Pipe grade of 1 is not valid with inner insulation.";
             } 
         } else {
             if(pipeColours == 0) {
