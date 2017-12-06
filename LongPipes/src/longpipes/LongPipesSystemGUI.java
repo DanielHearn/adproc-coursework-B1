@@ -916,6 +916,7 @@ public class LongPipesSystemGUI extends javax.swing.JFrame {
     public void updateInvoiceUI() {
         updateTotalCost();
         updateTotalOrders();
+        getOrderNumber();
     }
 
     /**
